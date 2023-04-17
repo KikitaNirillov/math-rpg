@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[2394],{2394:function(n,e,u){u.r(e),u.d(e,{data:function(){return r}});var r={equation:"3x^2 - 5x + 2 = 0",equationAnswer:{x:[1,.67]}}}}]);
+//# sourceMappingURL=2394.de3e4d62.chunk.js.map

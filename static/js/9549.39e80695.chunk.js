@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[9549],{9549:function(e,s,p){e.exports=p.p+"static/media/enemyLoc1MiniBoss2DefaultImg.c8e4ebfe15e047b5661f.jpg"}}]);

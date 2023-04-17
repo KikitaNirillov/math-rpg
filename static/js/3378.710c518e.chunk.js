@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[3378],{3378:function(n,e,u){u.r(e),u.d(e,{data:function(){return r}});var r={equation:"51x + 48 = -12",equationAnswer:{x:[-1]}}}}]);
+//# sourceMappingURL=3378.710c518e.chunk.js.map

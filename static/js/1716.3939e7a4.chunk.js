@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[1716],{1716:function(e,c,p){e.exports=p.p+"static/media/storeIconLoc2.6c6de68f6ee56eeaf2fe.jpg"}}]);

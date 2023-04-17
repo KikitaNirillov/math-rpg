@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/1528.25dadf06.chunk.css","mappings":"AAAA,6BACI,WAAY,CACZ,UAAW","sources":["components/main/gameOver/gameOver.module.scss"],"sourcesContent":[".gameOverImg {\r\n    height: 100%;\r\n    width: 100%;\r\n}"],"names":[],"sourceRoot":""}

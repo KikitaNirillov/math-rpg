@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[1364,6952,7506],{1364:function(a,r,t){t.r(r),t.d(r,{data:function(){return e}});var e={name:"warrior",defaultImg:t(6952),staticImg:t(7506)}},6952:function(a,r,t){a.exports=t.p+"static/media/playerWarriorDefaultImg.b668fbd71c896ead52b7.jpg"},7506:function(a,r,t){a.exports=t.p+"static/media/playerWarriorStaticImg.8c331fa2f9b5ffb246af.jpg"}}]);
+//# sourceMappingURL=1364.9deef224.chunk.js.map

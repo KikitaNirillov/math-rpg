@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[5454],{5454:function(e,c,p){e.exports=p.p+"static/media/cutsceneImgExample.de972e9dcc2ec2e080d3.png"}}]);
