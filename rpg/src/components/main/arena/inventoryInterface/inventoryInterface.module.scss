@@ -1,0 +1,50 @@
+.emptyInventoryInterface {
+    justify-content: initial;
+    display: flex;
+    flex-direction: column;
+    &__text {
+        font-size: 5.2vh;
+        line-height: 1.4;
+        margin-top: -0.5%;
+    }
+}
+.inventoryInterface {
+    justify-content: initial;
+    display: flex;
+    flex-direction: column;
+    font-size: 5.2vh;
+    justify-content: center;
+    align-items: center;
+    &__items {
+        display: flex;
+        height: 70%;
+        width: 100%;
+        justify-content: center;
+        &_btn {
+            margin: 0 0.2%;
+            display: flex;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            border: 0.7vh ridge rgb(56, 56, 56);
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            &:hover {
+                border-color: white;
+            }
+            &_img {
+                height: 80%;
+            }
+            &_count {
+                position: absolute;
+                right: 5%;
+                bottom: -6%;
+            }
+        }
+        margin-bottom: 4vh;
+    }
+    &__itemDescription,
+    &__backBtn {
+        line-height: 0.5;
+    }
+}

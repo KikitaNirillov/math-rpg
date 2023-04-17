@@ -1,0 +1,36 @@
+.questionInterface {
+    justify-content: initial;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &__question {
+        height: 48%;
+        font-size: 5.2vh;
+        line-height: 1.4;
+        margin-top: -0.5%;
+        margin-bottom: 0.3%;
+        width: 100%;
+        text-align: left;
+    }
+    &__answers {
+        display: flex;
+        flex-direction: column;
+        font-size: 4.2vh;
+        width: 100%;
+        &_button {
+            width: 100%;
+            &:nth-child(1) {
+                margin-bottom: 0.25%;
+            }
+            line-height: 1.8;
+            text-align: left;
+            border: 0.46vh ridge rgb(56, 56, 56);
+            padding-left: 0.8%;
+            transition: padding 0.1s;
+            &:hover {
+                border: 0.46vh ridge white;
+                padding-left: 1%;
+            }
+        }
+    }
+}

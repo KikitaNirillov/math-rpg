@@ -1,0 +1,47 @@
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.arenaInterfaceContainer {
+    display: flex;
+    width: 97.5%;
+    height: 85%;
+    justify-content: center;
+}
+
+.locationMapWindow {
+    position: absolute;
+    max-height: 90%;
+    max-width: 80%;
+    min-width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 4vw;
+    font-size: 5.2vh;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: black;
+    border: 1vh ridge #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.transparentAbsoluteBtn {
+    display: initial;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none !important;
+    font-size: 0;
+}

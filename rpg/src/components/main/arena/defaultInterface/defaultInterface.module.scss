@@ -1,0 +1,43 @@
+.defaultInterface {
+    flex-direction: column;
+    &__buttons {
+        height: 65%;
+        display: flex;
+        justify-content: space-between;
+        &_button {
+            width: 24%;
+            height: 84%;
+            overflow: hidden;
+            text-align: center;
+            align-items: center;
+            font-size: 7vh;
+            border: 1vh ridge #ffffff;
+            &:hover {
+                border: 1.4vh ridge #ffffff;
+            }
+            &:disabled {
+                border-color: #474747;
+                &:hover {
+                    border: 1vh ridge #474747;
+                }
+            }
+        }
+    }
+    &__textField {
+        display: flex;
+        height: 35%;
+        border: 1vh ridge #ffffff;
+        align-items: center;
+        &_fightInfo {
+            line-height: 1.1;
+            width: 100%;
+            height: 2.4em;
+            overflow: auto;
+            word-break: break-word;
+            display: flex;
+            text-align: left;
+            font-size: 3.5vh;
+            margin: 0 0.5%;
+        }
+    }
+}

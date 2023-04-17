@@ -1,0 +1,70 @@
+.inn {
+    &__healthInfo {
+        display: flex;
+        flex-direction: column;
+        &_bar {
+            margin: 2vh 0;
+            position: relative;
+            height: 5vh;
+            width: 30vw;
+            display: flex;
+            outline: 0.46vh ridge black;
+            box-shadow: 0 0 0 0.5vh #fff;
+            background-color: black;
+            word-wrap: break-word;
+            transition: box-shadow 0.2s;
+            &_stripe {
+                height: 100%;
+                background-color: white;
+                mix-blend-mode: screen;
+            }
+            &_points {
+                mix-blend-mode: difference;
+                color: white;
+                line-height: 1.12;
+                font-weight: 700;
+                word-wrap: break-word;
+                letter-spacing: 0.3vw;
+                position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+        }
+    }
+    &__title {
+        display: flex;
+        align-items: center;
+        white-space: pre;
+        &_img {
+            font-size: inherit;
+            height: 1em;
+            margin: 0 0.25em;
+        }
+    }
+    &__buttonList {
+        display: flex;
+        margin: 2vh 0;
+        &_button {
+            height: 8vh;
+            width: 10vw;
+            margin: 0 0.6vw;
+            line-height: 0.5;
+            overflow: hidden;
+            text-align: center;
+            align-items: center;
+            border: 0.5vh ridge #ffffff;
+            &:hover {
+                border: 1vh ridge #ffffff;
+            }
+            &:disabled {
+                border-color: #474747;
+                &:hover {
+                    border: 0.5vh ridge #474747;
+                }
+            }
+        }
+    }
+}

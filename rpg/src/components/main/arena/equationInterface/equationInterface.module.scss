@@ -1,0 +1,86 @@
+.equationInterface {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    &__equation {
+        height: 100%;
+        width: 49%;
+        line-height: 1;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        outline: 1vh ridge #ffffff;
+        font-size: 5vw;
+        &_symbol {
+            height: 72%;
+            margin-right: 2%;
+        }
+        &_items {
+            display: flex;
+        }
+    }
+    &__answerForm {
+        font-size: 6vh;
+        line-height: 1.1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 49%;
+        height: 100%;
+        outline: 1vh ridge #ffffff;
+        &_timer {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            &_title {
+                text-align: left;
+                width: 7.7%;
+                line-height: 0.6;
+                border-bottom: 0.38vh solid #aaa;
+            }
+        }
+        &_answers {
+            display: flex;
+            width: 90%;
+            height: 20%;
+            margin: 1vh 0 2vh;
+            justify-content: center;
+            &_fieldContainer {
+                display: flex;
+                width: 47%;
+                height: 100%;
+                margin: 0 1.5%;
+                align-items: center;
+                justify-content: center;
+                outline: 0.6vh solid #ffffff;
+                &_field {
+                    display: flex;
+                    width: 97%;
+                    height: 76%;
+                    padding-top: 1.12%; // For center vertically
+                    align-items: center;
+                    justify-content: center;
+                    white-space: nowrap;
+                    text-align: center;
+                    font-size: 6vh;
+                    &::selection {
+                        background: #ffffff;
+                        color: black;
+                    }
+                    font-family: "Indie Flower", cursive;
+                    color: #ffffff;
+                    background: none;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+        &_btn {
+            font-size: 3.5vh;
+        }
+    }
+}

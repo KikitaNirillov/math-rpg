@@ -1,0 +1,100 @@
+.store {
+    &__purchase {
+        font-size: 4.2vh;
+        width: 100%;
+        outline: 0.5vh ridge white;
+        padding: 2vh 0;
+        margin: 2vh 0;
+        &_itemsList {
+            display: flex;
+            height: 18vh;
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 1.8vh;
+            &_btn {
+                margin: 0 0.2vw;
+                display: flex;
+                height: 100%;
+                aspect-ratio: 1 / 1;
+                border: 0.7vh ridge rgb(56, 56, 56);
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                &:hover {
+                    border-color: white;
+                }
+                &_img {
+                    height: 80%;
+                }
+                &_cost {
+                    line-height: 0.5;
+                    display: flex;
+                    align-items: center;
+                    white-space: pre;
+                    position: absolute;
+                    right: 7%;
+                    bottom: 5%;
+                    display: flex;
+                    &_count {
+                        margin-top: 0.18em;
+                    }
+                    &_currency {
+                        font-size: inherit;
+                        height: 0.8em;
+                        padding-left: 4%;
+                    }
+                }
+            }
+        }
+        &_text {
+        }
+    }
+    &__inventory {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        &_itemsList {
+            align-items: center;
+            font-size: 4.2vh;
+            margin-bottom: 2vh;
+            padding: 2vh 0;
+            display: flex;
+            height: 17vh;
+            width: 100%;
+            justify-content: center;
+            margin: 2vh 0;
+            outline: 0.5vh ridge white;
+            &_item {
+                margin: 0 0.5vw;
+                display: flex;
+                height: 100%;
+                aspect-ratio: 1 / 1;
+                outline: 0.7vh ridge rgb(56, 56, 56);
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                &_img {
+                    height: 80%;
+                }
+                &_count {
+                    position: absolute;
+                    right: 5%;
+                    bottom: -6%;
+                }
+            }
+        }
+    }
+    &__leaveBtn {
+        height: 8vh;
+        width: 33.7vh;
+        margin: 2vh 0;
+        line-height: 0.5;
+        overflow: hidden;
+        text-align: center;
+        align-items: center;
+        border: 0.5vh ridge #ffffff;
+        &:hover {
+            border: 1vh ridge #ffffff;
+        }
+    }
+}
