@@ -13,7 +13,7 @@ const GameOver: React.FC<GameOverProps> = ({ initializeGame, ...props }) => {
                 setTimeout(() => {
                     initializeGame()
                 }, GameOverScreenTime)
-            }, 0)
+            }, 20)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 

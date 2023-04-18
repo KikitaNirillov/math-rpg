@@ -11,7 +11,7 @@ const Cutscene: React.FC<CutsceneProps> = ({ removeCurrentSlideFromCutsceneList,
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
                 props.setCurrentSceneDidMount(true)
-            }, 0)
+            }, 20)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 
