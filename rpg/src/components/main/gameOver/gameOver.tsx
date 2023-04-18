@@ -7,14 +7,18 @@ import s from './gameOver.module.scss'
 
 const GameOver: React.FC<GameOverProps> = ({ initializeGame, ...props }) => {
     useEffect(() => {
-        props.setCurrentSceneDidMount(true)
-        setTimeout(() => {
-            initializeGame()
-        }, GameOverScreenTime)
-        return () => props.setCurrentSceneDidMount(false)
-    }, [])
+        if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
+            setTimeout(() => {
+                props.setCurrentSceneDidMount(true)
+                setTimeout(() => {
+                    initializeGame()
+                }, GameOverScreenTime)
+            }, 0)
+        }
+    }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
+
     return (
-        <RenderImg src={gameOverScreenImg} alt="Game over" className={s.gameOverImg}/>
+        <RenderImg src={gameOverScreenImg} alt="Game over" className={s.gameOverImg} />
         // <img src={gameOverScreenImg} alt="Game over" style={{ height: '100%', width: '100%' }} />
     )
 }

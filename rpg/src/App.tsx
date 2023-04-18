@@ -1,7 +1,7 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 import './App.scss'
 import { connect } from 'react-redux'
-import { scenes } from './scenes'
+import { SceneName, scenes } from './scenes'
 import { AppStateType } from './redux/store'
 import { opacityTransition, opacityTransitionForUnblockScreen } from './settings'
 import { initializeGame } from '@redux/gameReducer'
@@ -13,19 +13,28 @@ type AppProps = StatePropsType & DispatchPropsType
 const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount, ...props }) => {
   const [loadingExistedForEnoughTime, setLoadingExistedForEnoughTime] = useState<boolean>(true)
   const CurrentScene = props.currentScene ? scenes[props.currentScene] : null
-
+  const [currentSceneName, setCurrentSceneName] = useState<SceneName | null>(props.currentScene)
   useEffect(() => {
-    initializeGame();
+    initializeGame()
   }, [initializeGame])
 
   useEffect(() => { // for loading and scene changing
-    if (props.downloadQuantity === 0 && props.opacityTransitionToZeroIsOver && props.opacity !== 1 && props.currentSceneDidMount && props.unloadedImagesQuantity === 0 &&  props.currentSceneDidMount) {
-      setOpacity(1)
-      setTimeout(() => {
-        setOpacityTransitionIsOver(true)
-      }, opacityTransitionForUnblockScreen)
+    if (props.downloadQuantity === 0 && props.opacityTransitionToZeroIsOver && props.opacity !== 1 && props.currentSceneDidMount) {
+      if (currentSceneName === null) {
+        setCurrentSceneName(props.currentScene)
+      }
+      if (currentSceneName !== props.currentScene && currentSceneName !== null) {
+        setCurrentSceneDidMount(false)
+        setCurrentSceneName(props.currentScene)
+      }
+      else {
+        setOpacity(1)
+        setTimeout(() => {
+          setOpacityTransitionIsOver(true)
+        }, opacityTransitionForUnblockScreen)
+      }
     }
-  }, [props.unloadedImagesQuantity, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
+  }, [props.currentScene, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
 
   return (
     (CurrentScene === null || (props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
@@ -45,7 +54,7 @@ const mapStateToProps = (state: AppStateType) => ({
   opacityTransitionIsOver: state.scene.opacityTransitionIsOver,
   opacityTransitionToZeroIsOver: state.scene.opacityTransitionToZeroIsOver,
   downloadQuantity: state.scene.downloadQuantity,
-  unloadedImagesQuantity: state.scene.unloadedImagesQuantity,
+  unloadedImagesQuantity: state.scene.unloadedImagesQuantity
 })
 type StatePropsType = ReturnType<typeof mapStateToProps>
 

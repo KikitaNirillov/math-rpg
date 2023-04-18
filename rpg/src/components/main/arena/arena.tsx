@@ -17,9 +17,12 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
     const [enemysOpacity, setEnemysOpacity] = useState<number>(1)
 
     useEffect(() => {
-        props.setCurrentSceneDidMount(true)
-        return () => props.setCurrentSceneDidMount(false)
-    }, [])
+        if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
+            setTimeout(() => {
+                props.setCurrentSceneDidMount(true)
+            }, 0)
+        }
+    }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 
     // logic of the enemy's turn:
     useEffect(() => {
@@ -106,7 +109,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                     <div className={s.arena__scene_figthers_fighter} style={{ left: `${props.playerPositionOnScreen}%` }}>
                         <div className={s.arena__scene_figthers_fighter_relativeContainer}>
                             {/* <RenderImg src={props.playerDefaultImg} alt="Player" className={s.arena__scene_figthers_fighter_relativeContainer_img}/> */}
-                             <img src={props.playerDefaultImg} alt="Player" className={s.arena__scene_figthers_fighter_relativeContainer_img} />
+                            <img src={props.playerDefaultImg} alt="Player" className={s.arena__scene_figthers_fighter_relativeContainer_img} />
                         </div>
                     </div>
                     <div className={s.arena__scene_figthers_fighter} style={{ right: `${props.enemyPositionOnScreen}%`, opacity: `${enemysOpacity}`, transition: `opacity ${timeForEnemysDie}ms` }}>

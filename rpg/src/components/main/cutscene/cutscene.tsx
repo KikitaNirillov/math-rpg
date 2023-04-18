@@ -8,10 +8,13 @@ import RenderImg from 'components/renderImg'
 
 const Cutscene: React.FC<CutsceneProps> = ({ removeCurrentSlideFromCutsceneList, setSceneWithTransition, setOpacity, ...props }) => {
     useEffect(() => {
-        props.setCurrentSceneDidMount(true)
-        return () => props.setCurrentSceneDidMount(false)
-    }, [])
-    
+        if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
+            setTimeout(() => {
+                props.setCurrentSceneDidMount(true)
+            }, 0)
+        }
+    }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
+
     const currentSlide = props.slideList[0]
     const nextBtn = () => {
         if (props.slideList.length === 1) {
@@ -32,7 +35,7 @@ const Cutscene: React.FC<CutsceneProps> = ({ removeCurrentSlideFromCutsceneList,
         <div className={s.cutscene}>
             {currentSlide &&
                 <div className={s.cutscene__slide}>
-                    <RenderImg src={currentSlide.img} alt="slide image" className={s.cutscene__slide_img}/>
+                    <RenderImg src={currentSlide.img} alt="slide image" className={s.cutscene__slide_img} />
                     {/* <img src={currentSlide.img} alt="slide image" className={s.cutscene__slide_img} /> */}
                     <div className={s.cutscene__slide_text}>
                         <TypeWriter text={currentSlide.text} />

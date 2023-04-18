@@ -8,9 +8,13 @@ import RenderImg from 'components/renderImg'
 
 const ChoosePlayer: React.FC<ChoosePlayerProps> = (props) => {
     useEffect(() => {
-        props.setCurrentSceneDidMount(true)
-        return () => props.setCurrentSceneDidMount(false)
-    }, [])
+        if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
+            setTimeout(() => {
+                props.setCurrentSceneDidMount(true)
+            }, 0)
+        }
+    }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
+
     const [hero, choose] = useState<HeroName | null>(null)
     const сhooseButton = () => {
         if (hero) {

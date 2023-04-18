@@ -26,9 +26,13 @@ const improvementInfo = {
 
 const ImprovementScreen: React.FC<ImprovementScreenProps> = ({ getImprovement, setSceneWithTransition, ...props }) => {
     useEffect(() => {
-        props.setCurrentSceneDidMount(true)
-        return () => props.setCurrentSceneDidMount(false)
-    }, [])
+        if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
+            setTimeout(() => {
+                props.setCurrentSceneDidMount(true)
+            }, 0)
+        }
+    }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
+    
     const [focusImprovement, setFocusImprovement] = useState<FocusImprovement>('none')
     const improvementButton = (improvementName: Improvement) => {
         return (

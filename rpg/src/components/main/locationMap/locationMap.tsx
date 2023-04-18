@@ -7,9 +7,12 @@ import Store from './store/storeContainer'
 
 const LocationMap: React.FC<LocationMapProps> = (props) => {
     useEffect(() => {
-        props.setCurrentSceneDidMount(true)
-        return () => props.setCurrentSceneDidMount(false)
-    }, [])
+        if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
+            setTimeout(() => {
+                props.setCurrentSceneDidMount(true)
+            }, 0)
+        }
+    }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
     
     const [displayingWindow, setDisplayingWindow] = useState<'Inn' | 'Store' | null>(null)
     const closeLocationMapWindow = () => setDisplayingWindow(null)

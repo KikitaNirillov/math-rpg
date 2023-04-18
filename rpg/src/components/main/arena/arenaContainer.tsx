@@ -31,6 +31,9 @@ const mapStateToProps = (state: AppStateType) => ({
     enemyPositionOnScreen: state.enemy.positionOnArenaScreen,
 
     displayingFightInterface: state.fight.displayingFightInterface,
+
+    unloadedImagesQuantity: state.scene.unloadedImagesQuantity,
+    currentSceneDidMount: state.scene.currentSceneDidMount,
 })
 type StatePropsType = ReturnType<typeof mapStateToProps>
 

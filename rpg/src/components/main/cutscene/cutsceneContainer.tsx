@@ -8,6 +8,8 @@ const mapStateToProps = (state: AppStateType) => ({
     slideList: state.scene.currentCutscene.slideList,
     nextSceneName: state.scene.currentCutscene.nextSceneName,
     typeWriterIsWriting: state.game.typeWriterIsWriting,
+    unloadedImagesQuantity: state.scene.unloadedImagesQuantity,
+    currentSceneDidMount: state.scene.currentSceneDidMount,
 })
 
 type DispatchToProps = {

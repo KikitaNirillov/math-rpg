@@ -9,6 +9,8 @@ import { SceneName } from "scenes"
 const mapStateToProps = (state: AppStateType) => ({
     currencyImg: state.location.currencyImg,
     availableImprovements: state.location.availableImprovements,
+    unloadedImagesQuantity: state.scene.unloadedImagesQuantity,
+    currentSceneDidMount: state.scene.currentSceneDidMount,
 })
 
 type MapDispatchToProps = {
