@@ -1,7 +1,7 @@
 import { InventoryItemName } from "commonTypes";
-import healingPotionImg from "assets/imgs/potions/healingPotionImg.jpg"
-import freezingPotionImg from "assets/imgs/potions/freezingPotionImg.jpg"
-import poisonPotionImg from "assets/imgs/potions/poisonPotionImg.jpg"
+import healingPotionImg from "assets/imgs/potions/healingPotionImg.png"
+import freezingPotionImg from "assets/imgs/potions/freezingPotionImg.png"
+import poisonPotionImg from "assets/imgs/potions/poisonPotionImg.png"
 import { addedHealthPointsByHealthPotion, additionalDamageByPoison, durationOfFreezing, durationOfPoison } from "settings";
 
 type ItemInfo = {

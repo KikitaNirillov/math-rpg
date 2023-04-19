@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import './App.scss'
 import { connect } from 'react-redux'
 import { SceneName, scenes } from './scenes'
