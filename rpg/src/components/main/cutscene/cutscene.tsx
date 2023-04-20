@@ -1,4 +1,4 @@
-import { opacityTransition } from 'settings'
+import { delayForScenes, opacityTransition } from 'settings'
 import TypeWriter from 'components/typeWriter/typeWriter'
 import TypeWriterTransparentBtn from 'components/typeWriter/typeWriterTransparentBtn'
 import s from './cutscene.module.scss'
@@ -11,7 +11,7 @@ const Cutscene: React.FC<CutsceneProps> = ({ removeCurrentSlideFromCutsceneList,
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
                 props.setCurrentSceneDidMount(true)
-            }, 20)
+            }, delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 

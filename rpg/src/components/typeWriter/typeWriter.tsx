@@ -4,6 +4,7 @@ import useSound from "use-sound"
 import { AppStateType } from "@redux/store"
 import { setTypeWriterIsWriting, setTypeWriterStopped } from '@redux/gameReducer'
 import { connect } from "react-redux"
+import { opacityTransition } from "settings"
 
 const delayBeforeFirstSymbol = 300
 const defaultDelayBeforeNextSymbol = 80
@@ -17,6 +18,7 @@ const mapStateToProps = (state: AppStateType, ownProps: TypeWriterOwnProps) => (
     ...ownProps,
     typeWriterIsWriting: state.game.typeWriterIsWriting,
     typeWriterStopped: state.game.typeWriterStopped,
+    opacity: state.scene.opacity,
 })
 
 type MapDispatchToProps = {
@@ -26,7 +28,7 @@ type MapDispatchToProps = {
 
 type TypeWriterProps = MapDispatchToProps & ReturnType<typeof mapStateToProps>
 
-const TypeWriter: React.FC<TypeWriterProps> = ({ text, typeWriterStopped, setTypeWriterStopped, setTypeWriterIsWriting, whatToDoAtTheEnd = () => { } }) => {
+const TypeWriter: React.FC<TypeWriterProps> = ({ text, typeWriterStopped, opacity, setTypeWriterStopped, setTypeWriterIsWriting, whatToDoAtTheEnd = () => { } }) => {
     const [play, { stop }] = useSound(typewriterSound);
     const [newText, setNewText] = useState<string>('')
     const [letterNumber, setLetterNumber] = useState<number>(0)
@@ -54,7 +56,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({ text, typeWriterStopped, setTyp
     }, [typeWriterStopped])
 
     useEffect(() => {
-        if (!typeWriterStopped) {
+        if (!typeWriterStopped && opacity === 1) {
             setTimeout(() => {
                 if (newText.length !== text.length) {
                     setTimeout(() => {
@@ -67,9 +69,9 @@ const TypeWriter: React.FC<TypeWriterProps> = ({ text, typeWriterStopped, setTyp
                 } else {
                     setTypeWriterStopped(true)
                 }
-            }, firstSimbolDisplayed ? 0 : delayBeforeFirstSymbol)
+            }, firstSimbolDisplayed ? 0 : (delayBeforeFirstSymbol))
         }
-    }, [newText])
+    }, [newText, opacity])
 
     return <p>
         {typeWriterStopped ? text : newText}

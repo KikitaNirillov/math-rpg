@@ -1,5 +1,5 @@
 import gameOverScreenImg from '@assets/imgs/gameOverScreenImg.png'
-import { GameOverScreenTime } from 'settings'
+import { delayForScenes, GameOverScreenTime } from 'settings'
 import { useEffect } from 'react'
 import { GameOverProps } from './gameOverContainer'
 import RenderImg from 'components/renderImg'
@@ -13,7 +13,7 @@ const GameOver: React.FC<GameOverProps> = ({ initializeGame, ...props }) => {
                 setTimeout(() => {
                     initializeGame()
                 }, GameOverScreenTime)
-            }, 20)
+            }, delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 

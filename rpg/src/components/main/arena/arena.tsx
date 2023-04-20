@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import s from './arena.module.scss'
 import background from '@sprites/locations/location1/backgrounds/fightBackgroundLoc1.jpg'
 import { ArenaProps } from "./arenaContainer"
-import { changingHealthPointsTransition, delayBeforeEnemyAttack, opacityTransition, requiredEnemyHealthPointsForConversation, timeForEnemysDie } from "settings"
+import { changingHealthPointsTransition, delayBeforeEnemyAttack, delayForScenes, opacityTransition, requiredEnemyHealthPointsForConversation, timeForEnemysDie } from "settings"
 import DefaultInterface from "./defaultInterface/defaultInterface"
 import EquationInterface from "./equationInterface/equationInterface"
 import QuestionInterface from "./questionInterface/questionInterface"
@@ -20,7 +20,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
                 props.setCurrentSceneDidMount(true)
-            }, 20)
+            }, delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 

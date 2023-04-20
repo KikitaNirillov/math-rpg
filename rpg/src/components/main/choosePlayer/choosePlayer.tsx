@@ -5,13 +5,14 @@ import { useEffect, useState } from 'react'
 import { ChoosePlayerProps } from './choosePlayerContainer'
 import { HeroName } from 'base/heroes'
 import RenderImg from 'components/renderImg'
+import { delayForScenes } from 'settings'
 
 const ChoosePlayer: React.FC<ChoosePlayerProps> = (props) => {
     useEffect(() => {
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
                 props.setCurrentSceneDidMount(true)
-            }, 20)
+            }, delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 

@@ -1,5 +1,7 @@
-export const opacityTransition = 2000 // 5000
-export const opacityTransitionForUnblockScreen = 800 // 2000
+export const delayForScenes = 500;
+
+export const opacityTransition = 1200 // 5000
+export const opacityTransitionForUnblockScreen = 480 // 2000
 export const mandatoryLoadingScreenTime = 1000
 export const delayBeforeEnemyAttack = 5000 
 export const GameOverScreenTime = 2000
