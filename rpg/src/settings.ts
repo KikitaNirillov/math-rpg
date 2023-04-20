@@ -1,4 +1,4 @@
-export const delayForScenes = 500;
+export const delayForScenes = 1000;
 
 export const opacityTransition = 1200 // 5000
 export const opacityTransitionForUnblockScreen = 480 // 2000
