@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[1336],{1336:function(c,p,e){c.exports=e.p+"static/media/innIconLoc3.4f3308598d845066cb61.jpg"}}]);

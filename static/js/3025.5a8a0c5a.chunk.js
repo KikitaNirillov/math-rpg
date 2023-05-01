@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[3025],{3025:function(c,e,p){c.exports=p.p+"static/media/fightBackgroundLoc3.09c68ffcfce04811e29b.jpg"}}]);
