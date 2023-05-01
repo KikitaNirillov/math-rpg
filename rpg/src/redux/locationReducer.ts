@@ -19,6 +19,7 @@ const initialState = {
         lairIcon: undefined as string | undefined,
         innIcon: undefined as string | undefined,
         storeIcon: undefined as string | undefined,
+        toBossIcon: undefined as string | undefined,
     },
     currencyImg: undefined as string | undefined,
     availableImprovements: ['damageImprovement', 'protectionImprovement', 'timeImprovement'] as Array<Improvement>,

@@ -16,12 +16,15 @@ const mapStateToProps = (state: AppStateType) => ({
     lairIcon: state.location.locationEnvironment.lairIcon,
     innIcon: state.location.locationEnvironment.innIcon,
     storeIcon: state.location.locationEnvironment.storeIcon,
+    toBossIcon: state.location.locationEnvironment.toBossIcon,
     livingMonsterNames: state.location.livingMonsterNames,
     mainBossName: state.location.mainBossName,
     coins: state.player.coins,
     currencyImg: state.location.currencyImg,
     unloadedImagesQuantity: state.scene.unloadedImagesQuantity,
     currentSceneDidMount: state.scene.currentSceneDidMount,
+
+    sceneOpacity: state.scene.opacity,
 })
 type StatePropsType = ReturnType<typeof mapStateToProps>
 

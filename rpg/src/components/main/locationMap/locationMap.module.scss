@@ -8,6 +8,7 @@
 }
 .coins {
     position: absolute;
+    z-index: 6;
     font-size: 5.2vh;
     width: 98%;
     top: 1%;
@@ -27,30 +28,102 @@
     background-color: black;
     opacity: 0.7;
     position: absolute;
+    z-index: 5;
 }
 .locationMap {
     display: flex;
+    position: relative;
     align-items: center;
     margin: auto;
     height: 100%;
-    width: 100%;
+    aspect-ratio: 16/9;
     justify-content: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    &__button {
-        margin: 0 2%;
-        width: auto;
-        height: 40%;
-        font-size: 100%;
-        transition: all 0.2s;
-        &:hover {
-            font-size: 130%;
-            height: 45%;
+    &__backgroundImg {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+    }
+    &__onFocusInfo {
+        position: absolute;
+        z-index: 3;
+        height: 8%;
+        width: 50%;
+        left: 0;
+        right: 0;
+        bottom: 4%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        outline: 0.4vh solid white;
+        font-size: 5vh;
+        .p {
         }
-        &_icon {
-            width: auto;
-            height: 100%;
+    }
+    &__buttonList {
+        height: 100%;
+        width: 100%;
+        &_innBtn {
+            position: absolute;
+            z-index: 2;
+            transition: all 0.2s;
+            &_icon {
+                width: auto;
+                height: 100%;
+            }
+            height: 46.85%;
+            bottom: 31.5%;
+            left: 1.2%;
+            &:hover {
+                height: 48%;
+            }
+        }
+        &_storeBtn {
+            position: absolute;
+            z-index: 2;
+            transition: all 0.2s;
+            &_icon {
+                width: auto;
+                height: 100%;
+            }
+            height: 25%;
+            bottom: 28.4%;
+            right: 80%;
+            &:hover {
+                height: 26%;
+            }
+        }
+        &_bossBtn {
+            position: absolute;
+            z-index: 1;
+            transition: all 0.2s;
+            &_icon {
+                width: auto;
+                height: 100%;
+            }
+            height: 78.88%;
+            bottom: 20.5%;
+            left: 22.8%;
+            &:hover {
+                scale: 1.02;
+            }
+        }
+        &_lairBtn {
+            position: absolute;
+            z-index: 2;
+            transition: all 0.2s;
+            &_icon {
+                width: auto;
+                height: 100%;
+            }
+            height: 53.15%;
+            bottom: 33.5%;
+            right: 0;
+            &:hover {
+                height: 55%;
+            }
         }
     }
 }

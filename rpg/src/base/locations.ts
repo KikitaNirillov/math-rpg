@@ -8,6 +8,7 @@ export type LocationData = {
         lairIcon: string,
         innIcon: string,
         storeIcon: string,
+        toBossIcon: string,
     },
     livingMonsterNames: [EnemyName, EnemyName, EnemyName],
     mainBossName: EnemyName,

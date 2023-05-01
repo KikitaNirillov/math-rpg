@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react"
 import s from './arena.module.scss'
-import background from '@sprites/locations/location1/backgrounds/fightBackgroundLoc1.jpg'
 import { ArenaProps } from "./arenaContainer"
 import { changingHealthPointsTransition, delayBeforeEnemyAttack, delayForScenes, opacityTransition, requiredEnemyHealthPointsForConversation, timeForEnemysDie } from "settings"
 import DefaultInterface from "./defaultInterface/defaultInterface"
@@ -86,7 +85,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
 
     return (
         <div className={s.arena} >
-            <div className={s.arena__scene} style={{ backgroundImage: "url(" + background + ")" }}>
+            <div className={s.arena__scene} style={{ backgroundImage: "url(" + props.fightBackgroundImg + ")" }}>
                 <div className={s.arena__scene_healthBars}>
                     <div className={`${s.arena__scene_healthBars_container} ${playerIsAttacker ? s.attacker : ``}`}>
                         <div className={s.arena__scene_healthBars_container_health} style={{ width: `${props.playerHealthPoints}%`, transition: `all ${changingHealthPointsTransition}ms` }} />

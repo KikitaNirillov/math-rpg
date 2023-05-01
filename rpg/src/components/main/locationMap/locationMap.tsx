@@ -13,44 +13,60 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
             }, 0)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
-    
+
+    const [focusItem, setFocusItem] = useState<'inn' | 'store' | 'boss' | 'lair' | null>(null)
     const [displayingWindow, setDisplayingWindow] = useState<'Inn' | 'Store' | null>(null)
     const closeLocationMapWindow = () => setDisplayingWindow(null)
     return (
         <div className={s.locationMapScreen}>
-            <div className={`${s.locationMap} ${displayingWindow ? s.nowItsBackground : null}`} style={{
-                backgroundImage: "url(" + props.mapBackgroundImg + ")"
-            }}>
-                <button className={s.locationMap__button} onClick={() => {
-                    if (props.mainBossName) {
-                        props.changeDownloadQuantity('PLUS_ONE')
-                        props.setNewEnemy(props.mainBossName)
-                        props.setSceneWithTransition('Arena')
-                    }
-                    else console.warn('no bossName found')
-                }}>
-                    <img src='' alt="To main boss" className={s.locationMap__button_icon} />
-                </button>
-                <button className={s.locationMap__button} disabled={props.livingMonsterNames.length === 0} onClick={() => {
-                    if (props.livingMonsterNames) {
-                        props.changeDownloadQuantity('PLUS_ONE')
-                        props.setNewEnemy(props.livingMonsterNames[0])
-                        props.setSceneWithTransition('Arena')
-                    }
-                    else console.warn('no monsterNames found')
-                }}>
-                    <RenderImg src={props.lairIcon} alt="Lair" className={s.locationMap__button_icon} />
-                    {/* <img src={props.lairIcon} alt="Lair" className={s.locationMap__button_icon} /> */}
-                </button>
-                <button className={s.locationMap__button} onClick={() => setDisplayingWindow('Inn')}>
-                    <RenderImg src={props.innIcon} alt="Inn" className={s.locationMap__button_icon} />
-                    {/* <img src={props.innIcon} alt="Inn" className={s.locationMap__button_icon} /> */}
-                </button>
-                <button className={s.locationMap__button} onClick={() => setDisplayingWindow('Store')}>
-                    <RenderImg src={props.storeIcon} alt="Store" className={s.locationMap__button_icon}/>
-                    {/* <img src={props.storeIcon} alt="Store" className={s.locationMap__button_icon} /> */}
-                </button>
-
+            <div className={`${s.locationMap} ${displayingWindow ? s.nowItsBackground : null}`}>
+                <img src={props.mapBackgroundImg} alt="background" className={s.locationMap__backgroundImg} />
+                <div className={s.locationMap__onFocusInfo}>
+                    <p>
+                        {focusItem === null ? 'Where am I going?' : ('Go to the ' + focusItem)}
+                    </p>
+                </div>
+                <div className={s.locationMap__buttonList}>
+                    <button className={s.locationMap__buttonList_innBtn}
+                        onMouseOver={() => setFocusItem('inn')}
+                        onMouseLeave={() => displayingWindow === null && setFocusItem(null)}
+                        onClick={() => setDisplayingWindow('Inn')}>
+                        <RenderImg src={props.innIcon} alt="Inn" className={s.locationMap__buttonList_innBtn_icon} />
+                    </button>
+                    <button className={s.locationMap__buttonList_storeBtn}
+                        onMouseOver={() => setFocusItem('store')}
+                        onMouseLeave={() => displayingWindow === null && setFocusItem(null)}
+                        onClick={() => setDisplayingWindow('Store')}>
+                        <RenderImg src={props.storeIcon} alt="Store" className={s.locationMap__buttonList_storeBtn_icon} />
+                    </button>
+                    <button className={s.locationMap__buttonList_bossBtn}
+                        onMouseOver={() => setFocusItem('boss')}
+                        onMouseLeave={() => props.sceneOpacity === 1 && setFocusItem(null)}
+                        onClick={() => {
+                            if (props.mainBossName) {
+                                props.changeDownloadQuantity('PLUS_ONE')
+                                props.setNewEnemy(props.mainBossName)
+                                props.setSceneWithTransition('Arena')
+                            }
+                            else console.warn('no bossName found')
+                        }}>
+                        <RenderImg src={props.toBossIcon} alt='to boss' className={s.locationMap__buttonList_bossBtn_icon} />
+                    </button>
+                    <button className={s.locationMap__buttonList_lairBtn}
+                        disabled={props.livingMonsterNames.length === 0}
+                        onMouseOver={() => setFocusItem('lair')}
+                        onMouseLeave={() => props.sceneOpacity === 1 && setFocusItem(null)}
+                        onClick={() => {
+                            if (props.livingMonsterNames) {
+                                props.changeDownloadQuantity('PLUS_ONE')
+                                props.setNewEnemy(props.livingMonsterNames[0])
+                                props.setSceneWithTransition('Arena')
+                            }
+                            else console.warn('no monsterNames found')
+                        }}>
+                        <RenderImg src={props.lairIcon} alt="Lair" className={s.locationMap__buttonList_lairBtn_icon} />
+                    </button>
+                </div>
             </div>
             {displayingWindow === 'Inn' ? <Inn closeLocationMapWindow={closeLocationMapWindow} /> :
                 (

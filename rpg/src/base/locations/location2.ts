@@ -1,21 +1,23 @@
 import { LocationData } from "@base/locations";
-import mapBackgroundLoc2 from '@sprites/locations/location2/backgrounds/mapBackgroundLoc2.jpg'
-import fightBackgroundLoc2 from '@sprites/locations/location2/backgrounds/fightBackgroundLoc2.jpg'
-import innIconLoc2 from '@sprites/locations/location2/environment/innIconLoc2.jpg'
-import lairIconLoc2 from '@sprites/locations/location2/environment/lairIconLoc2.jpg'
-import storeIconLoc2 from '@sprites/locations/location2/environment/storeIconLoc2.jpg'
-import currencyImgLoc2 from '@sprites/locations/location2/currencyImgLoc2.png'
+import mapBackground from '@sprites/locations/location2/mapBackground.jpg'
+import fightBackground from '@sprites/locations/location2/fightBackground.jpg'
+import inn from '@sprites/locations/location2/inn.jpg'
+import lair from '@sprites/locations/location2/lair.jpg'
+import store from '@sprites/locations/location2/store.jpg'
+import currency from '@sprites/locations/location2/currencyImg.png'
+import toBoss from '@sprites/locations/location2/toBoss.png'
 
 export const data: LocationData = {
     locationName: "location2",
-    mapBackgroundImg: mapBackgroundLoc2,
-    fightBackgroundImg: fightBackgroundLoc2,
-    currencyImg: currencyImgLoc2,
+    mapBackgroundImg: mapBackground,
+    fightBackgroundImg: fightBackground,
+    currencyImg: currency,
     locationEnvironment: {
-        lairIcon: lairIconLoc2,
-        innIcon: innIconLoc2,
-        storeIcon: storeIconLoc2,
+        lairIcon: lair,
+        innIcon: inn,
+        storeIcon: store,
+        toBossIcon: toBoss,
     },
     livingMonsterNames: ['miniBoss1Loc2', 'miniBoss2Loc2', 'miniBoss3Loc2'],
-    mainBossName: 'mainBossLoc2'
+    mainBossName: 'mainBossLoc2',
 }

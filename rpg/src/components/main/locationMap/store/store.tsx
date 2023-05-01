@@ -42,7 +42,7 @@ const Store: React.FC<StoreProps> = ({ closeLocationMapWindow, buyInventoryItem,
                         (focusItem !== 'noMoneyForBuy' ?
                             inventoryItemsInfo[focusItem].description === '' ? <br />
                                 : inventoryItemsInfo[focusItem].description
-                            : 'No money...'
+                            : 'No coins...'
                         )
                         : '⇡ Click to buy ⇡'
                     }

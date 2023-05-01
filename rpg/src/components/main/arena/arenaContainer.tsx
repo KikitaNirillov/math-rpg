@@ -22,6 +22,8 @@ const mapStateToProps = (state: AppStateType) => ({
     attacker: state.fight.attacker,
     inventory: state.player.inventory,
 
+    fightBackgroundImg:state.location.fightBackgroundImg,
+
     fightInfo: state.fight.fightInfo,
 
     equation: state.fight.equation,
