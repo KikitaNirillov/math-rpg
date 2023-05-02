@@ -20,7 +20,7 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
     return (
         <div className={s.locationMapScreen}>
             <div className={`${s.locationMap} ${displayingWindow ? s.nowItsBackground : null}`}>
-                <img src={props.mapBackgroundImg} alt="background" className={s.locationMap__backgroundImg} />
+                <RenderImg src={props.mapBackgroundImg} alt="background" className={s.locationMap__backgroundImg} />
                 <div className={s.locationMap__onFocusInfo}>
                     <p>
                         {focusItem === null ? 'Where am I going?' : ('Go to the ' + focusItem)}
