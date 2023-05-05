@@ -69,15 +69,21 @@
             position: absolute;
             z-index: 2;
             transition: all 0.2s;
+            bottom: 31.5%;
+            left: 1.2%;
+            height: 46.85%;
             &_icon {
                 width: auto;
                 height: 100%;
             }
-            height: 46.85%;
-            bottom: 31.5%;
-            left: 1.2%;
             &:hover {
                 height: 48%;
+            } 
+            &.location3 {
+                height: 54%;
+                &:hover {
+                    height: 55.3%;
+                } 
             }
         }
         &_storeBtn {
@@ -118,11 +124,17 @@
                 width: auto;
                 height: 100%;
             }
-            height: 51%; //53.15%;
+            height: 51%; 
             bottom: 33.5%;
             right: 0;
             &:hover {
-                height: 52.2%; //55%;
+                height: 52.2%; 
+            }
+            &.location1 {
+                height: 53%;
+                &:hover {
+                    height: 54.5%;
+                } 
             }
         }
     }

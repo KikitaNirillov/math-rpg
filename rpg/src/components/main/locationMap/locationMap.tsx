@@ -18,7 +18,7 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
     const [displayingWindow, setDisplayingWindow] = useState<'Inn' | 'Store' | null>(null)
     const closeLocationMapWindow = () => setDisplayingWindow(null)
     return (
-        <div className={s.locationMapScreen}>
+        <div className={`${s.locationMapScreen}`}>
             <div className={`${s.locationMap} ${displayingWindow ? s.nowItsBackground : null}`}>
                 <RenderImg src={props.mapBackgroundImg} alt="background" className={s.locationMap__backgroundImg} />
                 <div className={s.locationMap__onFocusInfo}>
@@ -27,13 +27,13 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
                     </p>
                 </div>
                 <div className={s.locationMap__buttonList}>
-                    <button className={s.locationMap__buttonList_innBtn}
+                    <button className={`${s.locationMap__buttonList_innBtn} ${props.locationName && s[props.locationName]}`}
                         onMouseOver={() => setFocusItem('inn')}
                         onMouseLeave={() => displayingWindow === null && setFocusItem(null)}
                         onClick={() => setDisplayingWindow('Inn')}>
                         <RenderImg src={props.innIcon} alt="Inn" className={s.locationMap__buttonList_innBtn_icon} />
                     </button>
-                    <button className={s.locationMap__buttonList_storeBtn}
+                    <button className={s.locationMap__buttonList_storeBtn} 
                         onMouseOver={() => setFocusItem('store')}
                         onMouseLeave={() => displayingWindow === null && setFocusItem(null)}
                         onClick={() => setDisplayingWindow('Store')}>
@@ -52,7 +52,7 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
                         }}>
                         <RenderImg src={props.toBossIcon} alt='to boss' className={s.locationMap__buttonList_bossBtn_icon} />
                     </button>
-                    <button className={s.locationMap__buttonList_lairBtn}
+                    <button className={`${s.locationMap__buttonList_lairBtn} ${props.locationName && s[props.locationName]}`}
                         disabled={props.livingMonsterNames.length === 0}
                         onMouseOver={() => setFocusItem('lair')}
                         onMouseLeave={() => props.sceneOpacity === 1 && setFocusItem(null)}
