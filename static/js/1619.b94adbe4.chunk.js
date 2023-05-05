@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[1619],{1619:function(a,p,c){a.exports=c.p+"static/media/mapBackground.9c7060fa48fd9c2abab5.jpg"}}]);

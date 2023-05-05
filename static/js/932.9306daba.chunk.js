@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[932],{932:function(p,e,s){p.exports=s.p+"static/media/lair.61b3988a721cd886d490.jpg"}}]);
