@@ -37,13 +37,17 @@ const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransit
   }, [props.currentScene, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
 
   return (
-    (CurrentScene === null || (props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
-      <LoadingScreen setLoadingExistedForEnoughTime={setLoadingExistedForEnoughTime} /> :
-      <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${opacityTransition}ms` }}>
-        <Suspense fallback={<div></div>}>
-          <CurrentScene />
-        </Suspense>
-      </div >
+    <div className='app'>
+      {
+        (CurrentScene === null || (props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
+          <LoadingScreen setLoadingExistedForEnoughTime={setLoadingExistedForEnoughTime} /> :
+          <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${opacityTransition}ms` }}>
+            <Suspense fallback={<div/>}>
+              <CurrentScene />
+            </Suspense>
+          </div >
+      }
+    </div>
   );
 }
 

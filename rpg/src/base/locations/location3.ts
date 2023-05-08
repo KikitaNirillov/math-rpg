@@ -1,6 +1,6 @@
 import { LocationData } from "@base/locations";
 import mapBackground from '@sprites/locations/location3/mapBackground.gif'
-import fightBackground from '@sprites/locations/location3/fightBackground.jpg'
+import fightBackground from '@sprites/locations/location3/fightBackground.png'
 import inn from '@sprites/locations/location3/inn.gif'
 import lair from '@sprites/locations/location3/lair.png'
 import store from '@sprites/locations/location3/store.png'
