@@ -1,6 +1,6 @@
 import s from './questionInterface.module.scss'
 import { EnemyQuestion } from '@redux/enemyReducer';
-import { requiredTalkTime } from 'settings';
+import settings from 'settings';
 import TypeWriter from 'components/typeWriter/typeWriter';
 import { useEffect, useMemo, useState } from 'react';
 import { FightInterfaceName } from '@redux/fightReducer';
@@ -31,7 +31,7 @@ const QuestionInterface: React.FC<QuestionInterfaceProps> = ({ setDisplayingFigh
                         text={props.enemyQuestions ? ("I don't know why, but I can't do it now.") : ("It doesn't make sense...")}
                         whatToDoAtTheEnd={() => setTimeout(() => {
                             setDisplayingFightInterface('defaultInterface')
-                        }, requiredTalkTime)}
+                        }, settings.requiredTalkTime)}
                     />
                 </div>
             </div>

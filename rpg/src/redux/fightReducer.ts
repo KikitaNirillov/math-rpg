@@ -1,6 +1,6 @@
 import { EquationData } from '@base/equations';
 import { requestEquation } from '@base/equations';
-import { additionalDamageByPoison, defaultRewardForMiniBoss } from 'settings';
+import settings from 'settings';
 import fightInfoCreator from 'common/fightInfoCreator';
 import { ActionWithoutPayload, AppThunk, ActionWithPayload } from 'commonTypes';
 import { removeCurrentQuestion, setEnemyHealthPoints, setEnemyPositionOnArenaScreen, swapStaticAndDefaultImgForEnemy, minusEnemyEffectsDuration } from './enemyReducer';
@@ -169,7 +169,7 @@ const giveDamage = (attacker: 'player' | 'enemy', receiving: 'player' | 'enemy')
             attackerDamage = attackerDamage * 2
         }
         if (currentEnemyEffects.some(effect => effect.name === 'Poisoned')) {
-            attackerDamage = attackerDamage + additionalDamageByPoison
+            attackerDamage = attackerDamage + settings.additionalDamageByPoison
         }
         if (currentReceivingHealthPoints < attackerDamage) dispatch(setEnemyHealthPoints(0))
         else dispatch(setEnemyHealthPoints(currentReceivingHealthPoints - attackerDamage))
@@ -276,7 +276,7 @@ export const overcomeCurrentEnemy = (method: 'talk' | 'kill'): AppThunk => (disp
     const currentEnemyName = getState().enemy.name
     const currentEnemyType = getState().enemy.enemyType
     if (currentEnemyName) {
-        if (currentEnemyType === 'miniBoss') dispatch(addCoins(defaultRewardForMiniBoss))
+        if (currentEnemyType === 'miniBoss') dispatch(addCoins(settings.defaultRewardForMiniBoss))
         dispatch(removeMosterNameFromLivingList(currentEnemyName))
         if (method === 'talk') {
             dispatch(addMonsterToDefeatedList(currentEnemyName))

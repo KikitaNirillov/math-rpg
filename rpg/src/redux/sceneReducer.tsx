@@ -1,5 +1,5 @@
 import { CutsceneData, CutsceneName, requestCutscene, SlideData } from "@base/cutscenes"
-import { opacityTransition } from "settings"
+import settings from "settings"
 import { ActionWithoutPayload, ActionWithPayload, AppThunk } from "../commonTypes"
 import { SceneName } from "../scenes"
 
@@ -152,7 +152,7 @@ export const setSceneWithTransition = (scene: SceneName): AppThunk => (dispatch)
     setTimeout(() => {
         dispatch(setScene(scene))
         dispatch(setOpacityTransitionToZeroIsOver(true))
-    }, opacityTransition)
+    }, settings.opacityTransition)
 }
 
 export const setCutscene = (cutsceneName: CutsceneName): AppThunk => (dispatch) => {

@@ -4,7 +4,6 @@ import useSound from "use-sound"
 import { AppStateType } from "@redux/store"
 import { setTypeWriterIsWriting, setTypeWriterStopped } from '@redux/gameReducer'
 import { connect } from "react-redux"
-import { opacityTransition } from "settings"
 
 const delayBeforeFirstSymbol = 300
 const defaultDelayBeforeNextSymbol = 80

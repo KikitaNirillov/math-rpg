@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import s from './arena.module.scss'
 import { ArenaProps } from "./arenaContainer"
-import { changingHealthPointsTransition, delayBeforeEnemyAttack, delayForScenes, opacityTransition, requiredEnemyHealthPointsForConversation, timeForEnemysDie } from "settings"
+import settings from 'settings'
 import DefaultInterface from "./defaultInterface/defaultInterface"
 import EquationInterface from "./equationInterface/equationInterface"
 import QuestionInterface from "./questionInterface/questionInterface"
@@ -9,6 +9,7 @@ import TypeWriterTransparentBtn from "components/typeWriter/typeWriterTransparen
 import InventoryInterface from "./inventoryInterface/inventoryInterface"
 import RenderImg from "components/renderImg"
 import bossfightBackground from '@assets/imgs/bossfightBackground.gif'
+
 
 const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, answerEquation, answerQuestion, setSceneWithTransition, overcomeCurrentEnemy, setNewLocation, setDisplayingFightInterface, employInventoryItem, ...props }) => {
     const playerIsAttacker = (props.attacker === 'player' && props.playerHealthPoints > 0)
@@ -20,18 +21,9 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
                 props.setCurrentSceneDidMount(true)
-            }, delayForScenes)
+            }, settings.delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
-
-    // logic of the enemy's turn:
-    useEffect(() => {
-        if (props.attacker === "enemy" && props.enemyHealthPoints > 0) {
-            setTimeout(() => {
-                makeAttack()
-            }, delayBeforeEnemyAttack)
-        }
-    }, [props.attacker])
 
     // logic of the timer end: 
     useEffect(() => {
@@ -45,7 +37,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
         if (props.playerHealthPoints !== null && props.playerHealthPoints <= 0) {
             setTimeout(() => {
                 setSceneWithTransition('GameOver')
-            }, changingHealthPointsTransition)
+            }, settings.changingHealthPointsTransition)
         }
     }, [props.playerHealthPoints])
 
@@ -54,19 +46,19 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
             overcomeCurrentEnemy("kill")
             setTimeout(() => {
                 setEnemysOpacity(0)
-            }, changingHealthPointsTransition)
+            }, settings.changingHealthPointsTransition)
             setTimeout(() => {
                 if (props.enemyType === "mainBoss") {
                     setSceneWithTransition('LocationMap')
                 }
                 else setSceneWithTransition('ImprovementScreen')
-            }, changingHealthPointsTransition + timeForEnemysDie)
+            }, settings.changingHealthPointsTransition + settings.timeForEnemysDie)
             setTimeout(() => {
                 if (props.enemyType === "mainBoss") {
                     setNewLocation()
                 }
                 swapAttackerAndReceiving() // for return a turn to the player 
-            }, changingHealthPointsTransition + timeForEnemysDie + opacityTransition)
+            }, settings.changingHealthPointsTransition + settings.timeForEnemysDie + settings.opacityTransition)
         }
     }, [props.enemyHealthPoints])
     useEffect(() => { //if victoryMethod === 'talk'
@@ -74,24 +66,24 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
             overcomeCurrentEnemy("talk")
             setTimeout(() => {
                 setEnemysOpacity(0)
-            }, changingHealthPointsTransition) // i can use any amount of time there
+            }, settings.changingHealthPointsTransition) // i can use any amount of time there
             setTimeout(() => {
                 setSceneWithTransition('ImprovementScreen')
-            }, changingHealthPointsTransition + timeForEnemysDie)
+            }, settings.changingHealthPointsTransition + settings.timeForEnemysDie)
             setTimeout(() => {
                 setDisplayingFightInterface("defaultInterface")
-            }, changingHealthPointsTransition + timeForEnemysDie + opacityTransition)
+            }, settings.changingHealthPointsTransition + settings.timeForEnemysDie + settings.opacityTransition)
         }
     }, [props.enemyQuestions])
 
     return (
         <div className={s.arena} >
             <div className={s.arena__scene}>
-                <RenderImg src={props.enemyType==="mainBoss" ? bossfightBackground  : props.fightBackgroundImg} alt="background" className={s.arena__scene_backgroundImg} />
+                <RenderImg src={props.enemyType === "mainBoss" ? bossfightBackground : props.fightBackgroundImg} alt="background" className={s.arena__scene_backgroundImg} />
                 <div className={s.arena__scene_content}>
                     <div className={s.arena__scene_content_healthBars}>
                         <div className={`${s.arena__scene_content_healthBars_container} ${playerIsAttacker ? s.attacker : ``}`}>
-                            <div className={s.arena__scene_content_healthBars_container_health} style={{ width: `${props.playerHealthPoints}%`, transition: `all ${changingHealthPointsTransition}ms` }} />
+                            <div className={s.arena__scene_content_healthBars_container_health} style={{ width: `${props.playerHealthPoints}%`, transition: `all ${settings.changingHealthPointsTransition}ms` }} />
                             <p className={s.arena__scene_content_healthBars_container_name}>{props.playerHealthPoints}</p>
                         </div>
                         <div className={`${s.arena__scene_content_healthBars_container}`}>
@@ -103,20 +95,18 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                             </p>
                         </div>
                         <div className={`${s.arena__scene_content_healthBars_container} ${!playerIsAttacker ? s.attacker : ``}`}>
-                            <div className={s.arena__scene_content_healthBars_container_health} style={{ width: `${(props.enemyType === 'mainBoss' ? props.enemyHealthPoints / 2 : props.enemyHealthPoints)}%`, transition: `all ${changingHealthPointsTransition}ms` }} />
+                            <div className={s.arena__scene_content_healthBars_container_health} style={{ width: `${(props.enemyType === 'mainBoss' ? props.enemyHealthPoints / 2 : props.enemyHealthPoints)}%`, transition: `all ${settings.changingHealthPointsTransition}ms` }} />
                             <p className={s.arena__scene_content_healthBars_container_name}>{props.enemyHealthPoints}</p>
                         </div>
                     </div>
                     <div className={s.arena__scene_content_figthers}>
                         <div className={s.arena__scene_content_figthers_fighter} style={{ left: `${props.playerPositionOnScreen}%` }}>
                             <div className={s.arena__scene_content_figthers_fighter_relativeContainer}>
-                                {/* <RenderImg src={props.playerDefaultImg} alt="Player" className={s.arena__scene_content_figthers_fighter_relativeContainer_img}/> */}
                                 <img src={props.playerDefaultImg} alt="Player" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} />
                             </div>
                         </div>
-                        <div className={s.arena__scene_content_figthers_fighter} style={{ right: `${props.enemyPositionOnScreen}%`, opacity: `${enemysOpacity}`, transition: `opacity ${timeForEnemysDie}ms` }}>
+                        <div className={s.arena__scene_content_figthers_fighter} style={{ right: `${props.enemyPositionOnScreen}%`, opacity: `${enemysOpacity}`, transition: `opacity ${settings.timeForEnemysDie}ms` }}>
                             <div className={s.arena__scene_content_figthers_fighter_relativeContainer}>
-                                {/* <RenderImg src={props.enemyDefaultImg} alt="Enemy" className={s.arena__scene_content_figthers_fighter_relativeContainer_img}/> */}
                                 <img src={props.enemyDefaultImg} alt="Enemy" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} />
                             </div>
                         </div>
@@ -133,7 +123,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                                 : (
                                     props.displayingFightInterface === "inventoryInterface" ?
                                         <InventoryInterface setDisplayingFightInterface={setDisplayingFightInterface} inventory={props.inventory} employInventoryItem={employInventoryItem} />
-                                        : <DefaultInterface attack={makeAttack} playerIsAttacker={playerIsAttacker} escape={escape} setDisplayingFightInterface={setDisplayingFightInterface} fightInfo={props.fightInfo} />
+                                        : <DefaultInterface attack={makeAttack} playerIsAttacker={playerIsAttacker} enemyHealthPoints={props.enemyHealthPoints} escape={escape} setDisplayingFightInterface={setDisplayingFightInterface} fightInfo={props.fightInfo} />
                                 )
                         )
                 }

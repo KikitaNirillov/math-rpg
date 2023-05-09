@@ -3,7 +3,7 @@ import './App.scss'
 import { connect } from 'react-redux'
 import { SceneName, scenes } from './scenes'
 import { AppStateType } from './redux/store'
-import { opacityTransition, opacityTransitionForUnblockScreen } from './settings'
+import settings from 'settings'
 import { initializeGame } from '@redux/gameReducer'
 import { setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount } from 'redux/sceneReducer'
 import LoadingScreen from 'components/loadingScreen'
@@ -31,7 +31,7 @@ const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransit
         setOpacity(1)
         setTimeout(() => {
           setOpacityTransitionIsOver(true)
-        }, opacityTransitionForUnblockScreen)
+        }, settings.opacityTransitionForUnblockScreen)
       }
     }
   }, [props.currentScene, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
@@ -41,7 +41,7 @@ const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransit
       {
         (CurrentScene === null || (props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
           <LoadingScreen setLoadingExistedForEnoughTime={setLoadingExistedForEnoughTime} /> :
-          <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${opacityTransition}ms` }}>
+          <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${settings.opacityTransition}ms` }}>
             <Suspense fallback={<div/>}>
               <CurrentScene />
             </Suspense>

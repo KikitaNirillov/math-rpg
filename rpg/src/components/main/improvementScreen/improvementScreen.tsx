@@ -5,7 +5,7 @@ import timeImprovementImg from '@assets/imgs/improvements/increasedProtectionTim
 import { useEffect, useState } from 'react'
 import { ImprovementScreenProps } from './improvementScreenContainer'
 import { Improvement } from 'commonTypes'
-import { delayForScenes, opacityTransition } from 'settings'
+import settings from 'settings'
 import RenderImg from 'components/renderImg'
 
 type FocusImprovement = 'none' | 'damageImprovement' | 'protectionImprovement' | 'timeImprovement'
@@ -29,7 +29,7 @@ const ImprovementScreen: React.FC<ImprovementScreenProps> = ({ getImprovement, s
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
                 props.setCurrentSceneDidMount(true)
-            }, delayForScenes)
+            }, settings.delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
     
@@ -42,7 +42,7 @@ const ImprovementScreen: React.FC<ImprovementScreenProps> = ({ getImprovement, s
                 onMouseLeave={() => setFocusImprovement('none')}
                 onClick={() => {
                     setSceneWithTransition('LocationMap')
-                    setTimeout(() => getImprovement(improvementName), opacityTransition)
+                    setTimeout(() => getImprovement(improvementName), settings.opacityTransition)
                 }}
             >
                 <RenderImg src={improvementInfo[improvementName].img} alt={improvementName} className={s.improvementScreen__improvements_list_button_img}/>

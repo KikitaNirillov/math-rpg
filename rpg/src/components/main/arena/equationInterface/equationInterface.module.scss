@@ -2,6 +2,16 @@
     align-items: center;
     justify-content: space-between;
     display: flex;
+    &__loadingSpinnerContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &_img {
+            height: 40%;
+        }
+    }
     &__equation {
         height: 100%;
         width: 49%;

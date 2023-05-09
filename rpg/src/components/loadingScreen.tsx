@@ -1,5 +1,5 @@
-import loadingScreenImg from '@assets/imgs/loadingImg.gif'
-import { mandatoryLoadingScreenTime } from 'settings'
+import loadingScreenImg from '@assets/imgs/loadingScreen.gif'
+import settings from 'settings'
 import { useEffect } from 'react'
 
 type PropsType = {
@@ -13,7 +13,7 @@ const LoadingScreen: React.FC<PropsType> = ({ setLoadingExistedForEnoughTime }) 
     useEffect(() => {
         setTimeout(() => {
             setLoadingExistedForEnoughTime(true)
-        }, mandatoryLoadingScreenTime)
+        }, settings.mandatoryLoadingScreenTime)
     }, [])
     return (
         <img src={loadingScreenImg} alt="Loading..." style={{ height: '100%', width: '100%' }} />

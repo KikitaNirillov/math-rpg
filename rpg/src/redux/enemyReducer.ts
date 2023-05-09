@@ -2,7 +2,7 @@ import { EnemyData } from './../base/enemies';
 import { EnemyName, requestEnemy } from "../base/enemies"
 import { ActionWithoutPayload, ActionWithPayload, AppThunk } from "commonTypes"
 import { changeDownloadQuantity } from './sceneReducer';
-import { durationOfFreezing, durationOfPoison } from 'settings';
+import settings from 'settings';
 import { resetFightInfo } from './fightReducer';
 
 enum enemyActionList {
@@ -148,7 +148,7 @@ export const setNewEnemy = (enemyName: EnemyName): AppThunk => (dispatch) => {
 export const freezeEnemy = (): AppThunk => (dispatch) => {
     const effect: Effect = {
         name: 'Frozen',
-        duration: durationOfFreezing
+        duration: settings.durationOfFreezing
     }
     dispatch(addEffectToEnemy(effect))
 }
@@ -156,7 +156,7 @@ export const freezeEnemy = (): AppThunk => (dispatch) => {
 export const poisonEnemy = (): AppThunk => (dispatch) => {
     const effect: Effect = {
         name: 'Poisoned',
-        duration: durationOfPoison
+        duration: settings.durationOfPoison
     }
     dispatch(addEffectToEnemy(effect))
 }

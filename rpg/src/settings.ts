@@ -1,25 +1,28 @@
-export const delayForScenes = 1000;
+const settings = {
+    delayForScenes: 1000,
+    opacityTransition: 1200, // 5000
+    opacityTransitionForUnblockScreen: 480, // 2000
+    mandatoryLoadingScreenTime: 1000,
+    delayBeforeEnemyAttack: 5000,
+    gameOverScreenTime: 2000,
+    changingHealthPointsTransition: 1000,
+    timeForEnemysDie: 2000,
+    requiredTalkTime: 1000, // for talk  to the enemy when histype mainBoss or EnemyHealthPoints > requiredEnemyHealthPointsForConversation
 
-export const opacityTransition = 1200 // 5000
-export const opacityTransitionForUnblockScreen = 480 // 2000
-export const mandatoryLoadingScreenTime = 1000
-export const delayBeforeEnemyAttack = 5000 
-export const GameOverScreenTime = 2000
-export const changingHealthPointsTransition = 1000
-export const timeForEnemysDie = 2000
-export const requiredTalkTime = 3000 // for talk  to the enemy when histype mainBoss or EnemyHealthPoints > requiredEnemyHealthPointsForConversation
+    maxPlayerHelthPoints: 100,
 
-export const maxPlayerHelthPoints = 100
-
-// Coins:
-export const defaultRewardForMiniBoss = 3
-export const pricePerInn = 3
+    // Coins:
+    defaultRewardForMiniBoss: 3,
+    pricePerInn: 3,
     // other prices specified in rpg/src/common/inventoryItemsInfo.ts
 
-// Potions:
-export const addedHealthPointsByHealthPotion = 25
-export const durationOfFreezing = 2 // 2 additional players attacks
-export const durationOfPoison = 3
-export const additionalDamageByPoison = 10
+    // Potions:
+    addedHealthPointsByHealthPotion: 25,
+    durationOfFreezing: 2, // 2 additional players attacks
+    durationOfPoison: 3,
+    additionalDamageByPoison: 10,
 
-export const requiredEnemyHealthPointsForConversation = 25
+    requiredEnemyHealthPointsForConversation: 25,
+}
+
+export default settings

@@ -1,7 +1,7 @@
 import { ActionWithoutPayload, ActionWithPayload, AppThunk, Improvement, InventoryItem, InventoryItemName } from "commonTypes"
 import { HeroData, HeroName, requestHero } from "@base/heroes"
 import { removeImprovementFromAvailableList } from "./locationReducer"
-import { addedHealthPointsByHealthPotion, maxPlayerHelthPoints } from "settings"
+import settings from "settings"
 import { freezeEnemy, poisonEnemy } from "./enemyReducer"
 
 enum playerActionList {
@@ -22,7 +22,7 @@ const initialState = {
     staticImg: undefined as string | undefined, // img when attacked
     // displayedImg: 'defaultImg' as 'defaultImg' | 'staticImg',
     berserkModImg: undefined as string | undefined,
-    healthPoints: maxPlayerHelthPoints as number,
+    healthPoints: settings.maxPlayerHelthPoints as number,
     inventory: [] as Array<InventoryItem>,
     improvements: [] as Array<Improvement>,
     damage: 50 as number, //12.5
@@ -170,8 +170,8 @@ export const buyInventoryItem = (itemName: InventoryItemName, cost: number): App
 
 const restorePlayerHealthPoints = (addedHealthPoints: number): AppThunk => (dispatch, getState) => {
     const currentPlayerHealthPoints = getState().player.healthPoints
-    if (addedHealthPoints > maxPlayerHelthPoints - currentPlayerHealthPoints)
-        dispatch(setPlayerHealthPoints(maxPlayerHelthPoints))
+    if (addedHealthPoints > settings.maxPlayerHelthPoints - currentPlayerHealthPoints)
+        dispatch(setPlayerHealthPoints(settings.maxPlayerHelthPoints))
     else
         dispatch(setPlayerHealthPoints(currentPlayerHealthPoints + addedHealthPoints))
 }
@@ -181,7 +181,7 @@ export const employInventoryItem = (itemName: InventoryItemName): AppThunk => (d
     if (currentInventory.some(item => item.name === itemName)) {
         dispatch(removeInventoryItem(itemName))
         if (itemName === "Healing potion") {
-            dispatch(restorePlayerHealthPoints(addedHealthPointsByHealthPotion))
+            dispatch(restorePlayerHealthPoints(settings.addedHealthPointsByHealthPotion))
         }
         else if (itemName === "Freezing potion") {
             dispatch(freezeEnemy())

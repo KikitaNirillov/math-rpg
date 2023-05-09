@@ -1,9 +1,9 @@
-import { changingHealthPointsTransition, pricePerInn } from 'settings'
+import settings from 'settings'
 import s from './inn.module.scss'
 import { InnProps } from './innContainer'
 
 const Inn: React.FC<InnProps> = ({ setPlayerHealthPoints, closeLocationMapWindow, ...props }) => {
-    const disableYesBtn = props.coins < pricePerInn || props.playerHealthPoints === 100
+    const disableYesBtn = props.coins < settings.pricePerInn || props.playerHealthPoints === 100
     const sleep = () => {
         setPlayerHealthPoints(100)
     }
@@ -12,7 +12,7 @@ const Inn: React.FC<InnProps> = ({ setPlayerHealthPoints, closeLocationMapWindow
             <div className={s.inn__healthInfo}>
                 <p className={s.inn__healthInfo_title}>Your health:</p>
                 <div className={s.inn__healthInfo_bar}>
-                    <div className={s.inn__healthInfo_bar_stripe} style={{ width: `${props.playerHealthPoints}%`, transition: `all ${changingHealthPointsTransition}ms` }} />
+                    <div className={s.inn__healthInfo_bar_stripe} style={{ width: `${props.playerHealthPoints}%`, transition: `all ${settings.changingHealthPointsTransition}ms` }} />
                     <p className={s.inn__healthInfo_bar_points}>{props.playerHealthPoints}</p>
                 </div>
             </div>

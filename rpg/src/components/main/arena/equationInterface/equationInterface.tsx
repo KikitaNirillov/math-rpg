@@ -2,6 +2,7 @@ import s from './equationInterface.module.scss'
 import { Formik, Form, Field, FormikProps } from 'formik';
 import { EnteredEquationAnswer } from '@redux/fightReducer';
 import systemSymbol from 'assets/imgs/System Symbol.png';
+import loadingSpinner from '@assets/imgs/loadingSpinner.gif'
 
 const CustomField: React.FC<{ formik: FormikProps<MyFormValues>, name: 'x' | 'y', autoFocus?: boolean }> = ({ formik, name, autoFocus = false }) => {
     const placeholder = name.toUpperCase() + " value(s)"
@@ -39,7 +40,9 @@ const EquationInterface: React.FC<EquationInterfaceProps> = ({ answerEquation, .
     }
     if (props.equation === null) return (
         <div className={`${s.equationInterface} arenaInterfaceContainer`} >
-
+            <div className={s.equationInterface__loadingSpinnerContainer}>
+                <img src={loadingSpinner} alt="loading..." className={s.equationInterface__loadingSpinnerContainer_img} />
+            </div>
         </div>
     )
     else {
@@ -48,7 +51,7 @@ const EquationInterface: React.FC<EquationInterfaceProps> = ({ answerEquation, .
             <div className={`${s.equationInterface} arenaInterfaceContainer`}>
                 <div className={s.equationInterface__equation}>
                     {(equation.length > 1) &&
-                        <img src={systemSymbol} alt="system of equations symbol" className={s.equationInterface__equation_symbol}/>
+                        <img src={systemSymbol} alt="system of equations symbol" className={s.equationInterface__equation_symbol} />
                     }
                     <div className={s.equationInterface__equation_parts}>
                         {equation.map(el =>

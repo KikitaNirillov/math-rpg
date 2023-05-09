@@ -2,7 +2,7 @@ import { InventoryItemName } from "commonTypes";
 import healingPotionImg from "assets/imgs/potions/healingPotionImg.png"
 import freezingPotionImg from "assets/imgs/potions/freezingPotionImg.png"
 import poisonPotionImg from "assets/imgs/potions/poisonPotionImg.png"
-import { addedHealthPointsByHealthPotion, additionalDamageByPoison, durationOfFreezing, durationOfPoison } from "settings";
+import settings from "settings";
 
 type ItemInfo = {
     img: string
@@ -12,17 +12,17 @@ type ItemInfo = {
 export const inventoryItemsInfo: Record<InventoryItemName, ItemInfo> = {
     'Healing potion': {
         img: healingPotionImg,
-        description: `Restore ${addedHealthPointsByHealthPotion} health points`,
+        description: `Restore ${settings.addedHealthPointsByHealthPotion} health points`,
         cost: 2,
     },
     'Freezing potion': {
         img: freezingPotionImg,
-        description: `Freeze the enemy for ${durationOfFreezing} him moves`,
+        description: `Freeze the enemy for ${settings.durationOfFreezing} him moves`,
         cost: 4,
     },
     'Poison potion': {
         img: poisonPotionImg,
-        description: `Add ${additionalDamageByPoison} damage for ${durationOfPoison} your moves`,
+        description: `Add ${settings.additionalDamageByPoison} damage for ${settings.durationOfPoison} your moves`,
         cost: 5,
     },
 }

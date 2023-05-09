@@ -1,6 +1,6 @@
 import { EnemyName } from "@base/enemies"
 import { HeroName } from "@base/heroes"
-import { additionalDamageByPoison } from "settings"
+import settings from "settings"
 import { Effect } from "@redux/enemyReducer"
 
 type MainInfoVariablesKeys = 'warriorIsAttacker' | 'magicianIsAttacker'
@@ -72,7 +72,7 @@ const effectInfo: Record<EffectInfoKeys, Info> = {
     },
     'Poisoned': {
         beforeEnemyName: 'Due to the effect of the poison, ',
-        afterEnemyName: ' receives an additional ' + additionalDamageByPoison + ' damage'
+        afterEnemyName: ' receives an additional ' + settings.additionalDamageByPoison + ' damage'
     },
 }
 

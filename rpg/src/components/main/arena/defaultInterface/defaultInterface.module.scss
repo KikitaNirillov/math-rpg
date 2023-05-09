@@ -12,6 +12,9 @@
             align-items: center;
             font-size: 7vh;
             border: 1vh ridge #ffffff;
+            &.readyButton {
+                width: 100%;
+            }
             &:hover {
                 border: 1.4vh ridge #ffffff;
             }
