@@ -2,11 +2,10 @@ import settings from 'settings'
 import s from './inn.module.scss'
 import { InnProps } from './innContainer'
 
-const Inn: React.FC<InnProps> = ({ setPlayerHealthPoints, closeLocationMapWindow, ...props }) => {
+const Inn: React.FC<InnProps> = ({ buyFullHeal, closeLocationMapWindow, ...props }) => {
     const disableYesBtn = props.coins < settings.pricePerInn || props.playerHealthPoints === 100
     const sleep = () => {
-        
-        setPlayerHealthPoints(100)
+        buyFullHeal()
     }
     return (
         <div className={`${s.inn} locationMapWindow`}>

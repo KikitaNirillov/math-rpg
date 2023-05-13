@@ -1,5 +1,7 @@
 import { LocationName } from '@base/locations';
+import { Difficulty } from '@redux/gameReducer';
 import * as math from 'mathjs';
+
 export type EquationAnswer = {
     x: Array<number>
     y?: Array<number>
@@ -10,15 +12,18 @@ export type EquationData = {
     equationAnswer: EquationAnswer
 }
 
-const getRandomNumber = () => {
-    const number = Math.floor(Math.random() * 99) + 1 / ((Math.random() <= 0.5) ? 10 : 1)
+const getRandomNumber = (difficulty: Difficulty) => {
+    let number = Math.floor(Math.random() * 99) + 1
+    if (difficulty === 'hard') {
+        number = number / ((Math.random() <= 0.5) ? 10 : 1)
+    }
     return ((Math.random() <= 0.5) ? (-number) : number)
 }
 
-const generateLinearEquation = (): Promise<EquationData> => {
-    const answer = getRandomNumber();
-    const firstNumber = getRandomNumber();
-    const secondNumber = getRandomNumber();
+const generateLinearEquation = (difficulty: Difficulty): Promise<EquationData> => {
+    const answer = getRandomNumber(difficulty);
+    const firstNumber = getRandomNumber(difficulty);
+    const secondNumber = getRandomNumber(difficulty);
     const product = +math.format(math.multiply(math.bignumber(answer), math.bignumber(firstNumber)), { notation: 'fixed' })
     const rightPart = +math.format(math.add(math.bignumber(product), math.bignumber(secondNumber)), { notation: 'fixed' })
     const equation = firstNumber + 'x' + (secondNumber < 0 ? secondNumber : `+${secondNumber}`) + '=' + rightPart
@@ -32,13 +37,13 @@ const generateLinearEquation = (): Promise<EquationData> => {
     })
 }
 
-const generateSystemOfEquations = (): Promise<EquationData> => {
-    const answerX = getRandomNumber();
-    const answerY = getRandomNumber();
-    const firstNumber = getRandomNumber();
-    const secondNumber = getRandomNumber();
-    const thirdNumber = getRandomNumber();
-    const fourthNumber = getRandomNumber();
+const generateSystemOfEquations = (difficulty: Difficulty): Promise<EquationData> => {
+    const answerX = getRandomNumber(difficulty);
+    const answerY = getRandomNumber(difficulty);
+    const firstNumber = getRandomNumber(difficulty);
+    const secondNumber = getRandomNumber(difficulty);
+    const thirdNumber = getRandomNumber(difficulty);
+    const fourthNumber = getRandomNumber(difficulty);
     //for first equation:
     const product1 = +math.format(math.multiply(math.bignumber(answerX), math.bignumber(firstNumber)), { notation: 'fixed' })
     const product2 = +math.format(math.multiply(math.bignumber(answerY), math.bignumber(secondNumber)), { notation: 'fixed' })
@@ -63,9 +68,9 @@ const generateSystemOfEquations = (): Promise<EquationData> => {
         }
     })
 }
-const generateQuadraticEquation = (): Promise<EquationData> => {
-    const firstAnswer = getRandomNumber();
-    const secondAnswer = getRandomNumber();
+const generateQuadraticEquation = (difficulty: Difficulty): Promise<EquationData> => {
+    const firstAnswer = getRandomNumber(difficulty);
+    const secondAnswer = getRandomNumber(difficulty);
     const answersSum = +math.format(math.add(math.bignumber(firstAnswer), math.bignumber(secondAnswer)), { notation: 'fixed' })
     const answersProduct = +math.format(math.multiply(math.bignumber(firstAnswer), math.bignumber(secondAnswer)), { notation: 'fixed' })
     const equation = 'x²' +
@@ -84,15 +89,15 @@ const generateQuadraticEquation = (): Promise<EquationData> => {
     })
 }
 
-export const generateEquation = (locationName: LocationName): Promise<EquationData> => {
+export const generateEquation = (locationName: LocationName, difficulty: Difficulty): Promise<EquationData> => {
     switch (locationName) {
         case 'location1':
         default:
-            return generateLinearEquation()
+            return generateLinearEquation(difficulty)
         case 'location2':
-            return generateSystemOfEquations()
+            return generateSystemOfEquations(difficulty)
         case 'location3':
-            return generateQuadraticEquation()
+            return generateQuadraticEquation(difficulty)
     }
 
 }

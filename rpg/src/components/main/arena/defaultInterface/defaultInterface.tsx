@@ -8,13 +8,15 @@ type DefaultInterfaceProps = {
     playerIsAttacker: boolean
     fightInfo: string
     enemyHealthPoints: number,
+    playerHealthPoints: number,
 }
 
 const DefaultInterface: React.FC<DefaultInterfaceProps> = ({ attack, escape, setDisplayingFightInterface, ...props }) => {
+    const buttonsDisable = !props.playerIsAttacker || props.enemyHealthPoints <= 0 || props.playerHealthPoints <= 0
     return (
         <div className={`${s.defaultInterface} arenaInterfaceContainer`}>
             <div className={s.defaultInterface__buttons}>
-                {(!props.playerIsAttacker && props.enemyHealthPoints > 0) ?
+                {(!props.playerIsAttacker && props.enemyHealthPoints > 0 && props.playerHealthPoints > 0) ?
                     <button
                         className={`${s.defaultInterface__buttons_button} ${s.readyButton}`}
                         onClick={attack}
@@ -26,28 +28,28 @@ const DefaultInterface: React.FC<DefaultInterfaceProps> = ({ attack, escape, set
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={attack}
-                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
+                            disabled={buttonsDisable}
                         >
                             <p>Attack</p>
                         </button>
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={() => setDisplayingFightInterface('inventoryInterface')}
-                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
+                            disabled={buttonsDisable}
                         >
                             <p>Inventory</p>
                         </button>
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={() => setDisplayingFightInterface('questionInterface')}
-                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
+                            disabled={buttonsDisable}
                         >
                             <p>Talk</p>
                         </button>
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={escape}
-                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
+                            disabled={buttonsDisable}
                         >
                             <p>Escape</p>
                         </button>

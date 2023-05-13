@@ -3,7 +3,7 @@ import { EnemyName, requestEnemy } from "../base/enemies"
 import { ActionWithoutPayload, ActionWithPayload, AppThunk } from "commonTypes"
 import { changeDownloadQuantity } from './sceneReducer';
 import settings from 'settings';
-import { resetFightInfo } from './fightReducer';
+import { resetFightData } from './fightReducer';
 
 enum enemyActionList {
     SET_ENEMY = 'SET_ENEMY',
@@ -139,7 +139,7 @@ export const setNewEnemy = (enemyName: EnemyName): AppThunk => (dispatch) => {
     requestEnemy(enemyName).then(
         enemy => {
             dispatch(setEnemy(enemy))
-            dispatch(resetFightInfo())
+            dispatch(resetFightData())
             dispatch(changeDownloadQuantity('MINUS_ONE'))
         }
     )

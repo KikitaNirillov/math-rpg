@@ -123,7 +123,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                                 : (
                                     props.displayingFightInterface === "inventoryInterface" ?
                                         <InventoryInterface setDisplayingFightInterface={setDisplayingFightInterface} inventory={props.inventory} employInventoryItem={employInventoryItem} />
-                                        : <DefaultInterface attack={makeAttack} playerIsAttacker={playerIsAttacker} enemyHealthPoints={props.enemyHealthPoints} escape={escape} setDisplayingFightInterface={setDisplayingFightInterface} fightInfo={props.fightInfo} />
+                                        : <DefaultInterface attack={makeAttack} playerIsAttacker={playerIsAttacker} playerHealthPoints={props.playerHealthPoints} enemyHealthPoints={props.enemyHealthPoints} escape={escape} setDisplayingFightInterface={setDisplayingFightInterface} fightInfo={props.fightInfo} />
                                 )
                         )
                 }

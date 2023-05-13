@@ -23,7 +23,8 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
                 <RenderImg src={props.mapBackgroundImg} alt="background" className={s.locationMap__backgroundImg} />
                 <div className={s.locationMap__onFocusInfo}>
                     <p>
-                        {focusItem === null ? 'Where am I going?' : ('Go to the ' + focusItem)}
+                        {focusItem === null ? 'Where am I going?' : (
+                            (focusItem==='lair' && props.livingMonsterNames.length === 0) ? 'The lair is completely cleared' : ('Go to the ' + focusItem))}
                     </p>
                 </div>
                 <div className={s.locationMap__buttonList}>
@@ -53,11 +54,10 @@ const LocationMap: React.FC<LocationMapProps> = (props) => {
                         <RenderImg src={props.toBossIcon} alt='to boss' className={s.locationMap__buttonList_bossBtn_icon} />
                     </button>
                     <button className={`${s.locationMap__buttonList_lairBtn} ${props.locationName && s[props.locationName]}`}
-                        disabled={props.livingMonsterNames.length === 0}
                         onMouseOver={() => setFocusItem('lair')}
                         onMouseLeave={() => props.sceneOpacity === 1 && setFocusItem(null)}
                         onClick={() => {
-                            if (props.livingMonsterNames) {
+                            if (props.livingMonsterNames.length !== 0) {
                                 props.changeDownloadQuantity('PLUS_ONE')
                                 props.setNewEnemy(props.livingMonsterNames[0])
                                 props.setSceneWithTransition('Arena')

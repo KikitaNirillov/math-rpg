@@ -1,19 +1,24 @@
-import { AppThunk, ActionWithPayload } from 'commonTypes';
+import { AppThunk, ActionWithPayload, ActionWithoutPayload } from 'commonTypes';
 import { LocationName } from '@base/locations';
 import { requestLocationsNames } from "@base/locations";
 import { changeDownloadQuantity, setSceneWithTransition } from './sceneReducer';
 import { EnemyName } from '@base/enemies';
 
 enum gameActionsList {
+    SET_DIFFICULTY = 'SET_DIFFICULTY',
     DISCOVER_CURRENT_LOCATION = 'DISCOVER_LOCATION',
     SET_UNDISCOVERED_LOCATIONS = 'SET_UNDISCOVERED_LOCATIONS',
     ADD_MONSTER_TO_KILLED_LIST = 'ADD_MONSTER_TO_KILLED_LIST',
     ADD_MONSTER_TO_DEREATED_LIST = 'ADD_MONSTER_TO_DEREATED_LIST',
     SET_TIPEWRITER_IS_WORKING = 'SET_TIPEWRITER_IS_WORKING',
     SET_TIPEWRITER_STOPPED = 'SET_TIPEWRITER_STOPPED',
+    RESET_ALL_GAME_DATA='RESET_ALL_GAME_DATA',
 }
 
+export type Difficulty = 'easy' | 'hard'
+
 const initialState = {
+    difficulty: 'easy' as Difficulty,
     undiscoveredLocations: [] as Array<LocationName>,
     stats: {
         killedMonsters: [] as Array<EnemyName>,
@@ -24,10 +29,15 @@ const initialState = {
 }
 
 type Action = SetUndiscoveredLocations | DiscoverCurrentLocation | AddMonsterToKilledList |
-    AddMonsterToDefeatedList | SetTipeWritterIsWriting | SetTipeWritterStopped
+    AddMonsterToDefeatedList | SetTipeWritterIsWriting | SetTipeWritterStopped | SetDifficulty | ResetAllGameData
 
 const gameReducer = (state = initialState, action: Action) => {
     switch (action.type) {
+        case gameActionsList.SET_DIFFICULTY:
+            return {
+                ...state,
+                difficulty: action.payload
+            }
         case gameActionsList.SET_UNDISCOVERED_LOCATIONS:
             return {
                 ...state,
@@ -64,10 +74,20 @@ const gameReducer = (state = initialState, action: Action) => {
                 ...state,
                 typeWriterStopped: action.payload,
             }
+        case gameActionsList.RESET_ALL_GAME_DATA:
+            return {
+                ...initialState,
+            }
         default:
             return state;
     }
 }
+
+type SetDifficulty = ActionWithPayload<gameActionsList.SET_DIFFICULTY, Difficulty>
+export const setDifficulty = (difficulty: Difficulty): SetDifficulty => ({
+    type: gameActionsList.SET_DIFFICULTY,
+    payload: difficulty,
+})
 
 type SetUndiscoveredLocations = ActionWithPayload<gameActionsList.SET_UNDISCOVERED_LOCATIONS, Array<LocationName>>
 const setUndiscoveredLocations = (locationsNames: Array<LocationName>): SetUndiscoveredLocations => ({
@@ -105,8 +125,14 @@ export const setTypeWriterStopped = (wasStop: boolean): SetTipeWritterStopped =>
     payload: wasStop,
 })
 
+type ResetAllGameData = ActionWithoutPayload<gameActionsList.RESET_ALL_GAME_DATA>
+const resetAllGameData = (): ResetAllGameData => ({
+    type: gameActionsList.RESET_ALL_GAME_DATA,
+})
+
 export const initializeGame = (): AppThunk => (dispatch) => {
     dispatch(changeDownloadQuantity('PLUS_ONE'))
+    dispatch(resetAllGameData())
     dispatch(setSceneWithTransition('ChoosePlayer'))
     requestLocationsNames().then(locationsNames => {
         dispatch(setUndiscoveredLocations(locationsNames))

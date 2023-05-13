@@ -1,7 +1,7 @@
 import { AppStateType } from "@redux/store";
 import { connect } from "react-redux";
 import Inn from "./inn";
-import { setPlayerHealthPoints } from "@redux/playerReducer";
+import { buyFullHeal } from "@redux/playerReducer";
 
 type InnOwnProps = {
     closeLocationMapWindow: () => void
@@ -15,9 +15,9 @@ const mapStateToProps = (state: AppStateType, ownProps: InnOwnProps) => ({
 })
 
 type DispatchPropsType = {
-    setPlayerHealthPoints: (newHealthPoints: number) => void
+    buyFullHeal: () => void
 }
 
 export type InnProps = ReturnType<typeof mapStateToProps> & DispatchPropsType
 
-export default connect(mapStateToProps, { setPlayerHealthPoints })(Inn)
+export default connect(mapStateToProps, { buyFullHeal })(Inn)

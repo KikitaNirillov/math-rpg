@@ -7,6 +7,7 @@ import { removeCurrentQuestion, setEnemyHealthPoints, setEnemyPositionOnArenaScr
 import { addMonsterToDefeatedList, addMonsterToKilledList } from './gameReducer';
 import { removeMosterNameFromLivingList } from './locationReducer';
 import { addCoins, setPlayerHealthPoints, setPlayerPositionOnArenaScreen, swapStaticAndDefaultImgForPlayer } from './playerReducer';
+import { compareTwoArrays, fromStringToArrayOfNumbers } from 'common/otherFunctions';
 
 
 enum fightActionList {
@@ -17,6 +18,7 @@ enum fightActionList {
     RESET_EQUATION_DATA = 'RESET_EQUATION_DATA',
     SET_DISPLAYING_FIGHT_INTERFACE = 'SET_DISPLAYING_FIGHT_INTERFACE',
     SET_FIGHT_INFO = 'SET_FIGHT_INFO',
+    RESET_FIGHT_DATA = 'RESET_FIGHT_DATA',
 }
 
 export type FightInterfaceName = 'defaultInterface' | 'equationInterface' | 'questionInterface' | 'inventoryInterface'
@@ -26,7 +28,7 @@ const initialState = {
     attacker: 'player' as 'player' | 'enemy',
     receiving: 'enemy' as 'player' | 'enemy',
 
-    equation: null as string | null, 
+    equation: null as string | null,
     equationAnswer: null as EquationAnswer | null,
     timeForAnswer: 'NO LIMIT' as number | 'NO LIMIT',
 
@@ -37,7 +39,7 @@ const initialState = {
 
 type Action = SwapAttackerAndReceiving | SetTimeForAnswer | SetTimerRunning
     | SetEquationData | ResetEquationData
-    | SetDisplayingFightInterface | SetFightInfo
+    | SetDisplayingFightInterface | SetFightInfo | ResetFightData
 
 const fightReducer = (state = initialState, action: Action) => {
     switch (action.type) {
@@ -80,6 +82,10 @@ const fightReducer = (state = initialState, action: Action) => {
                 ...state,
                 fightInfo: action.payload,
             }
+        case fightActionList.RESET_FIGHT_DATA:
+            return {
+                ...initialState,
+            }
         default:
             return state
     }
@@ -120,12 +126,17 @@ export const setDisplayingFightInterface = (intefaceName: FightInterfaceName): S
 })
 
 type SetFightInfo = ActionWithPayload<fightActionList.SET_FIGHT_INFO, string>
-export const setFightInfo = (text: string) => ({
+export const setFightInfo = (text: string): SetFightInfo => ({
     type: fightActionList.SET_FIGHT_INFO,
     payload: text,
 })
 
-export const resetFightInfo = (): AppThunk => (dispatch) => dispatch(setFightInfo(initialState.fightInfo))
+// export const resetFightInfo = (): AppThunk => (dispatch) => dispatch(setFightInfo(initialState.fightInfo))
+
+type ResetFightData = ActionWithoutPayload<fightActionList.RESET_FIGHT_DATA>
+export const resetFightData = (): ResetFightData => ({
+    type: fightActionList.RESET_FIGHT_DATA
+})
 
 const startTimer = (): AppThunk => (dispatch, getState) => {
     if (getState().fight.timeForAnswer !== 'NO LIMIT') {
@@ -175,16 +186,18 @@ const giveDamage = (attacker: 'player' | 'enemy', receiving: 'player' | 'enemy')
 
 export const makeAttack = (): AppThunk => (dispatch, getState) => {
     let timeForTimer: number
+    const gameDifficulty = getState().game.difficulty
     const playerImprovements = getState().player.improvements
     const locationName = getState().location.locationName
-    if (locationName==='location1') {timeForTimer=30}
-    else if (locationName==='location2') {timeForTimer=80}
-    else {timeForTimer=90}
+    if (locationName === 'location1') { timeForTimer = 30 }
+    else if (locationName === 'location2') { timeForTimer = 80 }
+    else { timeForTimer = 90 }
     dispatch(setDisplayingFightInterface('equationInterface'))
     if (locationName) {
-        generateEquation(locationName).then(
+        generateEquation(locationName, gameDifficulty).then(
             equation => {
                 dispatch(setEquationData(equation))
+                console.log('x=' + equation.equationAnswer.x + (equation.equationAnswer.y ? ', y=' + equation.equationAnswer.y : '')) //FOR DEVELOPMENT
             }
         ).then(() => {
             if (getState().fight.attacker === 'enemy') {
@@ -313,27 +326,6 @@ export const shakeReceiver = (person: 'player' | 'enemy'): AppThunk => (dispatch
             dispatch(swapStaticAndDefaultImgForEnemy())
         }, 175)
     }
-}
-
-const fromStringToArrayOfNumbers = (string: string) => string.split(',').map(Number)
-
-const compareTwoArrays = (a: Array<number>, b: Array<number>): boolean => {
-    if (a.length !== b.length) {
-        return false
-    }
-    const bCopy = b.slice()
-    for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < bCopy.length; j++) {
-            if (a[i] === bCopy[j]) {
-                bCopy.splice(j, 1)
-                break
-            }
-            if (j === bCopy.length - 1) {
-                return false
-            }
-        }
-    }
-    return true
 }
 
 export default fightReducer

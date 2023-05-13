@@ -3,6 +3,7 @@ import { HeroData, HeroName, requestHero } from "@base/heroes"
 import { removeImprovementFromAvailableList } from "./locationReducer"
 import settings from "settings"
 import { freezeEnemy, poisonEnemy } from "./enemyReducer"
+import { setDifficulty } from "./gameReducer"
 
 enum playerActionList {
     SET_HERO = 'SET_HERO',
@@ -26,7 +27,7 @@ const initialState = {
     inventory: [] as Array<InventoryItem>,
     improvements: [] as Array<Improvement>,
     damage: 50 as number, //12.5
-    coins: 0 as number,
+    coins: 10 as number,
     positionOnArenaScreen: 11.6 as number,
 }
 
@@ -101,14 +102,6 @@ const setHero = (player: HeroData): SetHero => ({
     payload: player,
 })
 
-export const chooseHero = (heroName: HeroName): AppThunk => (dispatch) => {
-    requestHero(heroName).then(
-        hero => {
-            dispatch(setHero(hero))
-        }
-    )
-}
-
 type SetPlayerHealthPoints = ActionWithPayload<playerActionList.SET_PLAYER_HEALTH_POINTS, number>
 export const setPlayerHealthPoints = (newHealthPoints: number): SetPlayerHealthPoints => ({
     type: playerActionList.SET_PLAYER_HEALTH_POINTS,
@@ -155,6 +148,16 @@ const setCoins = (count: number): SetCoins => ({
     payload: count,
 })
 
+export const chooseHero = (heroName: HeroName): AppThunk => (dispatch) => {
+    const gameDifficulty = (heroName === "warrior") ? 'easy' : 'hard'
+    dispatch(setDifficulty(gameDifficulty))
+    requestHero(heroName).then(
+        hero => {
+            dispatch(setHero(hero))
+        }
+    )
+}
+
 export const addCoins = (count: number): AppThunk => (dispatch, getState) => {
     const currentCoins = getState().player.coins
     dispatch(setCoins(currentCoins + count))
@@ -162,10 +165,19 @@ export const addCoins = (count: number): AppThunk => (dispatch, getState) => {
 
 export const resetCoins = (): AppThunk => (dispatch) => dispatch(setCoins(0))
 
-export const buyInventoryItem = (itemName: InventoryItemName, cost: number): AppThunk => (dispatch, getState) => {
+const spendCoins = (cost: number): AppThunk => (dispatch, getState) => {
     const currentCoins = getState().player.coins
     dispatch(setCoins(currentCoins - cost))
+}
+
+export const buyInventoryItem = (itemName: InventoryItemName, cost: number): AppThunk => (dispatch) => {
+    dispatch(spendCoins(cost))
     dispatch(addInventoryItem(itemName))
+}
+
+export const buyFullHeal = (): AppThunk => (dispatch) => {
+    dispatch(spendCoins(settings.pricePerInn))
+    dispatch(setPlayerHealthPoints(100))
 }
 
 const restorePlayerHealthPoints = (addedHealthPoints: number): AppThunk => (dispatch, getState) => {
