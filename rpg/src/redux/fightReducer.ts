@@ -1,12 +1,13 @@
-import { EquationData } from '@base/equations';
-import { requestEquation } from '@base/equations';
+
 import settings from 'settings';
+import { EquationAnswer, EquationData, generateEquation } from 'common/equationCreator';
 import fightInfoCreator from 'common/fightInfoCreator';
 import { ActionWithoutPayload, AppThunk, ActionWithPayload } from 'commonTypes';
 import { removeCurrentQuestion, setEnemyHealthPoints, setEnemyPositionOnArenaScreen, swapStaticAndDefaultImgForEnemy, minusEnemyEffectsDuration } from './enemyReducer';
 import { addMonsterToDefeatedList, addMonsterToKilledList } from './gameReducer';
 import { removeMosterNameFromLivingList } from './locationReducer';
 import { addCoins, setPlayerHealthPoints, setPlayerPositionOnArenaScreen, swapStaticAndDefaultImgForPlayer } from './playerReducer';
+
 
 enum fightActionList {
     SWAP_ATTACKER_AND_RECEIVING = 'SWAP_ATTACKER_AND_RECEIVING',
@@ -20,18 +21,12 @@ enum fightActionList {
 
 export type FightInterfaceName = 'defaultInterface' | 'equationInterface' | 'questionInterface' | 'inventoryInterface'
 
-export type EquationAnswer = {
-    x: Array<number>
-    y?: Array<number>
-}
-
 const initialState = {
     fightInfo: 'The fight has begun!' as string,
     attacker: 'player' as 'player' | 'enemy',
     receiving: 'enemy' as 'player' | 'enemy',
 
     equation: null as string | null, 
-    equationType: null as string | null,
     equationAnswer: null as EquationAnswer | null,
     timeForAnswer: 'NO LIMIT' as number | 'NO LIMIT',
 
@@ -63,7 +58,6 @@ const fightReducer = (state = initialState, action: Action) => {
                 ...state,
                 equation: initialState.equation,
                 equationAnswer: initialState.equationAnswer,
-                equationType: initialState.equationType,
                 timeForAnswer: initialState.timeForAnswer,
             }
         case fightActionList.SET_TIME_FOR_ANSWER:
@@ -180,12 +174,15 @@ const giveDamage = (attacker: 'player' | 'enemy', receiving: 'player' | 'enemy')
 }
 
 export const makeAttack = (): AppThunk => (dispatch, getState) => {
-    let timeForTimer = 120
+    let timeForTimer: number
     const playerImprovements = getState().player.improvements
     const locationName = getState().location.locationName
+    if (locationName==='location1') {timeForTimer=30}
+    else if (locationName==='location2') {timeForTimer=80}
+    else {timeForTimer=90}
     dispatch(setDisplayingFightInterface('equationInterface'))
     if (locationName) {
-        requestEquation(locationName).then(
+        generateEquation(locationName).then(
             equation => {
                 dispatch(setEquationData(equation))
             }

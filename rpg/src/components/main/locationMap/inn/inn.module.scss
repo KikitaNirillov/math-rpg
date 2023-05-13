@@ -7,7 +7,7 @@
             margin: 2vh 0;
             position: relative;
             height: 5vh;
-            width: 30vw;
+            width: 63vh;
             display: flex;
             outline: 0.46vh ridge black;
             box-shadow: 0 0 0 0.5vh #fff;
@@ -25,7 +25,7 @@
                 line-height: 1.12;
                 font-weight: 700;
                 word-wrap: break-word;
-                letter-spacing: 0.3vw;
+                letter-spacing: 1vh;
                 position: absolute;
                 margin-left: auto;
                 margin-right: auto;
@@ -50,12 +50,11 @@
         margin: 2vh 0;
         &_button {
             height: 8vh;
-            width: 10vw;
-            margin: 0 0.6vw;
+            width: 31.7vh;
+            margin: 0 1.9vh;
             line-height: 0.5;
             overflow: hidden;
             text-align: center;
-            align-items: center;
             border: 0.5vh ridge #ffffff;
             &:hover {
                 border: 1vh ridge #ffffff;

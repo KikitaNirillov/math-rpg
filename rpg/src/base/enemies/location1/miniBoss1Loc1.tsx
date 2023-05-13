@@ -9,12 +9,16 @@ export const data: EnemyData = {
     enemyType: 'miniBoss',
     questions: [
         {
-            question: 'What is the capital of Russia?',
-            answers: { correctAnswer: 'Moscow', incorrectAnswer: 'St. Petersburg' }
+            question: 'What is the standard form of a linear equation?',
+            answers: { correctAnswer: 'Ax + By = C', incorrectAnswer: 'y = mx + b' }
         },
         {
-            question: 'What is the capital of USA?',
-            answers: { correctAnswer: 'Washington', incorrectAnswer: 'New York' }
+            question: 'What is the order of operations in math?',
+            answers: { correctAnswer: 'Parentheses, Exponents, Multiplication and Division, Addition and Subtraction.', incorrectAnswer: 'Addition, Subtraction, Multiplication, Division, Exponents, Parentheses.' }
+        },
+        {
+            question: 'How do you react if an adult says something you disagree with?',
+            answers: { correctAnswer: 'I listen to their opinion and express my own to come to a mutual understanding.', incorrectAnswer: 'I simply agree with them because they are an adult and therefore know better.' }
         }
     ]
 }

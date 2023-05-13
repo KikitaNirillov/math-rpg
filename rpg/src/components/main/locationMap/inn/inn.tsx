@@ -5,6 +5,7 @@ import { InnProps } from './innContainer'
 const Inn: React.FC<InnProps> = ({ setPlayerHealthPoints, closeLocationMapWindow, ...props }) => {
     const disableYesBtn = props.coins < settings.pricePerInn || props.playerHealthPoints === 100
     const sleep = () => {
+        
         setPlayerHealthPoints(100)
     }
     return (

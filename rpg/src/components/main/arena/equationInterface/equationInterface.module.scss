@@ -15,16 +15,17 @@
     &__equation {
         height: 100%;
         width: 49%;
-        line-height: 1;
+        line-height: 1.2;
         overflow: hidden;
         align-items: center;
         justify-content: center;
         display: flex;
         outline: 1vh ridge #ffffff;
-        font-size: 5vw;
+        font-size: 9vh;
         &_symbol {
             height: 72%;
-            margin-right: 2%;
+            margin-right: -2%;
+            margin-left: -2%;
         }
         &_items {
             display: flex;

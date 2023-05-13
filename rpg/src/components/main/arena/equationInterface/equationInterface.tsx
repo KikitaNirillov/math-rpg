@@ -3,6 +3,7 @@ import { Formik, Form, Field, FormikProps } from 'formik';
 import { EnteredEquationAnswer } from '@redux/fightReducer';
 import systemSymbol from 'assets/imgs/System Symbol.png';
 import loadingSpinner from '@assets/imgs/loadingSpinner.gif'
+import { EquationAnswer } from 'common/equationCreator';
 
 const CustomField: React.FC<{ formik: FormikProps<MyFormValues>, name: 'x' | 'y', autoFocus?: boolean }> = ({ formik, name, autoFocus = false }) => {
     const placeholder = name.toUpperCase() + " value(s)"

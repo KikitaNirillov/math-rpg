@@ -26,28 +26,28 @@ const DefaultInterface: React.FC<DefaultInterfaceProps> = ({ attack, escape, set
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={attack}
-                            disabled={!props.playerIsAttacker}
+                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
                         >
                             <p>Attack</p>
                         </button>
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={() => setDisplayingFightInterface('inventoryInterface')}
-                            disabled={!props.playerIsAttacker}
+                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
                         >
                             <p>Inventory</p>
                         </button>
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={() => setDisplayingFightInterface('questionInterface')}
-                            disabled={!props.playerIsAttacker}
+                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
                         >
                             <p>Talk</p>
                         </button>
                         <button
                             className={s.defaultInterface__buttons_button}
                             onClick={escape}
-                            disabled={!props.playerIsAttacker}
+                            disabled={!props.playerIsAttacker || props.enemyHealthPoints <= 0}
                         >
                             <p>Escape</p>
                         </button>

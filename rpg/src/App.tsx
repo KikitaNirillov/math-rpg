@@ -17,7 +17,6 @@ const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransit
   useEffect(() => {
     initializeGame()
   }, [initializeGame])
-
   useEffect(() => { // for loading and scene changing
     if (props.downloadQuantity === 0 && props.opacityTransitionToZeroIsOver && props.opacity !== 1 && props.currentSceneDidMount) {
       if (currentSceneName === null) {
