@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[1786],{1786:function(n,e,u){u.r(e),u.d(e,{data:function(){return r}});var r={equation:"-62x + 39 = 13",equationAnswer:{x:[1]}}}}]);
-//# sourceMappingURL=1786.c388d338.chunk.js.map

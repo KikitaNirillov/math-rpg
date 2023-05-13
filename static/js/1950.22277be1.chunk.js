@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[1950],{1950:function(n,e,u){u.r(e),u.d(e,{data:function(){return r}});var r={equation:"x^2 - 6x + 9 = 0",equationAnswer:{x:[3,3]}}}}]);
-//# sourceMappingURL=1950.22277be1.chunk.js.map

@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[3204,9549,9431],{3204:function(e,t,i){i.r(t),i.d(t,{data:function(){return n}});var n={name:"miniBoss2Loc1",defaultImg:i(9549),staticImg:i(9431),enemyType:"miniBoss"}},9549:function(e,t,i){e.exports=i.p+"static/media/enemyLoc1MiniBoss2DefaultImg.c8e4ebfe15e047b5661f.jpg"},9431:function(e,t,i){e.exports=i.p+"static/media/enemyLoc1MiniBoss2StaticImg.7a0f6827a378759b8227.jpg"}}]);
-//# sourceMappingURL=3204.543fe6a3.chunk.js.map

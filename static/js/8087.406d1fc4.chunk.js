@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[8087],{8087:function(n,e,u){u.r(e),u.d(e,{data:function(){return r}});var r={equation:"5x - 4y = 1.5, 3x + 2y = 4",equationAnswer:{x:[2],y:[1]}}}}]);
-//# sourceMappingURL=8087.406d1fc4.chunk.js.map
