@@ -4,19 +4,20 @@ import { connect } from 'react-redux'
 import { SceneName, scenes } from './scenes'
 import { AppStateType } from './redux/store'
 import settings from 'settings'
-import { initializeGame } from '@redux/gameReducer'
-import { setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount } from 'redux/sceneReducer'
-import LoadingScreen from 'components/loadingScreen'
+import { setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount, setSceneWithTransition } from 'redux/sceneReducer'
+import LoadingScreen from 'components/main/loadingScreen'
 
 type AppProps = StatePropsType & DispatchPropsType
 
-const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount, ...props }) => {
+const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacityTransitionIsOver, setCurrentSceneDidMount, ...props }) => {
   const [loadingExistedForEnoughTime, setLoadingExistedForEnoughTime] = useState<boolean>(true)
-  const CurrentScene = props.currentScene ? scenes[props.currentScene] : null
+  const CurrentScene = props.currentScene ? scenes[props.currentScene] : () => { return <div /> }
   const [currentSceneName, setCurrentSceneName] = useState<SceneName | null>(props.currentScene)
+
   useEffect(() => {
-    initializeGame()
-  }, [initializeGame])
+    setSceneWithTransition('EpilepsyWarningScreen')
+  }, [setSceneWithTransition])
+
   useEffect(() => { // for loading and scene changing
     if (props.downloadQuantity === 0 && props.opacityTransitionToZeroIsOver && props.opacity !== 1 && props.currentSceneDidMount) {
       if (currentSceneName === null) {
@@ -38,10 +39,10 @@ const App: React.FC<AppProps> = ({ initializeGame, setOpacity, setOpacityTransit
   return (
     <div className='app'>
       {
-        (CurrentScene === null || (props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
+        ((props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
           <LoadingScreen setLoadingExistedForEnoughTime={setLoadingExistedForEnoughTime} /> :
           <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${settings.opacityTransition}ms` }}>
-            <Suspense fallback={<div/>}>
+            <Suspense fallback={<div />}>
               <CurrentScene />
             </Suspense>
           </div >
@@ -62,10 +63,10 @@ const mapStateToProps = (state: AppStateType) => ({
 type StatePropsType = ReturnType<typeof mapStateToProps>
 
 type DispatchPropsType = {
-  initializeGame: () => void
   setOpacity: (opacity: number) => void
   setOpacityTransitionIsOver: (isOver: boolean) => void
   setCurrentSceneDidMount: (didMount: boolean) => void
+  setSceneWithTransition: (scene: SceneName) => void
 }
 
-export default connect(mapStateToProps, { initializeGame, setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount })(App);
+export default connect(mapStateToProps, { setSceneWithTransition, setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount })(App);

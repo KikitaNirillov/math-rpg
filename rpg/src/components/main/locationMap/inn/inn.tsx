@@ -4,9 +4,6 @@ import { InnProps } from './innContainer'
 
 const Inn: React.FC<InnProps> = ({ buyFullHeal, closeLocationMapWindow, ...props }) => {
     const disableYesBtn = props.coins < settings.pricePerInn || props.playerHealthPoints === 100
-    const sleep = () => {
-        buyFullHeal()
-    }
     return (
         <div className={`${s.inn} locationMapWindow`}>
             <div className={s.inn__healthInfo}>
@@ -22,7 +19,7 @@ const Inn: React.FC<InnProps> = ({ buyFullHeal, closeLocationMapWindow, ...props
                 <p className={s.inn__title_text}>?</p>
             </div>
             <div className={s.inn__buttonList}>
-                <button className={s.inn__buttonList_button} onClick={sleep} disabled={disableYesBtn}>
+                <button className={s.inn__buttonList_button} onClick={() => buyFullHeal()} disabled={disableYesBtn}>
                     Yes
                 </button>
                 <button className={s.inn__buttonList_button} onClick={() => closeLocationMapWindow()}>

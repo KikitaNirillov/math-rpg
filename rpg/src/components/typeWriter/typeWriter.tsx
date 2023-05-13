@@ -18,6 +18,7 @@ const mapStateToProps = (state: AppStateType, ownProps: TypeWriterOwnProps) => (
     typeWriterIsWriting: state.game.typeWriterIsWriting,
     typeWriterStopped: state.game.typeWriterStopped,
     opacity: state.scene.opacity,
+    soundValue: state.game.soundValue
 })
 
 type MapDispatchToProps = {
@@ -27,8 +28,8 @@ type MapDispatchToProps = {
 
 type TypeWriterProps = MapDispatchToProps & ReturnType<typeof mapStateToProps>
 
-const TypeWriter: React.FC<TypeWriterProps> = ({ text, typeWriterStopped, opacity, setTypeWriterStopped, setTypeWriterIsWriting, whatToDoAtTheEnd = () => { } }) => {
-    const [play, { stop }] = useSound(typewriterSound);
+const TypeWriter: React.FC<TypeWriterProps> = ({ text, typeWriterStopped, opacity, soundValue, setTypeWriterStopped, setTypeWriterIsWriting, whatToDoAtTheEnd = () => { } }) => {
+    const [play, { stop }] = useSound(typewriterSound, { volume: soundValue === "OFF" ? 0 : 0.5 });
     const [newText, setNewText] = useState<string>('')
     const [letterNumber, setLetterNumber] = useState<number>(0)
     const [firstSimbolDisplayed, setFirstSimbolDisplayed] = useState<boolean>(false)

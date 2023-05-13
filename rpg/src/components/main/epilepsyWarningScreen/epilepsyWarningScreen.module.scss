@@ -1,0 +1,29 @@
+.epilepsyWarningScreen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        &_title {
+            line-height: 1.2;
+            font-size: 18vh;
+            color: rgb(255, 118, 118);
+        }
+        &_text {
+            width: 80%;
+            font-size: 4vh;
+        }
+    }
+    &__tip {
+        font-size: 4vh;
+    }
+}

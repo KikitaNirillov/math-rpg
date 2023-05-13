@@ -12,12 +12,15 @@ enum gameActionsList {
     ADD_MONSTER_TO_DEREATED_LIST = 'ADD_MONSTER_TO_DEREATED_LIST',
     SET_TIPEWRITER_IS_WORKING = 'SET_TIPEWRITER_IS_WORKING',
     SET_TIPEWRITER_STOPPED = 'SET_TIPEWRITER_STOPPED',
-    RESET_ALL_GAME_DATA='RESET_ALL_GAME_DATA',
+    RESET_ALL_GAME_DATA = 'RESET_ALL_GAME_DATA',
+    SET_SOUND_VALUE = 'SET_SOUND_VALUE'
 }
 
 export type Difficulty = 'easy' | 'hard'
+export type SoundValue = 'ON' | 'OFF'
 
 const initialState = {
+    soundValue: 'OFF' as SoundValue,
     difficulty: 'easy' as Difficulty,
     undiscoveredLocations: [] as Array<LocationName>,
     stats: {
@@ -29,10 +32,15 @@ const initialState = {
 }
 
 type Action = SetUndiscoveredLocations | DiscoverCurrentLocation | AddMonsterToKilledList |
-    AddMonsterToDefeatedList | SetTipeWritterIsWriting | SetTipeWritterStopped | SetDifficulty | ResetAllGameData
-
+    AddMonsterToDefeatedList | SetTipeWritterIsWriting | SetTipeWritterStopped | SetDifficulty
+    | ResetAllGameData | SetSoundValue
 const gameReducer = (state = initialState, action: Action) => {
     switch (action.type) {
+        case gameActionsList.SET_SOUND_VALUE:
+            return {
+                ...state,
+                soundValue: action.payload
+            }
         case gameActionsList.SET_DIFFICULTY:
             return {
                 ...state,
@@ -77,6 +85,7 @@ const gameReducer = (state = initialState, action: Action) => {
         case gameActionsList.RESET_ALL_GAME_DATA:
             return {
                 ...initialState,
+                soundValue: state.soundValue,
             }
         default:
             return state;
@@ -129,6 +138,13 @@ type ResetAllGameData = ActionWithoutPayload<gameActionsList.RESET_ALL_GAME_DATA
 const resetAllGameData = (): ResetAllGameData => ({
     type: gameActionsList.RESET_ALL_GAME_DATA,
 })
+
+type SetSoundValue = ActionWithPayload<gameActionsList.SET_SOUND_VALUE, SoundValue>
+export const setSoundValue = (value: SoundValue): SetSoundValue => ({
+    type: gameActionsList.SET_SOUND_VALUE,
+    payload: value,
+})
+
 
 export const initializeGame = (): AppThunk => (dispatch) => {
     dispatch(changeDownloadQuantity('PLUS_ONE'))

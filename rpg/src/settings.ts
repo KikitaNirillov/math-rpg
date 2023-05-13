@@ -1,7 +1,7 @@
 const settings = {
     delayForScenes: 1000,
-    opacityTransition: 1200, // 5000
-    opacityTransitionForUnblockScreen: 480, // 2000
+    opacityTransition: 1200, 
+    opacityTransitionForUnblockScreen: 480, 
     mandatoryLoadingScreenTime: 1000,
     delayBeforeEnemyAttack: 5000,
     gameOverScreenTime: 2000,
