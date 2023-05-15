@@ -19,7 +19,6 @@ const GameOver: React.FC<GameOverProps> = ({ initializeGame, ...props }) => {
 
     return (
         <RenderImg src={gameOverScreenImg} alt="Game over" className={s.gameOverImg} />
-        // <img src={gameOverScreenImg} alt="Game over" style={{ height: '100%', width: '100%' }} />
     )
 }
 

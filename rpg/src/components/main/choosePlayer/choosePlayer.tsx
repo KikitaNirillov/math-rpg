@@ -1,13 +1,23 @@
+import { HeroName } from "@base/heroes"
+import TypeWriter from "components/typeWriter/typeWriter"
+import { useEffect, useState } from "react"
+import settings from "settings"
+import { ChoosePlayerProps } from "./choosePlayerContainer"
 import s from './choosePlayer.module.scss'
 import warriorImg from '@sprites/playerImgs/playerWarriorDefaultImg.jpg'
 import magicianImg from '@sprites/playerImgs/playerMagicianDefaultImg.jpg'
-import { useEffect, useState } from 'react'
-import { ChoosePlayerProps } from './choosePlayerContainer'
-import { HeroName } from 'base/heroes'
-import RenderImg from 'components/renderImg'
-import settings from 'settings'
+import TypeWriterTransparentBtn from "components/typeWriter/typeWriterTransparentBtn"
+
+const heroesImgs = {
+    warrior: warriorImg,
+    magician: magicianImg
+}
 
 const ChoosePlayer: React.FC<ChoosePlayerProps> = (props) => {
+    const [textWasDisplayed, setTextWasDisplayed] = useState<boolean>(false)
+    const [focusHero, setFocusHero] = useState<HeroName | null>(null)
+    const [heroWasChosen, setHeroWasChosen] = useState<boolean>(false)
+
     useEffect(() => {
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
@@ -16,40 +26,51 @@ const ChoosePlayer: React.FC<ChoosePlayerProps> = (props) => {
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 
-    const [hero, choose] = useState<HeroName | null>(null)
-    const сhooseButton = () => {
-        if (hero) {
-            props.setNewLocation()
-            props.chooseHero(hero)
-            props.setCutscene('beginning')
-        }
-        else console.warn("Hero wasn't chosen")
+    const сhooseHero = (hero: HeroName) => {
+        setHeroWasChosen(true)
+        props.setNewLocation()
+        props.chooseHero(hero)
+        props.setCutscene('beginning')
     }
+
     return (
         <div className={s.choosePlayer}>
-            <h2 className={(s.choosePlayer_title)}>HOW DO YOU SEE YOURSELF?</h2>
-            <div className={s.choosePlayer_heroes}>
-                <button className={`${s.choosePlayer_heroes_button} ${(hero === 'warrior') ? s.chosen : ``}`}
-                    onClick={() => choose('warrior')}
-                >
-                    <RenderImg src={warriorImg} alt="warriorImg" className={s.choosePlayer_heroes_button_avatar} />
-                    {/* <img src={warriorImg} alt="warriorImg" className={s.choosePlayer_heroes_button_avatar} /> */}
-                </button>
-                <button className={`${s.choosePlayer_heroes_button} ${(hero === 'magician') ? s.chosen : ``}`}
-                    onClick={() => choose('magician')}
-                >
-                    <RenderImg src={magicianImg} alt="magicianImg" className={s.choosePlayer_heroes_button_avatar} />
-                    {/* <img src={magicianImg} alt="magicianImg" className={s.choosePlayer_heroes_button_avatar} /> */}
-                </button>
+            <div className={s.choosePlayer__scene}>
+                {focusHero &&
+                    <img src={heroesImgs[focusHero]} alt={`${focusHero}Img`} className={s.choosePlayer__scene_heroImg} />
+                }
             </div>
-            <ul className={s.choosePlayer_buttonsList}>
-                <button className={s.choosePlayer_buttonsList_button}
-                    onClick={сhooseButton} disabled={!hero}
-                >
-                    Choose
-                </button>
-            </ul>
+            <div className={s.choosePlayer__interface}>
+                <TypeWriterTransparentBtn />
+                <div className={s.choosePlayer__interface_container}>
+                    <div className={s.choosePlayer__interface_container_question}>
+                        <TypeWriter
+                            text={'How do yo see yourself ?'}
+                            whatToDoAtTheEnd={() => setTextWasDisplayed(true)}
+                        />
+                    </div>
+                    {textWasDisplayed &&
+                        <div className={s.choosePlayer__interface_container_answers}>
+                            <button className={s.choosePlayer__interface_container_answers_button}
+                                onClick={() => сhooseHero('warrior')}
+                                onMouseOver={() => setFocusHero('warrior')}
+                                onMouseLeave={() => setFocusHero(heroWasChosen ? 'warrior' : null)}
+                            >
+                                <p>Warrior (easy difficulty)</p>
+                            </button>
+                            <button className={s.choosePlayer__interface_container_answers_button}
+                                onClick={() => сhooseHero('magician')}
+                                onMouseOver={() => setFocusHero('magician')}
+                                onMouseLeave={() => setFocusHero(heroWasChosen ? 'magician' : null)}
+                            >
+                                <p>Magician (hard difficulty)</p>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     )
 }
+
 export default ChoosePlayer

@@ -32,7 +32,7 @@ const ImprovementScreen: React.FC<ImprovementScreenProps> = ({ getImprovement, s
             }, settings.delayForScenes)
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
-    
+
     const [focusImprovement, setFocusImprovement] = useState<FocusImprovement>('none')
     const improvementButton = (improvementName: Improvement) => {
         return (
@@ -45,8 +45,7 @@ const ImprovementScreen: React.FC<ImprovementScreenProps> = ({ getImprovement, s
                     setTimeout(() => getImprovement(improvementName), settings.opacityTransition)
                 }}
             >
-                <RenderImg src={improvementInfo[improvementName].img} alt={improvementName} className={s.improvementScreen__improvements_list_button_img}/>
-                {/* <img src={improvementInfo[improvementName].img} alt={improvementName} className={s.improvementScreen__improvements_list_button_img} /> */}
+                <RenderImg src={improvementInfo[improvementName].img} alt={improvementName} className={s.improvementScreen__improvements_list_button_img} />
             </button>
         )
     }
@@ -55,8 +54,7 @@ const ImprovementScreen: React.FC<ImprovementScreenProps> = ({ getImprovement, s
             <h2 className={s.improvementScreen__title}>Enemy is overcome!</h2>
             <div className={s.improvementScreen__moneyInfo}>
                 <p className={s.improvementScreen__moneyInfo_text}>You get 3</p>
-                <RenderImg src={props.currencyImg} alt='currency on this location' className={s.improvementScreen__moneyInfo_currencyImg}/>
-                {/* <img src={props.currencyImg} alt='currency on this location' className={s.improvementScreen__moneyInfo_currencyImg} /> */}
+                <RenderImg src={props.currencyImg} alt='currency on this location' className={s.improvementScreen__moneyInfo_currencyImg} />
             </div>
             <div className={s.improvementScreen__improvements}>
                 <p className={s.improvementScreen__improvements_text}>

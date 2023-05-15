@@ -18,23 +18,29 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
     setSceneWithTransition('EpilepsyWarningScreen')
   }, [setSceneWithTransition])
 
+  useEffect(() => {
+    setCurrentSceneDidMount(false)
+    setCurrentSceneName(props.currentScene)
+  }, [props.currentScene])
+
   useEffect(() => { // for loading and scene changing
     if (props.downloadQuantity === 0 && props.opacityTransitionToZeroIsOver && props.opacity !== 1 && props.currentSceneDidMount) {
-      if (currentSceneName === null) {
-        setCurrentSceneName(props.currentScene)
-      }
-      if (currentSceneName !== props.currentScene && currentSceneName !== null) {
-        setCurrentSceneDidMount(false)
-        setCurrentSceneName(props.currentScene)
-      }
-      else {
+      // if (currentSceneName === null) {
+      //   setCurrentSceneName(props.currentScene)
+      // }
+      // if (currentSceneName !== props.currentScene && currentSceneName !== null) {
+      //   setCurrentSceneDidMount(false)
+      //   setCurrentSceneName(props.currentScene)
+      // }
+      // else {
+      if (currentSceneName === props.currentScene) {
         setOpacity(1)
         setTimeout(() => {
           setOpacityTransitionIsOver(true)
         }, settings.opacityTransitionForUnblockScreen)
       }
     }
-  }, [props.currentScene, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
+  }, [currentSceneName, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
 
   return (
     <div className='app'>
