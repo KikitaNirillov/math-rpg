@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/math-rpg/static/css/main.5fbd9235.css",
-    "main.js": "/math-rpg/static/js/main.4ca7bd25.js",
-    "static/css/8471.aee29588.chunk.css": "/math-rpg/static/css/8471.aee29588.chunk.css",
-    "static/js/8471.8251f509.chunk.js": "/math-rpg/static/js/8471.8251f509.chunk.js",
+    "main.js": "/math-rpg/static/js/main.2d3d3a00.js",
+    "static/css/8471.d435e372.chunk.css": "/math-rpg/static/css/8471.d435e372.chunk.css",
+    "static/js/8471.81b02ffe.chunk.js": "/math-rpg/static/js/8471.81b02ffe.chunk.js",
     "static/css/4511.e78e8346.chunk.css": "/math-rpg/static/css/4511.e78e8346.chunk.css",
     "static/js/4511.2dc6f6ad.chunk.js": "/math-rpg/static/js/4511.2dc6f6ad.chunk.js",
     "static/css/5056.d3185cec.chunk.css": "/math-rpg/static/css/5056.d3185cec.chunk.css",
@@ -137,9 +137,9 @@
     "static/media/healingPotionImg.png": "/math-rpg/static/media/healingPotionImg.3bb578210e0dfd174945.png",
     "index.html": "/math-rpg/index.html",
     "main.5fbd9235.css.map": "/math-rpg/static/css/main.5fbd9235.css.map",
-    "main.4ca7bd25.js.map": "/math-rpg/static/js/main.4ca7bd25.js.map",
-    "8471.aee29588.chunk.css.map": "/math-rpg/static/css/8471.aee29588.chunk.css.map",
-    "8471.8251f509.chunk.js.map": "/math-rpg/static/js/8471.8251f509.chunk.js.map",
+    "main.2d3d3a00.js.map": "/math-rpg/static/js/main.2d3d3a00.js.map",
+    "8471.d435e372.chunk.css.map": "/math-rpg/static/css/8471.d435e372.chunk.css.map",
+    "8471.81b02ffe.chunk.js.map": "/math-rpg/static/js/8471.81b02ffe.chunk.js.map",
     "4511.e78e8346.chunk.css.map": "/math-rpg/static/css/4511.e78e8346.chunk.css.map",
     "4511.2dc6f6ad.chunk.js.map": "/math-rpg/static/js/4511.2dc6f6ad.chunk.js.map",
     "5056.d3185cec.chunk.css.map": "/math-rpg/static/css/5056.d3185cec.chunk.css.map",
@@ -173,6 +173,6 @@
   },
   "entrypoints": [
     "static/css/main.5fbd9235.css",
-    "static/js/main.4ca7bd25.js"
+    "static/js/main.2d3d3a00.js"
   ]
 }
