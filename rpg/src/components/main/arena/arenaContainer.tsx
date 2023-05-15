@@ -19,10 +19,11 @@ const mapStateToProps = (state: AppStateType) => ({
     enemyDefaultImg: state.enemy.defaultImg,
     enemyHealthPoints: state.enemy.healthPoints,
     enemyQuestions: state.enemy.questions,
+    enemyEffects: state.enemy.currentEffects,
     attacker: state.fight.attacker,
     inventory: state.player.inventory,
 
-    fightBackgroundImg:state.location.fightBackgroundImg,
+    fightBackgroundImg: state.location.fightBackgroundImg,
 
     fightInfo: state.fight.fightInfo,
 

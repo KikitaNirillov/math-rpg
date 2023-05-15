@@ -57,7 +57,6 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                 if (props.enemyType === "mainBoss") {
                     setNewLocation()
                 }
-                swapAttackerAndReceiving() // for return a turn to the player 
             }, settings.changingHealthPointsTransition + settings.timeForEnemysDie + settings.opacityTransition)
         }
     }, [props.enemyHealthPoints])
@@ -80,6 +79,22 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
         <div className={s.arena} >
             <div className={s.arena__scene}>
                 <RenderImg src={props.enemyType === "mainBoss" ? bossfightBackground : props.fightBackgroundImg} alt="background" className={s.arena__scene_backgroundImg} />
+                {props.enemyEffects.length > 0 &&
+                    <div className={s.arena__scene_enemyEffects}>
+                        {props.enemyEffects.map(ef =>
+                            <div className={s.arena__scene_enemyEffects_effect} key={ef.name}>
+                                <p className={s.arena__scene_enemyEffects_effect_name}>
+                                    {ef.name}:
+                                </p>
+                                <p className={s.arena__scene_enemyEffects_effect_number}
+                                    style={{ width: `${ef.duration.toString().length * 2.15}vh` }}
+                                >
+                                    {ef.duration}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                }
                 <div className={s.arena__scene_content}>
                     <div className={s.arena__scene_content_healthBars}>
                         <div className={`${s.arena__scene_content_healthBars_container} ${playerIsAttacker ? s.attacker : ``}`}>
@@ -107,7 +122,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                         </div>
                         <div className={s.arena__scene_content_figthers_fighter} style={{ right: `${props.enemyPositionOnScreen}%`, opacity: `${enemysOpacity}`, transition: `opacity ${settings.timeForEnemysDie}ms` }}>
                             <div className={s.arena__scene_content_figthers_fighter_relativeContainer}>
-                                <img src={props.enemyDefaultImg} alt="Enemy" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} />
+                                <img src={props.enemyDefaultImg} alt="Enemy" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} id={s.enemyImg}/>
                             </div>
                         </div>
                     </div>

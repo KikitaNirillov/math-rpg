@@ -42,7 +42,7 @@ const initialState = {
 
 type Action = SetEnemy | SetEnemyHealthPoints | SetEnemyPositionOnArenaScreen |
     SwapStaticAndDefaultImgForEnemy | RemoveCurrentQuestion | AddEffectToEnemy |
-    MinusEnemyEffectsDuration
+    MinusEnemyEffectsDuration 
 
 const enemyReducer = (state = initialState, action: Action) => {
     switch (action.type) {
