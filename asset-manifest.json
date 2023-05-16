@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/math-rpg/static/css/main.bfec412b.css",
+    "main.css": "/math-rpg/static/css/main.0dfadccc.css",
     "main.js": "/math-rpg/static/js/main.a5e72207.js",
     "static/css/8471.d435e372.chunk.css": "/math-rpg/static/css/8471.d435e372.chunk.css",
     "static/js/8471.81b02ffe.chunk.js": "/math-rpg/static/js/8471.81b02ffe.chunk.js",
@@ -133,7 +133,7 @@
     "static/media/freezingPotionImg.png": "/math-rpg/static/media/freezingPotionImg.4c7b55aeff1f2b03aa64.png",
     "static/media/healingPotionImg.png": "/math-rpg/static/media/healingPotionImg.3bb578210e0dfd174945.png",
     "index.html": "/math-rpg/index.html",
-    "main.bfec412b.css.map": "/math-rpg/static/css/main.bfec412b.css.map",
+    "main.0dfadccc.css.map": "/math-rpg/static/css/main.0dfadccc.css.map",
     "main.a5e72207.js.map": "/math-rpg/static/js/main.a5e72207.js.map",
     "8471.d435e372.chunk.css.map": "/math-rpg/static/css/8471.d435e372.chunk.css.map",
     "8471.81b02ffe.chunk.js.map": "/math-rpg/static/js/8471.81b02ffe.chunk.js.map",
@@ -169,7 +169,7 @@
     "4353.6a84fc36.chunk.js.map": "/math-rpg/static/js/4353.6a84fc36.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bfec412b.css",
+    "static/css/main.0dfadccc.css",
     "static/js/main.a5e72207.js"
   ]
 }
