@@ -38,12 +38,12 @@
             display: flex;
             &_button {
                 &:hover {
-                    filter: invert(100%);
-                    scale: 1.1;
+                    // filter: invert(100%);
+                    scale: 1.06;
                 }
                 transition: all 0.35s;
                 margin: 0 1.8%;
-                height: 25vh;
+                height: 24vh;
                 &_img {
                     height: 100%;
                 }
