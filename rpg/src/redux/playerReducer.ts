@@ -25,7 +25,7 @@ const initialState = {
     inventory: [] as Array<InventoryItem>,
     improvements: [] as Array<Improvement>,
     damage: 12.5 as number, 
-    coins: 20 as number,
+    coins: 0 as number,
     positionOnArenaScreen: 11.6 as number,
 }
 

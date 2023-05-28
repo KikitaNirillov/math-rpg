@@ -1,6 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 .app {
   height: 100%;
+  width: 100%;
+  position: relative;
+}
+.rotateRequest {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: black;
+  z-index: 100;
+  font-size: calc(var(--vh, 1vh) * 5);
+  &_text {
+    padding: 0 10%;
+  }
+}
+
+.appMain {
+  height: 100%;
   aspect-ratio: 16/9;
   margin: 0 auto;
 }
@@ -9,5 +30,5 @@
   width: 100%;
 }
 .blocked {
-  // pointer-events: none;
+  pointer-events: none;
 }

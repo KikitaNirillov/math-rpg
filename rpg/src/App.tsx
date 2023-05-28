@@ -6,12 +6,52 @@ import { AppStateType } from './redux/store'
 import settings from 'settings'
 import { setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount, setSceneWithTransition } from 'redux/sceneReducer'
 import LoadingScreen from 'components/main/loadingScreen'
-import useVH from "react-vh";
 
 type AppProps = StatePropsType & DispatchPropsType
 
 const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacityTransitionIsOver, setCurrentSceneDidMount, ...props }) => {
-  useVH();
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", alertUser);
+    return () => {
+      window.removeEventListener("beforeunload", alertUser);
+    };
+  }, []);
+  const alertUser = (e: any) => {
+    e.preventDefault();
+    e.returnValue = "";
+  };
+
+  const [screenHeight, setScreenHeigth] = useState<number>(window.innerHeight)
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeigth(window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [])
+
+  const appStyle = {
+    '--vh': screenHeight*0.01 + 'px',
+    width: '100%',
+  }
+
+  const [isLandscape, setIsLandscape] = useState(false);
+  const checkOrientation = () => {
+    const isLandscape = (window.innerHeight / window.innerWidth) <= 9/16;
+    setIsLandscape(isLandscape);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', checkOrientation);
+    checkOrientation();
+
+    return () => {
+      window.removeEventListener('resize', checkOrientation);
+    };
+  }, []);
+  
   const [loadingExistedForEnoughTime, setLoadingExistedForEnoughTime] = useState<boolean>(true)
   const CurrentScene = props.currentScene ? scenes[props.currentScene] : () => { return <div /> }
   const [currentSceneName, setCurrentSceneName] = useState<SceneName | null>(props.currentScene)
@@ -38,16 +78,24 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
   }, [currentSceneName, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
 
   return (
-    <div className='app'>
-      {
-        ((props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
-          <LoadingScreen setLoadingExistedForEnoughTime={setLoadingExistedForEnoughTime} /> :
-          <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${settings.opacityTransition}ms` }}>
-            <Suspense fallback={<div />}>
-              <CurrentScene />
-            </Suspense>
-          </div >
-      }
+    <div className='app' style={appStyle}>
+      {!isLandscape && <div className='rotateRequest'>
+        <p className='rotateRequest_text'>
+          Please, rotate your phone <br />
+          (If this screen does not disappear, then the game is not supported on your device)
+        </p>
+      </div>}
+      <div className='appMain'>
+        {
+          ((props.downloadQuantity !== 0 && props.opacityTransitionToZeroIsOver) || loadingExistedForEnoughTime === false) ?
+            <LoadingScreen setLoadingExistedForEnoughTime={setLoadingExistedForEnoughTime} /> :
+            <div className={`appWrapper ${!props.opacityTransitionIsOver || props.opacity === 0 ? `blocked` : ``}`} style={{ opacity: `${props.opacity}`, transition: `opacity ${settings.opacityTransition}ms` }}>
+              <Suspense fallback={<div />}>
+                <CurrentScene />
+              </Suspense>
+            </div >
+        }
+      </div>
     </div>
   );
 }
