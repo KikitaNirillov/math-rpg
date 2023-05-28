@@ -6,15 +6,18 @@ import { AppStateType } from './redux/store'
 import settings from 'settings'
 import { setOpacity, setOpacityTransitionIsOver, setCurrentSceneDidMount, setSceneWithTransition } from 'redux/sceneReducer'
 import LoadingScreen from 'components/main/loadingScreen'
+import useVH from "react-vh";
 
 type AppProps = StatePropsType & DispatchPropsType
 
 const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacityTransitionIsOver, setCurrentSceneDidMount, ...props }) => {
+  useVH();
   const [loadingExistedForEnoughTime, setLoadingExistedForEnoughTime] = useState<boolean>(true)
   const CurrentScene = props.currentScene ? scenes[props.currentScene] : () => { return <div /> }
   const [currentSceneName, setCurrentSceneName] = useState<SceneName | null>(props.currentScene)
 
   useEffect(() => {
+    console.log("This place is for employers! If you are a regular player, please close the console")
     setSceneWithTransition('EpilepsyWarningScreen')
   }, [setSceneWithTransition])
 
@@ -25,14 +28,6 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
 
   useEffect(() => { // for loading and scene changing
     if (props.downloadQuantity === 0 && props.opacityTransitionToZeroIsOver && props.opacity !== 1 && props.currentSceneDidMount) {
-      // if (currentSceneName === null) {
-      //   setCurrentSceneName(props.currentScene)
-      // }
-      // if (currentSceneName !== props.currentScene && currentSceneName !== null) {
-      //   setCurrentSceneDidMount(false)
-      //   setCurrentSceneName(props.currentScene)
-      // }
-      // else {
       if (currentSceneName === props.currentScene) {
         setOpacity(1)
         setTimeout(() => {

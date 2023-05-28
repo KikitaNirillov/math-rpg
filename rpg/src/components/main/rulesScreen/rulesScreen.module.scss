@@ -7,14 +7,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 4vh;
+    font-size: calc(var(--vh, 1vh) * 4);
     &__rules {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         &_title {
-            font-size: 10vh;
+            font-size: calc(var(--vh, 1vh) * 10);
             line-height: 1;
             margin-bottom: 1.8%;
         }
@@ -32,17 +32,17 @@
     &__buttonsList {
         display: flex;
         &_button {
-            outline: 0.1vh solid rgba(255, 255, 255, 0.7);
+            outline: calc(var(--vh, 1vh) * 0.1) solid rgba(255, 255, 255, 0.7);
             margin: 0 4%;
-            font-size: 5vh;
-            border-radius: 6vh;
-            height: 8vh;
-            width: 37vh;
+            font-size: calc(var(--vh, 1vh) * 5);
+            border-radius: calc(var(--vh, 1vh) * 6);
+            height: calc(var(--vh, 1vh) * 8);
+            width: calc(var(--vh, 1vh) * 37);
             display: flex;
             justify-content: center;
             align-items: center;
             &:hover {
-                outline: 0.1vh solid rgba(255, 255, 255, 1);
+                outline: calc(var(--vh, 1vh) * 0.1) solid rgba(255, 255, 255, 1);
             }
         }
     }

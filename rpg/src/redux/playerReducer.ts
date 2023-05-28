@@ -21,7 +21,7 @@ const initialState = {
     name: null as HeroName | null,
     defaultImg: undefined as string | undefined,
     staticImg: undefined as string | undefined, // img when attacked
-    berserkModImg: undefined as string | undefined,
+    // berserkModImg: undefined as string | undefined,
     healthPoints: settings.maxPlayerHelthPoints as number,
     inventory: [] as Array<InventoryItem>,
     improvements: [] as Array<Improvement>,
