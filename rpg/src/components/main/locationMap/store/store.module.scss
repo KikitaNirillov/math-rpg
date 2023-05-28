@@ -1,23 +1,23 @@
 .store {
     z-index: 8;
     &__purchase {
-        font-size: 4.2vh;
+        font-size: calc(var(--vh, 1vh) * 4.2);
         width: 100%;
-        outline: 0.5vh ridge white;
-        padding: 2vh 0;
-        margin: 2vh 0;
+        outline: calc(var(--vh, 1vh) * 0.5) ridge white;
+        padding: calc(var(--vh, 1vh) * 2) 0;
+        margin: calc(var(--vh, 1vh) * 2) 0;
         &_itemsList {
             display: flex;
-            height: 18vh;
+            height: calc(var(--vh, 1vh) * 18);
             width: 100%;
             justify-content: center;
-            margin-bottom: 1.8vh;
+            margin-bottom: calc(var(--vh, 1vh) * 1.8);
             &_btn {
-                margin: 0 0.4vh;
+                margin: 0 calc(var(--vh, 1vh) * 0.4);
                 display: flex;
                 height: 100%;
                 aspect-ratio: 1 / 1;
-                border: 0.7vh ridge rgb(56, 56, 56);
+                border: calc(var(--vh, 1vh) * 0.7) ridge rgb(56, 56, 56);
                 justify-content: center;
                 align-items: center;
                 position: relative;
@@ -28,7 +28,7 @@
                     height: 80%;
                 }
                 &_cost {
-                    line-height: 0.5;
+                    line-height: 50%;
                     display: flex;
                     align-items: center;
                     white-space: pre;
@@ -47,8 +47,6 @@
                 }
             }
         }
-        &_text {
-        }
     }
     &__inventory {
         display: flex;
@@ -56,21 +54,21 @@
         width: 100%;
         &_itemsList {
             align-items: center;
-            font-size: 4.2vh;
-            margin-bottom: 2vh;
-            padding: 2vh 0;
+            font-size: calc(var(--vh, 1vh) * 4.2);
+            margin-bottom: calc(var(--vh, 1vh) * 2);
+            padding: calc(var(--vh, 1vh) * 2) 0;
             display: flex;
-            height: 17vh;
+            height: calc(var(--vh, 1vh) * 17);
             width: 100%;
             justify-content: center;
-            margin: 2vh 0;
-            outline: 0.5vh ridge white;
+            margin: calc(var(--vh, 1vh) * 2) 0;
+            outline: calc(var(--vh, 1vh) * 0.5) ridge white;
             &_item {
-                margin: 0 1vh;
+                margin: 0 calc(var(--vh, 1vh) * 1);
                 display: flex;
                 height: 100%;
                 aspect-ratio: 1 / 1;
-                outline: 0.7vh ridge rgb(56, 56, 56);
+                outline: calc(var(--vh, 1vh) * 0.7) ridge rgb(56, 56, 56);
                 justify-content: center;
                 align-items: center;
                 position: relative;
@@ -86,16 +84,16 @@
         }
     }
     &__leaveBtn {
-        height: 8vh;
-        width: 33.7vh;
-        margin: 2vh 0;
-        line-height: 0.5;
+        height: calc(var(--vh, 1vh) * 8);
+        width: calc(var(--vh, 1vh) * 33.7);
+        margin: calc(var(--vh, 1vh) * 2) 0;
+        line-height: 50%;
         overflow: hidden;
         text-align: center;
         align-items: center;
-        border: 0.5vh ridge #ffffff;
+        border: calc(var(--vh, 1vh) * 0.5) ridge #ffffff;
         &:hover {
-            border: 1vh ridge #ffffff;
+            border: calc(var(--vh, 1vh) * 1) ridge #ffffff;
         }
     }
 }

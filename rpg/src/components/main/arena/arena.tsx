@@ -87,7 +87,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                                     {ef.name}:
                                 </p>
                                 <p className={s.arena__scene_enemyEffects_effect_number}
-                                    style={{ width: `${ef.duration.toString().length * 2.15}vh` }}
+                                    style={{ width: `calc(var(--vh, 1vh) * ${ef.duration.toString().length * 2.15}` }}
                                 >
                                     {ef.duration}
                                 </p>

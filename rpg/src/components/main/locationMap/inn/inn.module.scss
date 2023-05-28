@@ -4,13 +4,13 @@
         display: flex;
         flex-direction: column;
         &_bar {
-            margin: 2vh 0;
+            margin: calc(var(--vh, 1vh) * 2) 0;
             position: relative;
-            height: 5vh;
-            width: 63vh;
+            height: calc(var(--vh, 1vh) * 5);
+            width: calc(var(--vh, 1vh) * 63);
             display: flex;
-            outline: 0.46vh ridge black;
-            box-shadow: 0 0 0 0.5vh #fff;
+            outline: calc(var(--vh, 1vh) * 0.45) ridge black;
+            box-shadow: 0 0 0 calc(var(--vh, 1vh) * 0.5) #fff;
             background-color: black;
             word-wrap: break-word;
             transition: box-shadow 0.2s;
@@ -22,10 +22,10 @@
             &_points {
                 mix-blend-mode: difference;
                 color: white;
-                line-height: 1.12;
+                line-height: 112%;
                 font-weight: 700;
                 word-wrap: break-word;
-                letter-spacing: 1vh;
+                letter-spacing: calc(var(--vh, 1vh) * 1);
                 position: absolute;
                 margin-left: auto;
                 margin-right: auto;
@@ -47,22 +47,22 @@
     }
     &__buttonList {
         display: flex;
-        margin: 2vh 0;
+        margin: calc(var(--vh, 1vh) * 2) 0;
         &_button {
-            height: 8vh;
-            width: 31.7vh;
-            margin: 0 1.9vh;
-            line-height: 0.5;
+            height: calc(var(--vh, 1vh) * 8);
+            width: calc(var(--vh, 1vh) * 31.7);
+            margin: 0 calc(var(--vh, 1vh) * 1.9);
+            line-height: 50%;
             overflow: hidden;
             text-align: center;
-            border: 0.5vh ridge #ffffff;
+            border: calc(var(--vh, 1vh) * 0.5) ridge #ffffff;
             &:hover {
-                border: 1vh ridge #ffffff;
+                border: calc(var(--vh, 1vh) * 1) ridge #ffffff;
             }
             &:disabled {
                 border-color: #474747;
                 &:hover {
-                    border: 0.5vh ridge #474747;
+                    border: calc(var(--vh, 1vh) * 0.5) ridge #474747;
                 }
             }
         }

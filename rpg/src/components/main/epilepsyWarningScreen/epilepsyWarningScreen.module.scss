@@ -14,16 +14,16 @@
         align-items: center;
         height: 80%;
         &_title {
-            line-height: 1.2;
-            font-size: 18vh;
+            line-height: 120%;
+            font-size: calc(var(--vh, 1vh) * 18);
             color: rgb(255, 118, 118);
         }
         &_text {
             width: 80%;
-            font-size: 4vh;
+            font-size: calc(var(--vh, 1vh) * 4);
         }
     }
     &__tip {
-        font-size: 4vh;
+        font-size: calc(var(--vh, 1vh) * 4);
     }
 }

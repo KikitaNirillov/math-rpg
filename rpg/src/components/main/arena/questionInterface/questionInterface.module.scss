@@ -5,8 +5,8 @@
     position: relative;
     &__question {
         height: 48%;
-        font-size: 5.2vh;
-        line-height: 1.4;
+        font-size: calc(var(--vh, 1vh) * 5.2);
+        line-height: 140%;
         margin-top: -0.5%;
         margin-bottom: 0.3%;
         width: 100%;
@@ -15,20 +15,20 @@
     &__answers {
         display: flex;
         flex-direction: column;
-        font-size: 4.2vh;
+        font-size: calc(var(--vh, 1vh) * 4.2);
         width: 100%;
         &_button {
             width: 100%;
             &:nth-child(1) {
                 margin-bottom: 0.25%;
             }
-            line-height: 1.8;
+            line-height: 180%;
             text-align: left;
-            border: 0.46vh ridge rgb(56, 56, 56);
+            border: calc(var(--vh, 1vh) * 0.45) ridge rgb(56, 56, 56);
             padding-left: 0.8%;
             transition: padding 0.1s;
             &:hover {
-                border: 0.46vh ridge white;
+                border: calc(var(--vh, 1vh) * 0.45) ridge white;
                 padding-left: 1%;
             }
         }

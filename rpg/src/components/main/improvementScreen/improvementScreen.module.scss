@@ -7,9 +7,9 @@
     text-align: center;
     align-items: center;
     margin: 0 auto;
-    font-size: 8vh;
+    font-size: calc(var(--vh, 1vh) * 8);
     &__title {
-        font-size: 10vh;
+        font-size: calc(var(--vh, 1vh) * 10);
         font-weight: 100;
         display: flex;
     }
@@ -17,8 +17,6 @@
         display: flex;
         align-items: center;
         height: 12.5%;
-        &_text {
-        }
         &_currencyImg {
             margin: 0 0.25em;
             font-size: inherit;
@@ -28,8 +26,6 @@
     &__improvements {
         display: flex;
         flex-direction: column;
-        &_text {
-        }
         &_list {
             margin: 1% 0;
             align-items: center;
@@ -38,12 +34,11 @@
             display: flex;
             &_button {
                 &:hover {
-                    // filter: invert(100%);
                     scale: 1.06;
                 }
                 transition: all 0.35s;
                 margin: 0 1.8%;
-                height: 24vh;
+                height: calc(var(--vh, 1vh) * 24);
                 &_img {
                     height: 100%;
                 }

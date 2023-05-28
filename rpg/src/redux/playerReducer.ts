@@ -21,12 +21,11 @@ const initialState = {
     name: null as HeroName | null,
     defaultImg: undefined as string | undefined,
     staticImg: undefined as string | undefined, // img when attacked
-    // berserkModImg: undefined as string | undefined,
     healthPoints: settings.maxPlayerHelthPoints as number,
     inventory: [] as Array<InventoryItem>,
     improvements: [] as Array<Improvement>,
-    damage: 12.5 as number, //12.5
-    coins: 0 as number,
+    damage: 12.5 as number, 
+    coins: 20 as number,
     positionOnArenaScreen: 11.6 as number,
 }
 

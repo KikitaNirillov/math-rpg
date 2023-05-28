@@ -9,7 +9,7 @@
 .coins {
     position: absolute;
     z-index: 6;
-    font-size: 5.2vh;
+    font-size: calc(var(--vh, 1vh) * 5.2);
     width: 98%;
     top: 1%;
     display: flex;
@@ -57,10 +57,8 @@
         align-items: center;
         justify-content: center;
         background-color: black;
-        outline: 0.4vh solid white;
-        font-size: 5vh;
-        .p {
-        }
+        outline: calc(var(--vh, 1vh) * 0.4) solid white;
+        font-size: calc(var(--vh, 1vh) * 5);
     }
     &__buttonList {
         height: 100%;

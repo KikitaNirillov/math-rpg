@@ -15,7 +15,7 @@
         align-items: center;
         &_title {
             font-size: calc(var(--vh, 1vh) * 10);
-            line-height: 1;
+            line-height: 100%;
             margin-bottom: 1.8%;
         }
         &_list {

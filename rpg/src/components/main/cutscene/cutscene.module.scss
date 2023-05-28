@@ -14,16 +14,16 @@
         &_img {
             width: 100%;
             height: 70%;
-            border: 0.5vh solid white;
+            border: calc(var(--vh, 1vh) * 0.5) solid white;
             margin-bottom: 1%;
         }
         &_text {
-            font-size: 5.2vh;
+            font-size: calc(var(--vh, 1vh) * 5.2);
             height: 29%;
             text-align: left;
             overflow: auto;
             word-break: break-word;
-            padding: 0 1.61vh;
+            padding: 0 calc(var(--vh, 1vh) * 1.6);
         }
     }
 }

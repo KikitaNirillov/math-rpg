@@ -15,13 +15,13 @@
     &__equation {
         height: 100%;
         width: 49%;
-        line-height: 1.2;
+        line-height: 120%;
         overflow: hidden;
         align-items: center;
         justify-content: center;
         display: flex;
-        outline: 1vh ridge #ffffff;
-        font-size: 9vh;
+        outline: calc(var(--vh, 1vh) * 1) ridge #ffffff;
+        font-size: calc(var(--vh, 1vh) * 9);
         &_symbol {
             height: 72%;
             margin-right: -2%;
@@ -32,7 +32,7 @@
         }
     }
     &__answerForm {
-        font-size: 6vh;
+        font-size: calc(var(--vh, 1vh) * 6);
         line-height: 1.1;
         display: flex;
         flex-direction: column;
@@ -41,7 +41,7 @@
         justify-content: center;
         width: 49%;
         height: 100%;
-        outline: 1vh ridge #ffffff;
+        outline: calc(var(--vh, 1vh) * 1) ridge #ffffff;
         &_timer {
             width: 100%;
             align-items: center;
@@ -50,15 +50,15 @@
             &_title {
                 text-align: left;
                 width: 7.7%;
-                line-height: 0.6;
-                border-bottom: 0.38vh solid #aaa;
+                line-height: 60%;
+                border-bottom: calc(var(--vh, 1vh) * 0.38) solid #aaa;
             }
         }
         &_answers {
             display: flex;
             width: 90%;
             height: 20%;
-            margin: 1vh 0 2vh;
+            margin: calc(var(--vh, 1vh) * 1) 0 calc(var(--vh, 1vh) * 2);
             justify-content: center;
             &_fieldContainer {
                 display: flex;
@@ -67,7 +67,7 @@
                 margin: 0 1.5%;
                 align-items: center;
                 justify-content: center;
-                outline: 0.6vh solid #ffffff;
+                outline: calc(var(--vh, 1vh) * 0.6) solid #ffffff;
                 &_field {
                     display: flex;
                     width: 97%;
@@ -77,7 +77,7 @@
                     justify-content: center;
                     white-space: nowrap;
                     text-align: center;
-                    font-size: 6vh;
+                    font-size: calc(var(--vh, 1vh) * 6);
                     &::selection {
                         background: #ffffff;
                         color: black;
@@ -91,7 +91,7 @@
             }
         }
         &_btn {
-            font-size: 3.5vh;
+            font-size: calc(var(--vh, 1vh) * 3.5);
         }
     }
 }

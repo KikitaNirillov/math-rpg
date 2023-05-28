@@ -18,7 +18,7 @@ const QuestionInterface: React.FC<QuestionInterfaceProps> = ({ setDisplayingFigh
     const [currentQuestion, setCurrentQuestion] = useState<EnemyQuestion | null>(null)
 
     useEffect(() => {
-        props.enemyQuestions && console.log(props.enemyQuestions[0].answers.correctAnswer)
+        props.enemyQuestions && props.enemyQuestions.length > 0 && console.log(props.enemyQuestions[0].answers.correctAnswer)
         setCurrentQuestion(props.enemyQuestions ? props.enemyQuestions[0] : null)
     }, [props.enemyQuestions])
 
