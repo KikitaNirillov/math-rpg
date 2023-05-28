@@ -7,6 +7,7 @@ import { setSceneWithTransition, setCurrentSceneDidMount } from "@redux/sceneRed
 import { SceneName } from "scenes"
 import { setNewLocation } from "@redux/locationReducer"
 import { InventoryItemName } from "commonTypes"
+import { finishGame } from "@redux/gameReducer"
 
 export type ArenaProps = StatePropsType & DispatchPropsType
 
@@ -37,6 +38,8 @@ const mapStateToProps = (state: AppStateType) => ({
 
     unloadedImagesQuantity: state.scene.unloadedImagesQuantity,
     currentSceneDidMount: state.scene.currentSceneDidMount,
+
+    undiscoveredLocations: state.game.undiscoveredLocations
 })
 type StatePropsType = ReturnType<typeof mapStateToProps>
 
@@ -51,6 +54,7 @@ type DispatchPropsType = {
     setNewLocation: () => void
     setDisplayingFightInterface: (intefaceName: FightInterfaceName) => void
     employInventoryItem: (itemName: InventoryItemName) => void
+    finishGame: () => void
 }
 
-export default connect(mapStateToProps, { swapAttackerAndReceiving, employInventoryItem, makeAttack, answerEquation, answerQuestion, setSceneWithTransition, overcomeCurrentEnemy, setNewLocation, setDisplayingFightInterface, setCurrentSceneDidMount })(Arena)
+export default connect(mapStateToProps, { swapAttackerAndReceiving, employInventoryItem, makeAttack, answerEquation, answerQuestion, setSceneWithTransition, overcomeCurrentEnemy, setNewLocation, setDisplayingFightInterface, setCurrentSceneDidMount, finishGame })(Arena)

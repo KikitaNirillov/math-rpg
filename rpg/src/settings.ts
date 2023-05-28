@@ -22,7 +22,7 @@ const settings = {
     durationOfPoison: 3,
     additionalDamageByPoison: 10,
 
-    requiredEnemyHealthPointsForConversation: 25,
+    requiredEnemyHealthPointsForConversation: 50,
 }
 
 export default settings

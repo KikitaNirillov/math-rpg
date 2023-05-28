@@ -78,7 +78,7 @@
                     position: relative;
                     width: 30%;
                     word-wrap: break-word;
-                    outline: calc(var(--vh, 1vh) * 0.45) ridge black;
+                    outline: calc(var(--vh, 1vh) * 0.45) solid black;
                     background-color: black;
                     box-shadow: 0 0 0 calc(var(--vh, 1vh) * 0.5) #fff;
                     transition: box-shadow 0.2s;

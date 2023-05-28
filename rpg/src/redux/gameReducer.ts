@@ -13,11 +13,15 @@ enum gameActionsList {
     SET_TIPEWRITER_IS_WORKING = 'SET_TIPEWRITER_IS_WORKING',
     SET_TIPEWRITER_STOPPED = 'SET_TIPEWRITER_STOPPED',
     RESET_ALL_GAME_DATA = 'RESET_ALL_GAME_DATA',
-    SET_SOUND_VALUE = 'SET_SOUND_VALUE'
+    SET_SOUND_VALUE = 'SET_SOUND_VALUE',
+    SET_ENDING = 'SET_ENDING',
+    PLUS_EQUATION_QUANTITY = 'PLUS_EQUATION_QUANTITY',
+    PLUS_CORRECTLY_SOLVED_EQUATIONS = 'PLUS_CORRECTLY_SOLVED_EQUATIONS '
 }
 
 export type Difficulty = 'easy' | 'hard'
 export type SoundValue = 'ON' | 'OFF'
+export type Ending = 'Good' | 'Bad' | 'Secret'
 
 const initialState = {
     soundValue: 'OFF' as SoundValue,
@@ -26,6 +30,9 @@ const initialState = {
     stats: {
         killedMonsters: [] as Array<EnemyName>,
         defeatedMonsters: [] as Array<EnemyName>,
+        equationsQuantity: 0 as number,
+        correctlySolvedEquations: 0 as number,
+        ending: null as Ending | null,
     },
     typeWriterIsWriting: false as boolean,
     typeWriterStopped: false as boolean,
@@ -33,7 +40,7 @@ const initialState = {
 
 type Action = SetUndiscoveredLocations | DiscoverCurrentLocation | AddMonsterToKilledList |
     AddMonsterToDefeatedList | SetTipeWritterIsWriting | SetTipeWritterStopped | SetDifficulty
-    | ResetAllGameData | SetSoundValue
+    | ResetAllGameData | SetEnding | SetSoundValue | PlusEquationQuantity | PlusCorrectlySolvedEquations
 const gameReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case gameActionsList.SET_SOUND_VALUE:
@@ -87,6 +94,30 @@ const gameReducer = (state = initialState, action: Action) => {
                 ...initialState,
                 soundValue: state.soundValue,
             }
+        case gameActionsList.SET_ENDING:
+            return {
+                ...state,
+                stats: {
+                    ...state.stats,
+                    ending: action.payload,
+                },
+            }
+        case gameActionsList.PLUS_EQUATION_QUANTITY:
+            return {
+                ...state,
+                stats: {
+                    ...state.stats,
+                    equationsQuantity: state.stats.equationsQuantity + 1,
+                },
+            }
+        case gameActionsList.PLUS_CORRECTLY_SOLVED_EQUATIONS:
+            return {
+                ...state,
+                stats: {
+                    ...state.stats,
+                    correctlySolvedEquations: state.stats.correctlySolvedEquations + 1,
+                },
+            }
         default:
             return state;
     }
@@ -139,12 +170,27 @@ const resetAllGameData = (): ResetAllGameData => ({
     type: gameActionsList.RESET_ALL_GAME_DATA,
 })
 
+type SetEnding = ActionWithPayload<gameActionsList.SET_ENDING, Ending>
+const setEnding = (ending: Ending): SetEnding => ({
+    type: gameActionsList.SET_ENDING,
+    payload: ending,
+})
+
 type SetSoundValue = ActionWithPayload<gameActionsList.SET_SOUND_VALUE, SoundValue>
 export const setSoundValue = (value: SoundValue): SetSoundValue => ({
     type: gameActionsList.SET_SOUND_VALUE,
     payload: value,
 })
 
+type PlusEquationQuantity = ActionWithoutPayload<gameActionsList.PLUS_EQUATION_QUANTITY>
+export const plusEquationQuantity = (): PlusEquationQuantity => ({
+    type: gameActionsList.PLUS_EQUATION_QUANTITY,
+})
+
+type PlusCorrectlySolvedEquations = ActionWithoutPayload<gameActionsList.PLUS_CORRECTLY_SOLVED_EQUATIONS>
+export const plusCorrectlySolvedEquations = (): PlusCorrectlySolvedEquations => ({
+    type: gameActionsList.PLUS_CORRECTLY_SOLVED_EQUATIONS,
+})
 
 export const initializeGame = (): AppThunk => (dispatch) => {
     dispatch(changeDownloadQuantity('PLUS_ONE'))
@@ -154,6 +200,18 @@ export const initializeGame = (): AppThunk => (dispatch) => {
         dispatch(setUndiscoveredLocations(locationsNames))
         dispatch(changeDownloadQuantity('MINUS_ONE'))
     })
+}
+
+export const finishGame = (): AppThunk => (dispatch, getState) => {
+    dispatch(changeDownloadQuantity('PLUS_ONE'))
+    const stats = getState().game.stats
+    let ending: Ending
+    if (stats.defeatedMonsters.length === 0 && stats.killedMonsters.length === 0) { ending = 'Secret' }
+    else if (stats.killedMonsters.length < 5) { ending = 'Good' }
+    else { ending = 'Bad' }
+    dispatch(setEnding(ending))
+    dispatch(setSceneWithTransition('StatisticsScreen'))
+    dispatch(changeDownloadQuantity('MINUS_ONE'))
 }
 
 export default gameReducer

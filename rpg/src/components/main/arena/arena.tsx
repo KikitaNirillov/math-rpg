@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import s from './arena.module.scss'
 import { ArenaProps } from "./arenaContainer"
 import settings from 'settings'
@@ -11,9 +11,9 @@ import RenderImg from "components/renderImg"
 import bossfightBackground from '@assets/imgs/bossfightBackground.gif'
 
 
-const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, answerEquation, answerQuestion, setSceneWithTransition, overcomeCurrentEnemy, setNewLocation, setDisplayingFightInterface, employInventoryItem, ...props }) => {
+const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, answerEquation, answerQuestion, setSceneWithTransition, overcomeCurrentEnemy, setNewLocation, setDisplayingFightInterface, employInventoryItem, finishGame, ...props }) => {
     const playerIsAttacker = (props.attacker === 'player' && props.playerHealthPoints > 0)
-    const enemyBeatenEnough = true // props.enemyHealthPoints <= requiredEnemyHealthPointsForConversation
+    const enemyBeatenEnough = props.enemyHealthPoints <= settings.requiredEnemyHealthPointsForConversation
     const escape = () => setSceneWithTransition("LocationMap")
     const [enemysOpacity, setEnemysOpacity] = useState<number>(1)
 
@@ -48,13 +48,16 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                 setEnemysOpacity(0)
             }, settings.changingHealthPointsTransition)
             setTimeout(() => {
-                if (props.enemyType === "mainBoss") {
+                if (props.enemyType === "mainBoss" && props.undiscoveredLocations.length === 0) {
+                    finishGame()
+                }
+                else if (props.enemyType === "mainBoss") {
                     setSceneWithTransition('LocationMap')
                 }
                 else setSceneWithTransition('ImprovementScreen')
             }, settings.changingHealthPointsTransition + settings.timeForEnemysDie)
             setTimeout(() => {
-                if (props.enemyType === "mainBoss") {
+                if (props.enemyType === "mainBoss" && props.undiscoveredLocations.length > 0) {
                     setNewLocation()
                 }
             }, settings.changingHealthPointsTransition + settings.timeForEnemysDie + settings.opacityTransition)
@@ -122,7 +125,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                         </div>
                         <div className={s.arena__scene_content_figthers_fighter} style={{ right: `${props.enemyPositionOnScreen}%`, opacity: `${enemysOpacity}`, transition: `opacity ${settings.timeForEnemysDie}ms` }}>
                             <div className={s.arena__scene_content_figthers_fighter_relativeContainer}>
-                                <img src={props.enemyDefaultImg} alt="Enemy" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} id={s.enemyImg}/>
+                                <img src={props.enemyDefaultImg} alt="Enemy" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} id={s.enemyImg} />
                             </div>
                         </div>
                     </div>

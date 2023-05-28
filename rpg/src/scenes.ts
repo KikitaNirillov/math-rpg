@@ -1,9 +1,10 @@
 import React from 'react';
 import EpilepsyWarningScreen from 'components/main/epilepsyWarningScreen/epilepsyWarningScreenContainer'
 import RulesScreen from 'components/main/rulesScreen/rulesScreenContainer'
+import StatisticsScreen from 'components/main/statisticScreen/statisticsScreenContainer'
 
 export type SceneName = 'ChoosePlayer' | 'LocationMap' | 'Arena' | 'GameOver' | 'ImprovementScreen' | 'Cutscene'
-    | 'EpilepsyWarningScreen' | 'RulesScreen'
+    | 'EpilepsyWarningScreen' | 'RulesScreen' | 'StatisticsScreen'
 
 export const scenes = {
     Arena: React.lazy(() => import('./components/main/arena/arenaContainer')),
@@ -14,4 +15,5 @@ export const scenes = {
     Cutscene: React.lazy(() => import('components/main/cutscene/cutsceneContainer')),
     EpilepsyWarningScreen,
     RulesScreen,
+    StatisticsScreen,
 };

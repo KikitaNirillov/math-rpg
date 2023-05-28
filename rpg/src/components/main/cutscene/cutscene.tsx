@@ -4,9 +4,9 @@ import TypeWriterTransparentBtn from 'components/typeWriter/typeWriterTransparen
 import s from './cutscene.module.scss'
 import { CutsceneProps } from './cutsceneContainer'
 import { useEffect } from 'react'
-import RenderImg from 'components/renderImg'
 
-const Cutscene: React.FC<CutsceneProps> = ({ removeCurrentSlideFromCutsceneList, setSceneWithTransition, setOpacity, ...props }) => {
+const Cutscene: React.FC<CutsceneProps> = ({ setSceneWithTransition, ...props }) => {
+
     useEffect(() => {
         if (props.unloadedImagesQuantity === 0 && !props.currentSceneDidMount) {
             setTimeout(() => {
@@ -15,37 +15,21 @@ const Cutscene: React.FC<CutsceneProps> = ({ removeCurrentSlideFromCutsceneList,
         }
     }, [props.unloadedImagesQuantity, props.currentSceneDidMount])
 
-    const currentSlide = props.slideList[0]
-    const nextBtn = () => {
-        if (props.slideList.length === 1) {
-            setSceneWithTransition(props.nextSceneName)
-            setTimeout(() => {
-                removeCurrentSlideFromCutsceneList()
-            }, settings.opacityTransition)
-        }
-        else {
-            setOpacity(0)
-            setTimeout(() => {
-                removeCurrentSlideFromCutsceneList()
-                setOpacity(1)
-            }, settings.opacityTransition)
-        }
-    }
+    const clickBtn = () => setSceneWithTransition('LocationMap')
+
     return (
         <div className={s.cutscene}>
-            {currentSlide &&
-                <div className={s.cutscene__slide}>
-                    <RenderImg src={currentSlide.img} alt="slide image" className={s.cutscene__slide_img} />
-                    {/* <img src={currentSlide.img} alt="slide image" className={s.cutscene__slide_img} /> */}
-                    <div className={s.cutscene__slide_text}>
-                        <TypeWriter text={currentSlide.text} />
-                    </div>
+            {
+                <div className={s.cutscene__text}>
+                    <TypeWriter text={
+                        `You don't feel the ground under your feet. Looks like you're falling...Boom! When you wake up, you see a small bag next to you. Having carefully examined it, you understand that there is no bottom in it. "Why not take it with you" you thought. A huge mountain appeared before your eyes. For no reason at all, you decide to climb to the very top of it. Forward, to meet fate!`
+                    } />
                 </div>
             }
             {props.typeWriterIsWriting ?
                 <TypeWriterTransparentBtn />
                 : <button className={'transparentAbsoluteBtn'}
-                    onClick={nextBtn}
+                    onClick={clickBtn}
                 ></button>
             }
         </div>

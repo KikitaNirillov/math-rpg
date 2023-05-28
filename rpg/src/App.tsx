@@ -38,7 +38,7 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
     width: '100%',
   }
 
-  const [isLandscape, setIsLandscape] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(true);
   const checkOrientation = () => {
     const isLandscape = (window.innerHeight / window.innerWidth) <= 9/16;
     setIsLandscape(isLandscape);
@@ -58,7 +58,7 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
 
   useEffect(() => {
     console.log("This place is for employers! If you are a regular player, please close the console")
-    setSceneWithTransition('EpilepsyWarningScreen')
+    setSceneWithTransition('EpilepsyWarningScreen') 
   }, [setSceneWithTransition])
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
       {!isLandscape && <div className='rotateRequest'>
         <p className='rotateRequest_text'>
           Please, rotate your phone <br />
-          (If this screen does not disappear, then the game is not supported on your device)
+          (If this screen does not disappear, then the game is not supported on your device or screen)
         </p>
       </div>}
       <div className='appMain'>

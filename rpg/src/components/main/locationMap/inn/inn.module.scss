@@ -9,7 +9,7 @@
             height: calc(var(--vh, 1vh) * 5);
             width: calc(var(--vh, 1vh) * 63);
             display: flex;
-            outline: calc(var(--vh, 1vh) * 0.45) ridge black;
+            outline: calc(var(--vh, 1vh) * 0.45) solid black;
             box-shadow: 0 0 0 calc(var(--vh, 1vh) * 0.5) #fff;
             background-color: black;
             word-wrap: break-word;

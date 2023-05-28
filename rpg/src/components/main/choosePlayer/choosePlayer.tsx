@@ -30,7 +30,7 @@ const ChoosePlayer: React.FC<ChoosePlayerProps> = (props) => {
         setHeroWasChosen(true)
         props.setNewLocation()
         props.chooseHero(hero)
-        props.setCutscene('beginning')
+        props.setSceneWithTransition("Cutscene")
     }
 
     return (

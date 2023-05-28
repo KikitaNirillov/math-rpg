@@ -4,7 +4,7 @@ import { EquationAnswer, EquationData, generateEquation } from 'common/equationC
 import fightInfoCreator from 'common/fightInfoCreator';
 import { ActionWithoutPayload, AppThunk, ActionWithPayload } from 'commonTypes';
 import { removeCurrentQuestion, setEnemyHealthPoints, setEnemyPositionOnArenaScreen, swapStaticAndDefaultImgForEnemy, minusEnemyEffectsDuration } from './enemyReducer';
-import { addMonsterToDefeatedList, addMonsterToKilledList } from './gameReducer';
+import { addMonsterToDefeatedList, addMonsterToKilledList, plusCorrectlySolvedEquations, plusEquationQuantity } from './gameReducer';
 import { removeMosterNameFromLivingList } from './locationReducer';
 import { addCoins, setPlayerHealthPoints, setPlayerPositionOnArenaScreen, swapStaticAndDefaultImgForPlayer } from './playerReducer';
 import { compareTwoArrays, fromStringToArrayOfNumbers } from 'common/otherFunctions';
@@ -197,6 +197,7 @@ export const makeAttack = (): AppThunk => (dispatch, getState) => {
         generateEquation(locationName, gameDifficulty).then(
             equation => {
                 dispatch(setEquationData(equation))
+                dispatch(plusEquationQuantity())
                 console.log('x=' + equation.equationAnswer.x + (equation.equationAnswer.y ? ', y=' + equation.equationAnswer.y : '')) //FOR DEVELOPMENT
             }
         ).then(() => {
@@ -255,6 +256,7 @@ export const answerEquation = (enteredAnswer: EnteredEquationAnswer): AppThunk =
                 dispatch(giveDamage('enemy', 'player'))
             }
             else {
+                dispatch(plusCorrectlySolvedEquations())
                 const newFightInfo = fightInfoCreator(attacker, playerName || 'Player', enemyName || 'Enemy', currentEnemyEffects, 0)
                 dispatch(setFightInfo(newFightInfo))
             }
@@ -269,6 +271,7 @@ export const answerEquation = (enteredAnswer: EnteredEquationAnswer): AppThunk =
                 // if answer is correct
             ) {
                 dispatch(giveDamage('player', 'enemy'))
+                dispatch(plusCorrectlySolvedEquations())
             }
             else {
                 const newFightInfo = fightInfoCreator(attacker, playerName || 'Player', enemyName || 'Enemy', currentEnemyEffects, 0)
@@ -286,13 +289,15 @@ export const overcomeCurrentEnemy = (method: 'talk' | 'kill'): AppThunk => (disp
     const currentEnemyName = getState().enemy.name
     const currentEnemyType = getState().enemy.enemyType
     if (currentEnemyName) {
-        if (currentEnemyType === 'miniBoss') dispatch(addCoins(settings.defaultRewardForMiniBoss))
-        dispatch(removeMosterNameFromLivingList(currentEnemyName))
-        if (method === 'talk') {
-            dispatch(addMonsterToDefeatedList(currentEnemyName))
-        }
-        else {
-            dispatch(addMonsterToKilledList(currentEnemyName))
+        if (currentEnemyType === 'miniBoss') {
+            dispatch(addCoins(settings.defaultRewardForMiniBoss))
+            dispatch(removeMosterNameFromLivingList(currentEnemyName))
+            if (method === 'talk') {
+                dispatch(addMonsterToDefeatedList(currentEnemyName))
+            }
+            else {
+                dispatch(addMonsterToKilledList(currentEnemyName))
+            }
         }
     }
     else console.warn('no currentEnemy found')
