@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[5021,3618,840],{5872:function(a,t,i){i.r(t),i.d(t,{data:function(){return c}});var c={name:"magician",defaultImg:i(3618),staticImg:i(840)}},3618:function(a,t,i){a.exports=i.p+"static/media/playerMagicianDefaultImg.51a02e87d883b9c95d93.jpg"},840:function(a,t,i){a.exports=i.p+"static/media/playerMagicianStaticImg.d4f9773a500cb08d12ab.jpg"}}]);
+//# sourceMappingURL=5021.ae6ad2cf.chunk.js.map

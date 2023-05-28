@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[8416,5454],{8416:function(e,t,c){c.r(t),c.d(t,{data:function(){return n}});var n={slideList:[{img:c(5454),text:"Cutscene text Cutscene text Cutscene text Cutscene text Cutscene text Cutscene text "}],nextSceneName:"LocationMap"}},5454:function(e,t,c){e.exports=c.p+"static/media/cutsceneImgExample.de972e9dcc2ec2e080d3.png"}}]);
-//# sourceMappingURL=8416.9188177a.chunk.js.map
