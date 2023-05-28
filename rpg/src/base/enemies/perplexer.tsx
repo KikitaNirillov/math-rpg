@@ -3,7 +3,7 @@ import loc1MiniBoss1DefaultImg from '@sprites/locations/location1/enemies/unders
 import loc1MiniBoss1StaticImg from '@sprites/locations/location1/enemies/understandStatic.png'
 
 export const data: EnemyData = {
-    name: 'miniBoss1Loc1',
+    name: 'Perplexer',
     defaultImg: loc1MiniBoss1DefaultImg,
     staticImg: loc1MiniBoss1StaticImg,
     enemyType: 'miniBoss',

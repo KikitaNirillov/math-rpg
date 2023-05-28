@@ -24,7 +24,7 @@ const initialState = {
     healthPoints: settings.maxPlayerHelthPoints as number,
     inventory: [] as Array<InventoryItem>,
     improvements: [] as Array<Improvement>,
-    damage: 200 as number, //12.5
+    damage: 12.5 as number, 
     coins: 0 as number,
     positionOnArenaScreen: 11.6 as number,
 }

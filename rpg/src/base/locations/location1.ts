@@ -18,6 +18,6 @@ export const data: LocationData = {
         storeIcon: store,
         toBossIcon: toBoss,
     },
-    livingMonsterNames: ['miniBoss1Loc1', 'miniBoss2Loc1', 'miniBoss3Loc1'],
-    mainBossName: 'mainBossLoc1'
+    livingMonsterNames: ['Perplexer', 'Socipher', 'Pubertaliod'],
+    mainBossName: 'Arly'
 }

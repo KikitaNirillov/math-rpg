@@ -14,18 +14,21 @@ export type EnemyData = {
 }
 
 const enemies = {
-    miniBoss1Loc1: "base/enemies/location1/miniBoss1Loc1",
-    miniBoss2Loc1: "base/enemies/location1/miniBoss2Loc1", 
-    miniBoss3Loc1: "base/enemies/location1/miniBoss3Loc1",
-    mainBossLoc1: "base/enemies/location1/mainBossLoc1",
-    miniBoss1Loc2: "base/enemies/location2/miniBoss1Loc2",
-    miniBoss2Loc2: "base/enemies/location2/miniBoss2Loc2",
-    miniBoss3Loc2: "base/enemies/location2/miniBoss3Loc2",
-    mainBossLoc2: "base/enemies/location2/mainBossLoc2",
-    miniBoss1Loc3: "base/enemies/location3/miniBoss1Loc3",
-    miniBoss2Loc3: "base/enemies/location3/miniBoss2Loc3",
-    miniBoss3Loc3: "base/enemies/location3/miniBoss3Loc3",
-    mainBossLoc3: "base/enemies/location3/mainBossLoc3",
+    //first loc:
+    'Perplexer': "base/enemies/perplexer",
+    'Socipher': "base/enemies/socipher",
+    'Pubertaliod': "base/enemies/pubertaliod",
+    'Arly': "base/enemies/arly", //boss
+    //second loc:
+    'Houamai': "base/enemies/houamai",
+    'Issuegen': "base/enemies/issuegen",
+    'Ambidasher': "base/enemies/ambidasher",
+    'Midwai': "base/enemies/midwai", // boss
+    //third loc:
+    'Decaid': "base/enemies/decaid",
+    'Abandoner': "base/enemies/abandoner",
+    'Doombrace': "base/enemies/doombrace",
+    'Lait': "base/enemies/lait", //boss
 }
 
 export type EnemyName = keyof typeof enemies

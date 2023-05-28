@@ -3,7 +3,7 @@ import loc2MainBossDefaultImg from '@sprites/locations/location2/enemies/enemyLo
 import loc2MainBossStaticImg from '@sprites/locations/location2/enemies/enemyLoc2MainBossStaticImg.jpg'
 
 export const data: EnemyData = {
-    name: 'mainBossLoc2',
+    name: 'Midwai',
     defaultImg: loc2MainBossDefaultImg, 
     staticImg:loc2MainBossStaticImg,
     enemyType: 'mainBoss',
