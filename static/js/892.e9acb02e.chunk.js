@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[892],{892:function(e,a,c){e.exports=c.p+"static/media/playerMagicianDefaultImg.3ce0f28325eb98674ceb.gif"}}]);
