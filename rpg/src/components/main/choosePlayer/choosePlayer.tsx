@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 import settings from "settings"
 import { ChoosePlayerProps } from "./choosePlayerContainer"
 import s from './choosePlayer.module.scss'
-import warriorImg from '@sprites/playerImgs/playerWarriorDefaultImg.jpg'
-import magicianImg from '@sprites/playerImgs/playerMagicianDefaultImg.jpg'
+import warriorImg from '@sprites/playerImgs/playerWarriorDefaultImg.gif'
+import magicianImg from '@sprites/playerImgs/playerMagicianDefaultImg.gif'
 import TypeWriterTransparentBtn from "components/typeWriter/typeWriterTransparentBtn"
 
 const heroesImgs = {

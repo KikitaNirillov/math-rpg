@@ -4,6 +4,7 @@ import { removeImprovementFromAvailableList } from "./locationReducer"
 import settings from "settings"
 import { freezeEnemy, poisonEnemy } from "./enemyReducer"
 import { setDifficulty } from "./gameReducer"
+import { changeDownloadQuantity } from "./sceneReducer"
 
 enum playerActionList {
     SET_HERO = 'SET_HERO',
@@ -147,11 +148,13 @@ const setCoins = (count: number): SetCoins => ({
 })
 
 export const chooseHero = (heroName: HeroName): AppThunk => (dispatch) => {
+    dispatch(changeDownloadQuantity('PLUS_ONE'))
     const gameDifficulty = (heroName === "warrior") ? 'easy' : 'hard'
     dispatch(setDifficulty(gameDifficulty))
     requestHero(heroName).then(
         hero => {
             dispatch(setHero(hero))
+            dispatch(changeDownloadQuantity('MINUS_ONE'))
         }
     )
 }

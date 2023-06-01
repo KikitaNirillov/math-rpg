@@ -24,6 +24,7 @@
             position: absolute;
             height: 100%;
             z-index: 1;
+            opacity: 0.8;
         }
         &_enemyEffects {
             position: absolute;
@@ -128,6 +129,7 @@
                     position: absolute;
                     height: 100%;
                     aspect-ratio: 1 / 1;
+                    bottom: 0;
                     &_relativeContainer {
                         position: relative;
                         width: 100%;

@@ -118,7 +118,7 @@ const Arena: React.FC<ArenaProps> = ({ swapAttackerAndReceiving, makeAttack, ans
                         </div>
                     </div>
                     <div className={s.arena__scene_content_figthers}>
-                        <div className={s.arena__scene_content_figthers_fighter} style={{ left: `${props.playerPositionOnScreen}%` }}>
+                        <div className={s.arena__scene_content_figthers_fighter} style={{ left: `${props.playerPositionOnScreen}%`, height: '110%' }}>
                             <div className={s.arena__scene_content_figthers_fighter_relativeContainer}>
                                 <img src={props.playerDefaultImg} alt="Player" className={s.arena__scene_content_figthers_fighter_relativeContainer_img} />
                             </div>

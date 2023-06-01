@@ -308,14 +308,12 @@ export const shakeReceiver = (person: 'player' | 'enemy'): AppThunk => (dispatch
     if (person === 'player') {
         setTimeout(() => {
             dispatch(setPlayerPositionOnArenaScreen(+displacement))
-            dispatch(swapStaticAndDefaultImgForPlayer())
         }, 25)
         setTimeout(() => dispatch(setPlayerPositionOnArenaScreen(-displacement)), 50)
         setTimeout(() => dispatch(setPlayerPositionOnArenaScreen(+displacement)), 100)
         setTimeout(() => dispatch(setPlayerPositionOnArenaScreen(-displacement)), 150)
         setTimeout(() => {
             dispatch(setPlayerPositionOnArenaScreen(0))
-            dispatch(swapStaticAndDefaultImgForPlayer())
         }, 175)
     }
     else {
