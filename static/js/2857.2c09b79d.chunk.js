@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[2857],{2857:function(t,a,p){t.exports=p.p+"static/media/pubertaliodStatic.599cd55804737a7c6b87.png"}}]);

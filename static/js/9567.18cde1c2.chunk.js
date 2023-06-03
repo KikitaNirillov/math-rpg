@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[9567],{9567:function(t,a,p){t.exports=p.p+"static/media/laitStatic.505b350a7688c3006364.png"}}]);

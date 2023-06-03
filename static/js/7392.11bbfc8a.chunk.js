@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[7392],{7392:function(e,p,t){e.exports=t.p+"static/media/inn.991588a93836e6bc8839.png"}}]);

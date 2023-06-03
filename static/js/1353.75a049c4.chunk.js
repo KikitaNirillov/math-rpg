@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[1353],{1353:function(a,e,t){a.exports=t.p+"static/media/playerWarriorDefaultImg.b4d46776103fe0a80d41.gif"}}]);

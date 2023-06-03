@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[3717],{3717:function(e,p,a){e.exports=a.p+"static/media/perplexer.97b85aef504e34a3c54e.gif"}}]);

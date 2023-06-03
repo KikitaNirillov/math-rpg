@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[3044],{3044:function(e,a,t){e.exports=t.p+"static/media/pubertaliod.53c8e2cb4e038a45ae3b.gif"}}]);

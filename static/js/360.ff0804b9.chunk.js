@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[360],{360:function(s,t,p){s.exports=p.p+"static/media/toBoss.69d48a51246538655465.png"}}]);

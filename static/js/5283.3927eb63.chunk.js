@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[5283],{5283:function(e,t,p){e.exports=p.p+"static/media/fightBackground.8578910f6be977e08651.png"}}]);

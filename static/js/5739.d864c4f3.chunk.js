@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[5739],{5739:function(a,c,e){a.exports=e.p+"static/media/abandonerStatic.3bd0f46c22a9cb1015b5.png"}}]);

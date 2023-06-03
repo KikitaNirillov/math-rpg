@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[3061],{3061:function(a,c,t){a.exports=t.p+"static/media/houamaiStatic.c04620b73cc67ea8c89b.png"}}]);

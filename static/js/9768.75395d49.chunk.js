@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[9768],{9768:function(p,e,s){p.exports=s.p+"static/media/socipherStatic.704568bdf5abdb940282.png"}}]);

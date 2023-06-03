@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[202],{202:function(a,e,s){a.exports=s.p+"static/media/ambidasher.bc1839958272c99d3d57.gif"}}]);

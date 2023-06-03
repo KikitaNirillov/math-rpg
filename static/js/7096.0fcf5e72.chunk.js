@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[7096],{7096:function(e,a,t){e.exports=t.p+"static/media/houamai.d8fd87b26904ee680588.gif"}}]);

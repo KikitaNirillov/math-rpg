@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[9822],{9822:function(e,p,s){e.exports=s.p+"static/media/lait.96519be5e439df2beae3.gif"}}]);

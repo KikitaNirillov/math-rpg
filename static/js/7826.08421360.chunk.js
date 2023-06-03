@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[7826],{7826:function(a,t,c){a.exports=c.p+"static/media/midwaiStatic.837ea7fa9a74c5668cc3.png"}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[3001],{3001:function(a,e,t){a.exports=t.p+"static/media/doombrace.d79e418c3bafa224f15a.gif"}}]);

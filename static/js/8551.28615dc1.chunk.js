@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmath_rpg=self.webpackChunkmath_rpg||[]).push([[8551],{8551:function(a,t,e){a.exports=e.p+"static/media/arlyStatic.577c0fe480b7aa9f9671.png"}}]);

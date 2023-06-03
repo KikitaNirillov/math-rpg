@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[3001],{3001:function(e,a,c){e.exports=c.p+"static/media/doombrace.d79e418c3bafa224f15a.gif"}}]);

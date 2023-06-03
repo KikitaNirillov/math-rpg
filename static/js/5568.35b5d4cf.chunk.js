@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[5568,9822,9567],{5568:function(t,a,e){e.r(a),e.d(a,{data:function(){return i}});var i={name:"Lait",defaultImg:e(9822),staticImg:e(9567),enemyType:"mainBoss"}},9822:function(t,a,e){t.exports=e.p+"static/media/lait.96519be5e439df2beae3.gif"},9567:function(t,a,e){t.exports=e.p+"static/media/laitStatic.505b350a7688c3006364.png"}}]);
-//# sourceMappingURL=5568.35b5d4cf.chunk.js.map
