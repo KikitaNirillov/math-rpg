@@ -1,10 +1,10 @@
 import { EnemyData } from '@base/enemies'
-import loc2MainBossDefaultImg from '@sprites/locations/location2/enemies/enemyLoc2MainBossDefaultImg.jpg'
-import loc2MainBossStaticImg from '@sprites/locations/location2/enemies/enemyLoc2MainBossStaticImg.jpg'
+import midwaiImg from '@sprites/enemies/midwai.gif'
+import midwaiStaticImg from '@sprites/enemies/midwaiStatic.png'
 
 export const data: EnemyData = {
     name: 'Midwai',
-    defaultImg: loc2MainBossDefaultImg, 
-    staticImg:loc2MainBossStaticImg,
+    defaultImg: midwaiImg,
+    staticImg: midwaiStaticImg,
     enemyType: 'mainBoss',
 }

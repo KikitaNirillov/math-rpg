@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc1MiniBoss3DefaultImg from '@sprites/locations/location1/enemies/enemyLoc1MiniBoss3DefaultImg.jpg'
-import loc1MiniBoss3StaticImg from '@sprites/locations/location1/enemies/enemyLoc1MiniBoss3StaticImg.jpg'
+import pubertaliodDefaultImg from '@sprites/enemies/pubertaliod.gif'
+import pubertaliodStaticImg from '@sprites/enemies/pubertaliodStatic.png'
 
 export const data: EnemyData = {
     name: 'Pubertaliod',
-    defaultImg: loc1MiniBoss3DefaultImg,
-    staticImg: loc1MiniBoss3StaticImg,
+    defaultImg: pubertaliodDefaultImg,
+    staticImg: pubertaliodStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {

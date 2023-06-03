@@ -1,10 +1,10 @@
 import { EnemyData } from '@base/enemies'
-import loc1MainBossDefaultImg from '@sprites/locations/location1/enemies/enemyLoc1MainBossDefaultImg.jpg'
-import loc1MainBossStaticImg from '@sprites/locations/location1/enemies/enemyLoc1MainBossStaticImg.jpg'
+import arlyImg from '@sprites/enemies/arly.gif'
+import arlyStaticImg from '@sprites/enemies/arlyStatic.png'
 
 export const data: EnemyData = {
     name: 'Arly',
-    defaultImg: loc1MainBossDefaultImg, 
-    staticImg:loc1MainBossStaticImg,
+    defaultImg: arlyImg, 
+    staticImg: arlyStaticImg,
     enemyType: 'mainBoss',
 }

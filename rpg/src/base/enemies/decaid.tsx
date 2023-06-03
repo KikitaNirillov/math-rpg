@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc3MiniBoss1DefaultImg from '@sprites/locations/location3/enemies/enemyLoc3MiniBoss1DefaultImg.jpg'
-import loc3MiniBoss1StaticImg from '@sprites/locations/location3/enemies/enemyLoc3MiniBoss1StaticImg.jpg'
+import decaidImg from '@sprites/enemies/decaid.gif'
+import decaidStaticImg from '@sprites/enemies/decaidStatic.png'
 
 export const data: EnemyData = {
     name: 'Decaid',
-    defaultImg: loc3MiniBoss1DefaultImg,
-    staticImg: loc3MiniBoss1StaticImg,
+    defaultImg: decaidImg,
+    staticImg: decaidStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {

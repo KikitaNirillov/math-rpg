@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc1MiniBoss1DefaultImg from '@sprites/locations/location1/enemies/understand.gif'
-import loc1MiniBoss1StaticImg from '@sprites/locations/location1/enemies/understandStatic.png'
+import perplexerDefaultImg from '@sprites/enemies/perplexer.gif'
+import perplexerStaticImg from '@sprites/enemies/perplexerStatic.png'
 
 export const data: EnemyData = {
     name: 'Perplexer',
-    defaultImg: loc1MiniBoss1DefaultImg,
-    staticImg: loc1MiniBoss1StaticImg,
+    defaultImg: perplexerDefaultImg,
+    staticImg: perplexerStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {

@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc1MiniBoss2DefaultImg from '@sprites/locations/location1/enemies/enemyLoc1MiniBoss2DefaultImg.jpg'
-import loc1MiniBoss2StaticImg from '@sprites/locations/location1/enemies/enemyLoc1MiniBoss2StaticImg.jpg'
+import socipherDefaultImg from '@sprites/enemies/socipher.gif'
+import socipherStaticImg from '@sprites/enemies/socipherStatic.png'
 
 export const data: EnemyData = {
     name: 'Socipher',
-    defaultImg: loc1MiniBoss2DefaultImg,
-    staticImg: loc1MiniBoss2StaticImg,
+    defaultImg: socipherDefaultImg,
+    staticImg: socipherStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {

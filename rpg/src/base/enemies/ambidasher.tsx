@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc2MiniBoss3DefaultImg from '@sprites/locations/location2/enemies/enemyLoc2MiniBoss3DefaultImg.jpg'
-import loc2MiniBoss3StaticImg from '@sprites/locations/location2/enemies/enemyLoc2MiniBoss3StaticImg.jpg'
+import ambidasherImg from '@sprites/enemies/ambidasher.gif'
+import ambidasherStaticImg from '@sprites/enemies/ambidasherStatic.png'
 
 export const data: EnemyData = {
     name: 'Ambidasher',
-    defaultImg: loc2MiniBoss3DefaultImg,
-    staticImg: loc2MiniBoss3StaticImg,
+    defaultImg: ambidasherImg,
+    staticImg: ambidasherStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {

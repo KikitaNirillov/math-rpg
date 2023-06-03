@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc3MiniBoss3DefaultImg from '@sprites/locations/location3/enemies/enemyLoc3MiniBoss3DefaultImg.jpg'
-import loc3MiniBoss3StaticImg from '@sprites/locations/location3/enemies/enemyLoc3MiniBoss3StaticImg.jpg'
+import doombraceImg from '@sprites/enemies/doombrace.gif'
+import doombraceStaticImg from '@sprites/enemies/doombraceStatic.png'
 
 export const data: EnemyData = {
     name: 'Doombrace',
-    defaultImg: loc3MiniBoss3DefaultImg,
-    staticImg: loc3MiniBoss3StaticImg,
+    defaultImg: doombraceImg,
+    staticImg: doombraceStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {

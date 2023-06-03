@@ -1,11 +1,11 @@
 import { EnemyData } from '@base/enemies'
-import loc2MiniBoss2DefaultImg from '@sprites/locations/location2/enemies/enemyLoc2MiniBoss2DefaultImg.jpg'
-import loc2MiniBoss2StaticImg from '@sprites/locations/location2/enemies/enemyLoc2MiniBoss2StaticImg.jpg'
+import issuegenImg from '@sprites/enemies/issuegen.gif'
+import issuegenStaticImg from '@sprites/enemies/issuegenStatic.png'
 
 export const data: EnemyData = {
     name: 'Issuegen',
-    defaultImg: loc2MiniBoss2DefaultImg, 
-    staticImg: loc2MiniBoss2StaticImg,
+    defaultImg: issuegenImg, 
+    staticImg: issuegenStaticImg,
     enemyType: 'miniBoss',
     questions: [
         {
