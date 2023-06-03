@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[2213,9920,7826],{5021:function(a,i,t){t.r(i),t.d(i,{data:function(){return e}});var e={name:"Midwai",defaultImg:t(9920),staticImg:t(7826),enemyType:"mainBoss"}},9920:function(a,i,t){a.exports=t.p+"static/media/midwai.beba821a20608344f7f3.gif"},7826:function(a,i,t){a.exports=t.p+"static/media/midwaiStatic.837ea7fa9a74c5668cc3.png"}}]);
+//# sourceMappingURL=2213.a269d939.chunk.js.map

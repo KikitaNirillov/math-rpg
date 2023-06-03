@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[4807],{4807:function(e,s,c){e.exports=c.p+"static/media/understand.3e7be666ea8b037c55cb.gif"}}]);

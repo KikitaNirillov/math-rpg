@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[843],{843:function(e,c,p){e.exports=p.p+"static/media/abandoner.b3c063944090750b13c7.gif"}}]);

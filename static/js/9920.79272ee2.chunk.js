@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[9920],{9920:function(e,a,i){e.exports=i.p+"static/media/midwai.beba821a20608344f7f3.gif"}}]);

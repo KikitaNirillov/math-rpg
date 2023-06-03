@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrpg=self.webpackChunkrpg||[]).push([[6799],{6799:function(c,a,e){c.exports=e.p+"static/media/decaidStatic.374435c1c9984a0782ab.png"}}]);
