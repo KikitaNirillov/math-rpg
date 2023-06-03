@@ -78,7 +78,7 @@ const App: React.FC<AppProps> = ({ setOpacity, setSceneWithTransition, setOpacit
   }, [currentSceneName, props.downloadQuantity, props.opacityTransitionToZeroIsOver, props.opacity, props.currentSceneDidMount, setOpacity, setOpacityTransitionIsOver])
 
   return (
-    <div className='app' style={appStyle}>
+    <div className='app' style={appStyle} translate="no">
       {!isLandscape && <div className='rotateRequest'>
         <p className='rotateRequest_text'>
           Please, rotate your phone <br />

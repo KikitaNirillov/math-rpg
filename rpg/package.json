@@ -1,6 +1,6 @@
 {
-  "name": "rpg",
-  "version": "0.1.0",
+  "name": "math_rpg",
+  "version": "1.0.0",
   "homepage": "https://KikitaNirillov.github.io/math-rpg",
   "private": true,
   "dependencies": {
