@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/math-rpg/static/css/main.2702bb1f.css",
-    "main.js": "/math-rpg/static/js/main.e2c249c8.js",
+    "main.js": "/math-rpg/static/js/main.7e951170.js",
     "static/js/7195.1e552f99.chunk.js": "/math-rpg/static/js/7195.1e552f99.chunk.js",
     "static/js/9833.301f64ac.chunk.js": "/math-rpg/static/js/9833.301f64ac.chunk.js",
     "static/js/180.ffd89fba.chunk.js": "/math-rpg/static/js/180.ffd89fba.chunk.js",
@@ -68,7 +68,7 @@
     "static/js/8615.943a76cf.chunk.js": "/math-rpg/static/js/8615.943a76cf.chunk.js",
     "static/js/1353.75a049c4.chunk.js": "/math-rpg/static/js/1353.75a049c4.chunk.js",
     "static/js/2238.31cfa514.chunk.js": "/math-rpg/static/js/2238.31cfa514.chunk.js",
-    "static/css/8471.c1584f69.chunk.css": "/math-rpg/static/css/8471.c1584f69.chunk.css",
+    "static/css/8471.68c44daa.chunk.css": "/math-rpg/static/css/8471.68c44daa.chunk.css",
     "static/js/8471.f3f25d3b.chunk.js": "/math-rpg/static/js/8471.f3f25d3b.chunk.js",
     "static/css/410.68ec3c09.chunk.css": "/math-rpg/static/css/410.68ec3c09.chunk.css",
     "static/js/410.aab1457e.chunk.js": "/math-rpg/static/js/410.aab1457e.chunk.js",
@@ -127,7 +127,7 @@
     "static/media/healingPotionImg.png": "/math-rpg/static/media/healingPotionImg.3bb578210e0dfd174945.png",
     "index.html": "/math-rpg/index.html",
     "main.2702bb1f.css.map": "/math-rpg/static/css/main.2702bb1f.css.map",
-    "main.e2c249c8.js.map": "/math-rpg/static/js/main.e2c249c8.js.map",
+    "main.7e951170.js.map": "/math-rpg/static/js/main.7e951170.js.map",
     "7195.1e552f99.chunk.js.map": "/math-rpg/static/js/7195.1e552f99.chunk.js.map",
     "9833.301f64ac.chunk.js.map": "/math-rpg/static/js/9833.301f64ac.chunk.js.map",
     "180.ffd89fba.chunk.js.map": "/math-rpg/static/js/180.ffd89fba.chunk.js.map",
@@ -145,7 +145,7 @@
     "8000.299aa9c4.chunk.js.map": "/math-rpg/static/js/8000.299aa9c4.chunk.js.map",
     "1888.3d07bb06.chunk.js.map": "/math-rpg/static/js/1888.3d07bb06.chunk.js.map",
     "5244.6be61c8f.chunk.js.map": "/math-rpg/static/js/5244.6be61c8f.chunk.js.map",
-    "8471.c1584f69.chunk.css.map": "/math-rpg/static/css/8471.c1584f69.chunk.css.map",
+    "8471.68c44daa.chunk.css.map": "/math-rpg/static/css/8471.68c44daa.chunk.css.map",
     "8471.f3f25d3b.chunk.js.map": "/math-rpg/static/js/8471.f3f25d3b.chunk.js.map",
     "410.68ec3c09.chunk.css.map": "/math-rpg/static/css/410.68ec3c09.chunk.css.map",
     "410.aab1457e.chunk.js.map": "/math-rpg/static/js/410.aab1457e.chunk.js.map",
@@ -162,6 +162,6 @@
   },
   "entrypoints": [
     "static/css/main.2702bb1f.css",
-    "static/js/main.e2c249c8.js"
+    "static/js/main.7e951170.js"
   ]
 }
