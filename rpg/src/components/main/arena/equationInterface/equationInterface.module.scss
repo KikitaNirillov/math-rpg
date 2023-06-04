@@ -75,12 +75,10 @@
                 display: flex;
                 width: 47%;
                 height: 100%;
-                align-items: center;
-                -webkit-align-items: center;
-                text-align: center;
                 justify-content: center;
                 outline: calc(var(--vh, 1vh) * 0.6) solid #ffffff;
                 &_field {
+                    margin-top: calc(var(--vh, 1vh) * 0.7);
                     display: flex;
                     width: 97%;
                     height: 80%;
