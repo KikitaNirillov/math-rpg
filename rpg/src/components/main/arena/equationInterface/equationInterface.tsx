@@ -76,7 +76,7 @@ const EquationInterface: React.FC<EquationInterfaceProps> = ({ answerEquation, .
                             </div>
                         }
                         <div className={s.equationInterface__answerForm_title}>
-                            YOUR ANSWER IS
+                            <p>YOUR ANSWER IS</p>
                         </div>
                         <div className={s.equationInterface__answerForm_answers}>
                             <CustomField formik={formik} name="x" autoFocus={true} />
