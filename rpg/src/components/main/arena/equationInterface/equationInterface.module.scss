@@ -87,10 +87,10 @@
                     background: none;
                     border: none;
                     outline: none;
-                    align-items: center;
-                    -webkit-align-items: center;
-                    justify-content: center;
-                    white-space: nowrap;
+                    // align-items: center;
+                    // -webkit-align-items: center;
+                    // justify-content: center;
+                    // white-space: nowrap;
                     text-align: center;
                     font-size: calc(var(--vh, 1vh) * 5.5);
                     &::selection {
