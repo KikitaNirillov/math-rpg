@@ -75,6 +75,7 @@
                 display: flex;
                 width: 47%;
                 height: 100%;
+                margin: 0 1.5%;
                 justify-content: center;
                 outline: calc(var(--vh, 1vh) * 0.6) solid #ffffff;
                 &_field {
@@ -87,10 +88,6 @@
                     background: none;
                     border: none;
                     outline: none;
-                    // align-items: center;
-                    // -webkit-align-items: center;
-                    // justify-content: center;
-                    // white-space: nowrap;
                     text-align: center;
                     font-size: calc(var(--vh, 1vh) * 5.5);
                     &::selection {
